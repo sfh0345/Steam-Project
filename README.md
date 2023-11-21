@@ -1,6 +1,13 @@
+Project Steam
+===============
+
+[![PHP version](https://badge.fury.io/ph/koraktor%2Fsteam-condenser.svg)](http://badge.fury.io/ph/koraktor%2Fsteam-condenser)
+[![Build Status](https://secure.travis-ci.org/koraktor/steam-condenser-php.svg?branch=master)](http://travis-ci.org/koraktor/steam-condenser-php)
+[![Code Climate](https://codeclimate.com/github/koraktor/steam-condenser-php/badges/gpa.svg)](https://codeclimate.com/github/koraktor/steam-condenser-php)
+
+
 <img align="right" src="https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/SteamLogo.png">
 
-# Project Steam
 
 Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gamegedrag van vrienden op Steam. De opdracht is om een basisapplicatie met een dashboard te bouwen. De verplichte onderdelen omvatten het creëren van een basisapplicatie in Python, het laden van data via de Steam-API en het tonen van enkele elementen op een GUI.
 
