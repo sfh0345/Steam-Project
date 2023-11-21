@@ -1,10 +1,6 @@
 Project Steam
 ===============
 
-[![PHP version](https://badge.fury.io/ph/koraktor%2Fsteam-condenser.svg)](http://badge.fury.io/ph/koraktor%2Fsteam-condenser)
-[![Build Status](https://secure.travis-ci.org/koraktor/steam-condenser-php.svg?branch=master)](http://travis-ci.org/koraktor/steam-condenser-php)
-[![Code Climate](https://codeclimate.com/github/koraktor/steam-condenser-php/badges/gpa.svg)](https://codeclimate.com/github/koraktor/steam-condenser-php)
-
 
 <img align="right" src="https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/SteamLogo.png">
 
