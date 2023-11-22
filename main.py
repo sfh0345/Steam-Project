@@ -1,7 +1,5 @@
 import requests
 
-# Replace 'YOUR_API_KEY' with the actual API key you obtained from Steam
-
 def get_player_summaries(steam_ids):
     url = f'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=B5A67039860C1613632C4795B6C36245&steamids={",".join(steam_ids)}'
     response = requests.get(url)
