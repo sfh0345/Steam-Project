@@ -1,6 +1,4 @@
 import requests
-from dashboard import dashboardwindow
-
 
 def get_player_summaries(steamid64):
     url = f'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=B5A67039860C1613632C4795B6C36245&steamids={steamid64}'
@@ -19,7 +17,7 @@ def getsteamuserinfo(steamid64):
                 name = player['personaname']
                 avatarurl = player['avatarfull']
                 status = player['personastate']
-                dashboardwindow(name, avatarurl, status)
+                return name, avatarurl, status
 
         else:
             return 1
