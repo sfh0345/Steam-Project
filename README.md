@@ -16,7 +16,7 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 |:----------:|:----------:|:----------:|
 | Abdullah El Hannaoui | 1856772  |  |
 | Maarten Eijgenhuijsen | 1868212  |  |
-| Sander Hol | 1859176  |  |
+| Sander Hol | 1859176  | sfh0345 |
 | Sander Neele | 1812756 |  |
 | Lucia Lange | 1857133  |  |
 | Hurkan Yildiz | 1781066  |  |
