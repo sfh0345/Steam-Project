@@ -96,8 +96,6 @@ def steamidinput():
             status = status1[2]
             window.destroy()
             dashboardwindow(name, avatarurl, status, steamid64)
-            # dashboardwindow("sander03455", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 0, "76561199478010920")
-
 
 
 window = Tk()
@@ -256,18 +254,6 @@ entry_bg_4 = canvas.create_image(
     740.5,
     image=entry_image_4
 )
-entry_4 = Entry(
-    bd=0,
-    bg="#1999FF",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_4.place(
-    x=212.5,
-    y=736.0,
-    width=342.0,
-    height=7.0
-)
 
 entry_image_5 = PhotoImage(
     file=relative_to_assets("entry_5.png"))
@@ -275,18 +261,6 @@ entry_bg_5 = canvas.create_image(
     835.0,
     740.5,
     image=entry_image_5
-)
-entry_5 = Entry(
-    bd=0,
-    bg="#1999FF",
-    fg="#000716",
-    highlightthickness=0
-)
-entry_5.place(
-    x=661.5,
-    y=736.0,
-    width=347.0,
-    height=7.0
 )
 
 canvas.create_text(
