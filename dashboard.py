@@ -110,16 +110,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         font=("Motiva Sans Medium", 40 * -1)
     )
 
-    if status == 1:
-        canvas.create_text(
-            1500.0,
-            85.0,
-            anchor="nw",
-            text="Online",
-            fill="#FFFFFF",
-            font=("Motiva Sans Regular", 24 * -1)
-        )
-    elif status == 0:
+    if status == 0:
         canvas.create_text(
             1500.0,
             85.0,
@@ -128,7 +119,25 @@ def dashboardwindow(name, avatarurl, status, steamid64):
             fill="#CACACA",
             font=("Motiva Sans Regular", 24 * -1)
         )
-    elif status == 3:
+    elif status == 1:
+        canvas.create_text(
+            1500.0,
+            85.0,
+            anchor="nw",
+            text="Online",
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 24 * -1)
+        )
+    elif status == 2:
+        canvas.create_text(
+            1500.0,
+            85.0,
+            anchor="nw",
+            text="Bezig",
+            fill="#CACACA",
+            font=("Motiva Sans Regular", 24 * -1)
+        )
+    elif status == 3 or status == 4:
         canvas.create_text(
             1500.0,
             85.0,
@@ -142,7 +151,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
             1497.0,
             85.0,
             anchor="nw",
-            text="Kan status niet ophalen",
+            text=f"Kan status niet ophalen {status}",
             fill="#CACACA",
             font=("Motiva Sans Regular", 24 * -1)
         )
