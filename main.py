@@ -197,7 +197,7 @@ canvas.create_text(
     1164.0,
     293.0,
     anchor="nw",
-    text="INLOGGEN MET EEN QR-CODE",
+    text="INLOGGEN MET NFC KAART",
     fill="#1999FF",
     font=("Motiva Sans Medium", 24 * -1)
 )
@@ -244,8 +244,8 @@ entry_bg_3 = canvas.create_image(
 )
 
 
-image_path = r"assets\QRCODE.png"
-image1 = add_image_to_canvas(canvas, image_path, x=1181, y=354, width=381, height=378)
+image_path = r"assets/contactless_5227517.png"
+image1 = add_image_to_canvas(canvas, image_path, x=1196, y=365, width=350, height=350)
 
 entry_image_4 = PhotoImage(
     file=relative_to_assets("entry_4.png"))
@@ -283,10 +283,10 @@ canvas.create_text(
 
 
 canvas.create_text(
-    1209.0,
+    1165.0,
     770.0,
     anchor="nw",
-    text="Gebruik de mobiele Steam-app \nom via een QR-code in te loggen",
+    text="Gebruik uw steamcard om snel in te loggen \nof gebruik uw telefoon",
     fill="#FFFFFF",
     justify='center',
     font=("Motiva Sans Medium", 20 * -1)
