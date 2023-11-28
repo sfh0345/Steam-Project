@@ -8,7 +8,7 @@ pip install requests
 ```
 **PIL**
 ```ruby
-pip install PIL 
+pip install Pillow
 ```
 **Webbrowser**
 ```ruby
