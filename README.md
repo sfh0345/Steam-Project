@@ -1,10 +1,24 @@
 Project Steam
 ===============
+### Module instalation
+
+**Requests**
+```ruby
+pip install requests 
+```
+**PIL**
+```ruby
+pip install PIL 
+```
+**Webbrowser**
+```ruby
+pip install webbrowser
+```
 
 
 <img align="right" src="https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/SteamLogo.png">
 
-
+### Inleiding
 Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gamegedrag van vrienden op Steam. De opdracht is om een basisapplicatie met een dashboard te bouwen. De verplichte onderdelen omvatten het creëren van een basisapplicatie in Python, het laden van data via de Steam-API en het tonen van enkele elementen op een GUI.
 
 
