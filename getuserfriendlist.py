@@ -39,9 +39,10 @@ def get_friend_usernames(steamid64):
             else:
                 return 0
         else:
-            print(f"Error: {response.status_code}")
+            print(f"Error 1: {response.status_code}")
     else:
-        print(f"Error: {response.status_code}")
+        return 10
+        print(f"Error 2: {response.status_code}")
 
 # Replace with your API key and the Steam ID of the user
 
