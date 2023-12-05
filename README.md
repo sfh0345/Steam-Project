@@ -16,6 +16,7 @@ pip install Requests
 ```ruby
 pip install Pillow
 ```
+**Serial**
 ```ruby
 pip install Serial
 ```
