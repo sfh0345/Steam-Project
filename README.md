@@ -16,6 +16,9 @@ pip install Requests
 ```ruby
 pip install Pillow
 ```
+```ruby
+pip install Serial
+```
 
 
 <img align="right" src="https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/SteamLogo.png">
