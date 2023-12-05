@@ -20,6 +20,10 @@ pip install Pillow
 ```ruby
 pip install Serial
 ```
+**Serial-Tool**
+```ruby
+pip install Serial-Tool
+```
 
 
 <img align="right" src="https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/SteamLogo.png">
