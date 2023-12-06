@@ -52,6 +52,68 @@ def know_more_clicked(event):
         )
     webbrowser.open_new_tab(instructions)
 
+def nfcinput():
+
+    steaminput = getnfccardinfo()
+
+
+    if len(steaminput) != 17:
+        time = canvas.create_text(
+            162.0,
+            1013.0,
+            anchor="nw",
+            text="We konden uw SteamID niet vinden. Zorg ervoor dat u het SteamID64 heeft",
+            fill="#FFFFFF",
+            font=("Motiva Sans Bold", 40 * -1)
+        )
+        window.after(4000, lambda: canvas.delete(time))
+
+    else:
+        steamid64 = steaminput
+        status1 = getsteamuserinfo(steamid64)
+        if status1 == 0:
+            time = canvas.create_text(
+                262.0,
+                1013.0,
+                anchor="nw",
+                text="Er is iets mis gegaan. Probeer het later opnieuw",
+                fill="#FFFFFF",
+                font=("Motiva Sans Bold", 40 * -1)
+                #staat nog niet gealigned op de x as
+            )
+            window.after(4000, lambda: canvas.delete(time))
+        elif status1 == 1:
+            time = canvas.create_text(
+                340.0,
+                1013.0,
+                anchor="nw",
+                text="Er is geen steam gebruiker gevonden met dat SteamID64",
+                fill="#FFFFFF",
+                font=("Motiva Sans Bold", 40 * -1)
+            )
+            window.after(4000, lambda: canvas.delete(time))
+        else:
+            name = status1[0]
+            avatarurl = status1[1]
+            status = status1[2]
+            window.destroy()
+            dashboardwindow(name, avatarurl, status, steamid64)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def steamidinput():
     steaminput = text_widget.get("1.0", "end-1c").strip()
