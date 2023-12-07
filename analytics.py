@@ -1,5 +1,5 @@
 def analytics(name, avatarurl, status, steamid64):
-
+    import time
     from pathlib import Path
 
     import tkinter as tk
@@ -197,8 +197,27 @@ def analytics(name, avatarurl, status, steamid64):
     image = add_image_to_canvas(canvas, image_path, x=52, y=20, width=267, height=77)
 
 
+
+    def mostplayeddef():
+        # mostplayed games
+        global entry_image_8
+        entry_image_8 = PhotoImage(
+            file=relative_to_assets("chart_most_played_games_07_12_2023.png"))
+        entry_bg_7 = canvas.create_image(
+            1570.0,
+            582.0,
+            image=entry_image_8
+        )
+
+    window.after(4000, mostplayeddef)
+
+
+
+
     window.resizable(False, False)
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199478010920"  )
+analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199478010920"  )
+
+
