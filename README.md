@@ -24,6 +24,16 @@ pip install Serial
 ```ruby
 pip install Serial-Tool
 ```
+**Matplotlib**
+```ruby
+pip install Matplotlib
+```
+
+**Numpy**
+```ruby
+pip install Numpy
+```
+
 
 
 <img align="right" src="https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/SteamLogo.png">
