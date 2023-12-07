@@ -88,13 +88,18 @@ def vergelijk_games_played(steamid):
             for key in keys_to_remove:
                 game.pop(key, None)
     # tel de playtime van de vrienden die dezelfde game spelen bij elkaar op
-    aggregated_playtime = {}
-    for friend in friends_most_played_games:
-        for game in friends_most_played_games[friend]:
-            if game["name"] in aggregated_playtime:
-                aggregated_playtime[game["name"]] += game["playtime_2weeks"]
-            else:
-                aggregated_playtime[game["name"]] = game["playtime_2weeks"]
+        # tel de playtime van de vrienden die dezelfde game spelen bij elkaar op
+        aggregated_playtime = {}
+        for friend in friends_most_played_games:
+            for game in friends_most_played_games[friend]:
+                # Check if the "name" key is present in the game dictionary
+                game_name = game.get("name")
+                if game_name is not None:
+                    if game_name in aggregated_playtime:
+                        aggregated_playtime[game_name] += game["playtime_2weeks"]
+                    else:
+                        aggregated_playtime[game_name] = game["playtime_2weeks"]
+
     # sorteer de games op basis van playtime
     aggregated_playtime = sorted(aggregated_playtime.items(), key=lambda x: x[1], reverse=True)
     # geef alleen de top 5 games terug
@@ -113,11 +118,13 @@ def barchart_most_played_games(steamid):
         playtime.append(game[1] / 60)
 
     # maak de barchart
-    plt.figure(figsize=(592 / 100, 926 / 100), facecolor='#0E131A')
+    plt.figure(figsize=(580 / 100, 900 / 100), facecolor='#0E131A')
     y_pos = np.arange(len(names))
     plt.bar(y_pos, playtime, align='center', alpha=0.5, color='#6AACF3')
     plt.xticks(y_pos, names, rotation=45, ha="right", color='#FFFFFF')
-    plt.ylabel('Playtime (Hours)', fontsize=12, labelpad=10, color='#FFFFFF')
+    # zet de font naar motiva sans bold
+    plt.ylabel('Playtime (Hours)', fontdict={'fontname': 'Arial', 'fontsize': 12},labelpad=10, color='#FFFFFF')
+
     plt.title('Most played games the last 2 weeks (By friends)', fontsize=14, pad=20, color='#FFFFFF')
     plt.tight_layout()
 
@@ -139,14 +146,14 @@ def barchart_most_played_games(steamid):
 
     # haal de datum op
     date = datetime.datetime.now()
-    date = date.strftime("%d_%m_%Y")
+    date = date.strftime("%d-%m-%Y")
 
     # sla de grafiek op
-    plt.savefig(f'chart_most_played_games_{date}.png')
+    plt.savefig(f'chart_most_played_games_{steamid}_{date}.png')
 
     # toon de grafiek (dit weghalen voor eind product)
     plt.show()
 
-steamID = "76561199022018738"
+steamID = "76561197960435530"
 barchart_most_played_games(steamID)
 
