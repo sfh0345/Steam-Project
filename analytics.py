@@ -1,7 +1,7 @@
 def analytics(name, avatarurl, status, steamid64):
     import time
     from pathlib import Path
-
+    from analyticsophalen import analyticsmulticore
     import tkinter as tk
     from PIL import Image, ImageTk
     from io import BytesIO
@@ -95,6 +95,7 @@ def analytics(name, avatarurl, status, steamid64):
         341.0,
         image=entry_image_1
     )
+
 
     entry_image_2 = PhotoImage(
         file=relative_to_assets("entry_2.png"))
@@ -209,15 +210,14 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_8
         )
 
-    window.after(4000, mostplayeddef)
-
-
+    window.after(3000, mostplayeddef)
+    window.after(500, lambda: analyticsmulticore(steamid64))
 
 
     window.resizable(False, False)
     window.mainloop()
 
 
-analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199478010920"  )
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199478010920"  )
 
 
