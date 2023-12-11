@@ -15,7 +15,6 @@ from getsteamuserinfo import getsteamuserinfo
 from dashboard import dashboardwindow
 
 
-
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
@@ -245,10 +244,6 @@ text_widget.place(
     width=790.0,
     height=88.0
 )
-
-
-
-
 
 canvas.create_text(
     196.0,

@@ -6,6 +6,7 @@ def analytics(name, avatarurl, status, steamid64):
     from PIL import Image, ImageTk
     from io import BytesIO
     import requests
+    import datetime
 
     from sys import platform
 
@@ -201,23 +202,28 @@ def analytics(name, avatarurl, status, steamid64):
 
     def mostplayeddef():
         # mostplayed games
+        date = datetime.datetime.now()
+        date = date.strftime("%d-%m-%Y")
         global entry_image_8
         entry_image_8 = PhotoImage(
-            file=relative_to_assets("chart_most_played_games_07_12_2023.png"))
+            file=f"analytics/mostplayed_{steamid64}_{date}.png")
         entry_bg_7 = canvas.create_image(
             1570.0,
             582.0,
             image=entry_image_8
         )
 
-    window.after(3000, mostplayeddef)
-    window.after(500, lambda: analyticsmulticore(steamid64))
+    def analyticsmulticore1234():
+        analyticsmulticore(steamid64)
+
+    window.after(1500, mostplayeddef)
+    window.after(1000, analyticsmulticore1234)
 
 
     window.resizable(False, False)
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199478010920"  )
+analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738"  )
 
 
