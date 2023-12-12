@@ -1,10 +1,10 @@
 def analytics(name, avatarurl, status, steamid64):
-    import time
     from pathlib import Path
     from analyticsophalen import analyticsmulticore
     import tkinter as tk
     from PIL import Image, ImageTk
     from io import BytesIO
+    from getnewgame import getrecommendedgames
     import requests
     import datetime
 
@@ -138,6 +138,8 @@ def analytics(name, avatarurl, status, steamid64):
         image=entry_image_6
     )
 
+
+
     entry_image_7 = PhotoImage(
         file=relative_to_assets("entry_7.png"))
     entry_bg_7 = canvas.create_image(
@@ -213,12 +215,54 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_8
         )
 
+
+    def recommendedgamesdef():
+        print(getrecommendedgames(steamid64))
+        global entry_image_9
+        global entry_image_10
+
+
+        entry_image_9 = PhotoImage(
+            file=relative_to_assets("entry_9.png"))
+        entry_bg_9 = canvas.create_image(
+            1050.0,
+            822.5,
+            image=entry_image_9
+        )
+
+        entry_image_10 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_10 = canvas.create_image(
+            869.5,
+            670.5,
+            image=entry_image_10
+        )
+        entry_10 = Entry(
+            bd=0,
+            bg="#66C0F4",
+            fg="#000716",
+            highlightthickness=0
+        )
+
+
+        canvas.create_text(
+            890.0,
+            655.0,
+            anchor="nw",
+            text="Not For Broadcas",
+            fill="#FFFFFF",
+            font = ("Motiva Sans Medium", 25 * -1)
+
+        )
+
+
     def analyticsmulticore1234():
         analyticsmulticore(steamid64)
 
-    window.after(1500, mostplayeddef)
-    window.after(1000, analyticsmulticore1234)
+    window.after(1200, mostplayeddef)
+    window.after(1000, recommendedgamesdef)
 
+    window.after(50, analyticsmulticore1234)
 
     window.resizable(False, False)
     window.mainloop()

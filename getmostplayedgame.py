@@ -39,19 +39,6 @@ def getmostplayed(steamID):
             print(f"Failed to retrieve friend list. Status Code: {response.status_code}")
             return {}
 
-
-    # def get_game_name(appid):
-    #     # Haal de naam van een game op
-    #     game_name_url = f"https://store.steampowered.com/api/appdetails?appids={appid}"
-    #     response = requests.get(game_name_url)
-    #     if response.status_code == 200:
-    #         game_name = response.json().get(str(appid), {}).get("data", {}).get("name", "")
-    #         return game_name
-    #     else:
-    #         print(f"Failed to retrieve game name. Status Code: {response.status_code}")
-    #         return None
-
-
     def most_played_games(steamid):
         # Haal de meest gespeelde games op van een user
         most_played_games_url = f"http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=B5A67039860C1613632C4795B6C36245&steamid={steamid}&format=json"
@@ -126,9 +113,9 @@ def getmostplayed(steamID):
         plt.figure(figsize=(580 / 100, 900 / 100), facecolor='#0E131A')
         y_pos = np.arange(len(names))
         plt.bar(y_pos, playtime, align='center', alpha=0.9, color='#6AACF3')
-        plt.xticks(y_pos, names, fontsize=14, rotation=45, ha="right", color='#FFFFFF')
+        plt.xticks(y_pos, names, fontsize=10, rotation=45, ha="right", color='#FFFFFF')
         plt.ylabel('Uren gespeeld', fontsize=14, labelpad=10, color='#FFFFFF')
-        plt.title('Meest gespeeld in de laatste 2 weken', fontsize=17, pad=17, color='#FFFFFF')
+        plt.title('Meest gespeeld in de laatste 2 weken', fontsize=13, pad=17, color='#FFFFFF')
         plt.tight_layout()
 
         # geef de ticks de juiste kleur
