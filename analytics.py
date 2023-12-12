@@ -217,7 +217,7 @@ def analytics(name, avatarurl, status, steamid64):
 
 
     def recommendedgamesdef():
-        print(getrecommendedgames(steamid64))
+        recommendedgames = getrecommendedgames(steamid64)
         global entry_image_9
         global entry_image_10
 
@@ -234,24 +234,91 @@ def analytics(name, avatarurl, status, steamid64):
             file=relative_to_assets("entry_10.png"))
         entry_bg_10 = canvas.create_image(
             869.5,
-            670.5,
+            700.5,
             image=entry_image_10
         )
-        entry_10 = Entry(
-            bd=0,
-            bg="#66C0F4",
-            fg="#000716",
-            highlightthickness=0
+        canvas.create_text(
+            890.0,
+            687.0,
+            anchor="nw",
+            text=recommendedgames[0],
+            fill="#FFFFFF",
+            font = ("Motiva Sans Regular", 25 * -1)
+
+        )
+        entry_image_11 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_11 = canvas.create_image(
+            869.5,
+            775.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            762.0,
+            anchor="nw",
+            text=recommendedgames[1],
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 25 * -1)
+
+        )
+        entry_image_12 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_12 = canvas.create_image(
+            869.5,
+            850.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            837.0,
+            anchor="nw",
+            text=recommendedgames[2],
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 25 * -1)
+
+        )
+        entry_image_13 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_13 = canvas.create_image(
+            869.5,
+            925.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            912.0,
+            anchor="nw",
+            text=recommendedgames[3],
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 25 * -1)
+
+        )
+        entry_image_14 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_14 = canvas.create_image(
+            869.5,
+            1000.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            987.0,
+            anchor="nw",
+            text=recommendedgames[4],
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 25 * -1)
+
         )
 
 
         canvas.create_text(
-            890.0,
-            655.0,
+            880.0,
+            622.0,
             anchor="nw",
-            text="Not For Broadcas",
+            text="5 recommended games.",
             fill="#FFFFFF",
-            font = ("Motiva Sans Medium", 25 * -1)
+            font=("Motiva Sans Bold", 25 * -1)
 
         )
 
@@ -268,6 +335,6 @@ def analytics(name, avatarurl, status, steamid64):
     window.mainloop()
 
 
-analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738"  )
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738"  )
 
 
