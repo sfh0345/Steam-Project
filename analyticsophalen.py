@@ -1,10 +1,12 @@
 import threading
-import time
+from getnewgame import getrecommendedgames
+from getmostplayedgame import getmostplayed
+
 
 def analyticsmulticore(steamid64):
     # global steamid64
     # Define the task functions
-    task_functions = [task_function_1, task_function_2, task_function_3, task_function_4, task_function_5, task_function_6, task_function_7]  # Add task_function_3, ..., task_function_7 as needed
+    task_functions = [task_function_1, task_function_2]
 
     # Create threads
     threads = []
@@ -20,47 +22,17 @@ def analyticsmulticore(steamid64):
     for thread in threads:
         thread.join()
 
-    print("All threads have finished.")
-
-
-
-
+    # print("All threads have finished.")
 
 
 def task_function_1(steamid64):
-    for i in range(5):
-        time.sleep(0.3)  # Simulating some work
-        print("Thread 1:", i)
-        print(steamid64)
+    getrecommendedgames(steamid64)
+    # var[0], var[1], var[2], var[3], var[4], var[5], var[6]
+
 
 def task_function_2(steamid64):
-    for i in range(5):
-        time.sleep(0.3)  # Simulating some work
-        print("Thread 2:", i)
+    getmostplayed(steamid64)
 
-def task_function_3(steamid64):
-    for i in range(10):
-        time.sleep(0.3)  # Simulating some work
-        print("Thread 3:", i)
 
-def task_function_4(steamid64):
-    for i in range(10):
-        time.sleep(0.3)  # Simulating some work
-        print("Thread 4:", i)
 
-def task_function_5(steamid64):
-    for i in range(10):
-        time.sleep(0.3)  # Simulating some work
-        print("Thread 5:", i)
-
-def task_function_6(steamid64):
-    for i in range(6):
-        time.sleep(0.3)  # Simulating some work
-        print("Thread 6:", i)
-
-def task_function_7(steamid64):
-    for i in range(10):
-        time.sleep(0.3)  # Simulating some work
-        print("Thread 7:", i)
-        print(steamid64)
-
+# analyticsmulticore("76561199022018738")

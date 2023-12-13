@@ -2,6 +2,8 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     import sys
     from analytics import analytics
     from getuserfriendlist import get_friend_usernames
+    from getnewgame import getrecommendedgames
+
     friendlist = get_friend_usernames(steamid64)
     if friendlist == 10:
         print("Kan uw steam profiel niet ophalen...")
@@ -542,15 +544,18 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         fill="#FFFFFF",
         font=("Motiva Sans Medium", 32 * -1)
     )
+    recommended_games = getrecommendedgames(steamid64)
 
     canvas.create_text(
         697.0,
         859.0,
         anchor="nw",
-        text="EA SPORTS FC™ 24",
+        text=f"{recommended_games[0]}",
         fill="#FFFFFF",
         font=("Motiva Sans Bold", 48 * -1)
     )
+
+
 
     entry_image_15 = PhotoImage(
         file=relative_to_assets("entry_15.png"))

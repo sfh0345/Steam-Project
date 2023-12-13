@@ -1,11 +1,12 @@
 def analytics(name, avatarurl, status, steamid64):
-    import time
     from pathlib import Path
     from analyticsophalen import analyticsmulticore
     import tkinter as tk
     from PIL import Image, ImageTk
     from io import BytesIO
+    from getnewgame import getrecommendedgames
     import requests
+    import datetime
 
     from sys import platform
 
@@ -65,7 +66,7 @@ def analytics(name, avatarurl, status, steamid64):
 
     window.geometry("1920x1080")
     window.configure(bg = "#FFFFFF")
-    window.title("Steam | Analytics")
+    window.title("Steam | Analytics dashboard")
 
 
 
@@ -137,6 +138,8 @@ def analytics(name, avatarurl, status, steamid64):
         image=entry_image_6
     )
 
+
+
     entry_image_7 = PhotoImage(
         file=relative_to_assets("entry_7.png"))
     entry_bg_7 = canvas.create_image(
@@ -201,23 +204,137 @@ def analytics(name, avatarurl, status, steamid64):
 
     def mostplayeddef():
         # mostplayed games
+        date = datetime.datetime.now()
+        date = date.strftime("%d-%m-%Y")
         global entry_image_8
         entry_image_8 = PhotoImage(
-            file=relative_to_assets("chart_most_played_games_07_12_2023.png"))
+            file=f"analytics/mostplayed_{steamid64}_{date}.png")
         entry_bg_7 = canvas.create_image(
             1570.0,
             582.0,
             image=entry_image_8
         )
 
-    window.after(3000, mostplayeddef)
-    window.after(500, lambda: analyticsmulticore(steamid64))
 
+    def recommendedgamesdef():
+        recommendedgames = getrecommendedgames(steamid64)
+        global entry_image_9
+        global entry_image_10
+
+
+        entry_image_9 = PhotoImage(
+            file=relative_to_assets("entry_9.png"))
+        entry_bg_9 = canvas.create_image(
+            1050.0,
+            822.5,
+            image=entry_image_9
+        )
+
+        entry_image_10 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_10 = canvas.create_image(
+            869.5,
+            700.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            687.0,
+            anchor="nw",
+            text=recommendedgames[0],
+            fill="#FFFFFF",
+            font = ("Motiva Sans Regular", 25 * -1)
+
+        )
+        entry_image_11 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_11 = canvas.create_image(
+            869.5,
+            775.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            762.0,
+            anchor="nw",
+            text=recommendedgames[1],
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 25 * -1)
+
+        )
+        entry_image_12 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_12 = canvas.create_image(
+            869.5,
+            850.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            837.0,
+            anchor="nw",
+            text=recommendedgames[2],
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 25 * -1)
+
+        )
+        entry_image_13 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_13 = canvas.create_image(
+            869.5,
+            925.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            912.0,
+            anchor="nw",
+            text=recommendedgames[3],
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 25 * -1)
+
+        )
+        entry_image_14 = PhotoImage(
+            file=relative_to_assets("entry_10.png"))
+        entry_bg_14 = canvas.create_image(
+            869.5,
+            1000.5,
+            image=entry_image_10
+        )
+        canvas.create_text(
+            890.0,
+            987.0,
+            anchor="nw",
+            text=recommendedgames[4],
+            fill="#FFFFFF",
+            font=("Motiva Sans Regular", 25 * -1)
+
+        )
+
+
+        canvas.create_text(
+            880.0,
+            622.0,
+            anchor="nw",
+            text="5 recommended games.",
+            fill="#FFFFFF",
+            font=("Motiva Sans Bold", 25 * -1)
+
+        )
+
+
+    def analyticsmulticore1234():
+        analyticsmulticore(steamid64)
+
+    window.after(1200, mostplayeddef)
+    window.after(1000, recommendedgamesdef)
+
+    window.after(50, analyticsmulticore1234)
 
     window.resizable(False, False)
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199478010920"  )
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738"  )
 
 
