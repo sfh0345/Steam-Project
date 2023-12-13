@@ -57,7 +57,7 @@ def getmostplayed(steamID):
 
     def vergelijk_games_played(steamid):
         plt.rcParams['font.family'] = 'Motiva Sans'
-        plt.rcParams['font.weight'] = 'normal'  # Use 'bold' for bold text
+        plt.rcParams['font.weight'] = '600'  # Use 'bold' for bold text
 
         # haal de vrienden van een user op
         friends_list = get_friend_usernames(steamid)

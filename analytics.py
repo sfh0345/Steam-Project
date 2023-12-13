@@ -66,7 +66,7 @@ def analytics(name, avatarurl, status, steamid64):
 
     window.geometry("1920x1080")
     window.configure(bg = "#FFFFFF")
-    window.title("Steam | Analytics")
+    window.title("Steam | Analytics dashboard")
 
 
 
