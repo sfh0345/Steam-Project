@@ -1,5 +1,4 @@
 from rc522_read import MFRC522
-from os import uname
 import time
 
 reader = MFRC522(sck=10, mosi=11, miso=12, rst=14, cs=15, spi_id=1)
