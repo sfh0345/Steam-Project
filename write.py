@@ -1,5 +1,4 @@
 from rc522_write import MFRC522
-import time
 
 
 def uidToString(uid):
