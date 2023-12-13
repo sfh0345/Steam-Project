@@ -1,4 +1,4 @@
-from rc522 import MFRC522
+from rc522_read import MFRC522
 from os import uname
 import time
 
@@ -16,11 +16,11 @@ try:
         if stat == reader.OK:
             (stat, uid) = reader.SelectTagSN()
             if stat == reader.OK:
-                print("Card detected {}  uid={}".format(hex(int.from_bytes(bytes(uid), "little", False)).upper(),
-                                                        reader.tohexstring(uid)))
                 defaultKey = [255,255,255,255,255,255]
-                reader.MFRC522_DumpClassic1K(uid, Start=0, End=64, keyA=defaultKey)
+                reader.MFRC522_DumpClassic1K(uid, Start=4, End=6, keyA=defaultKey) # defualt is 0-64
+                print("")
                 print("Done")
+                break
             else:
                 pass
         time.sleep(1)
