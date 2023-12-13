@@ -1,4 +1,6 @@
-from rc522 import MFRC522
+from rc522_write import MFRC522
+import time
+
 
 def uidToString(uid):
     mystring = ""
@@ -6,7 +8,8 @@ def uidToString(uid):
         mystring = "%02X" % i + mystring
     return mystring
 
-def write_steam_id_to_card(reader, key, steam_id, blockid):
+
+def write_steamid_to_card(reader, key, steam_id, blockid):
     print("")
     print("Please place card on reader")
     print("")
@@ -18,9 +21,8 @@ def write_steam_id_to_card(reader, key, steam_id, blockid):
             if stat == reader.OK:
                 (stat, uid) = reader.SelectTagSN()
                 if stat == reader.OK:
-                    print("Card detected %s" % uidToString(uid))
-                    print("Writing SteamID to sector 2, block 1 (absolute block 9)")
-                    print("SteamID: {}".format(steam_id))
+                    print("Card detected: %s" % uidToString(uid))
+                    print("Writing SteamID: " + str(steam_id_1)[:-7] + str(steam_id_2)[:-8] + " to keycard")
 
                     absoluteBlock = blockid
                     value = [ord(x) for x in str(steam_id)]
@@ -31,30 +33,30 @@ def write_steam_id_to_card(reader, key, steam_id, blockid):
                         status = reader.write(absoluteBlock, value)
 
                         if status == reader.OK:
-                            print("Write successful")
                             reader.MFRC522_DumpClassic1K(uid, keyA=key)
+                            print("")
+                            print("Done: write successful!")
                         else:
-                            print("Unable to write")
+                            print("Unable to write to card!")
                     else:
                         pass
                     break
     except KeyboardInterrupt:
         print("Bye")
 
-
-# splits het SteamID
-steam_id_to_write = 7656119900000000000
-steam_id_to_write1 = 220187380000000000
-
 # Setup voor de RFID-reader
 reader = MFRC522(sck=10, mosi=11, miso=12, rst=14, cs=15, spi_id=1)
 
-# definitie voor Key (auth?)
+# Key voor auth
 key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
 
+# splits het SteamID: 76561199022018738
+steam_id_1 = 7656119900000000
+steam_id_2 = 2201873800000000
+
 # schrijf de eerste 8 bytes van SteamID naar keycard
-write_steam_id_to_card(reader, key, steam_id_to_write, 4)
+write_steamid_to_card(reader, key, steam_id_1, 4)
 
 # reset de module en schrijf de laatste 8 bytes naar keycard
 reader.init()
-write_steam_id_to_card(reader, key, steam_id_to_write1, 5)
+write_steamid_to_card(reader, key, steam_id_2, 5)
