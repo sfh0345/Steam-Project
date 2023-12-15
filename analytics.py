@@ -237,11 +237,44 @@ def analytics(name, avatarurl, status, steamid64):
             700.5,
             image=entry_image_10
         )
+        if len(recommendedgames[0]) > 28:
+            formatted_game_name_not = recommendedgames[0]
+            formatted_game_name0 = formatted_game_name_not[:26] + "..."
+        else:
+            formatted_game_name0 = recommendedgames[0]
+
+        if len(recommendedgames[1]) > 28:
+            formatted_game_name_not = recommendedgames[1]
+            formatted_game_name1 = formatted_game_name_not[:26] + "..."
+        else:
+            formatted_game_name1 = recommendedgames[1]
+
+        if len(recommendedgames[2]) > 28:
+            formatted_game_name_not = recommendedgames[2]
+            formatted_game_name2 = formatted_game_name_not[:26] + "..."
+        else:
+            formatted_game_name2 = recommendedgames[2]
+
+        if len(recommendedgames[3]) > 28:
+            formatted_game_name_not = recommendedgames[3]
+            formatted_game_name3 = formatted_game_name_not[:26] + "..."
+        else:
+            formatted_game_name3 = recommendedgames[3]
+
+        if len(recommendedgames[4]) > 28:
+            formatted_game_name_not = recommendedgames[4]
+            formatted_game_name4 = formatted_game_name_not[:26] + "..."
+        else:
+            formatted_game_name4 = recommendedgames[4]
+
+
+
+
         canvas.create_text(
             890.0,
             687.0,
             anchor="nw",
-            text=recommendedgames[0],
+            text=formatted_game_name0,
             fill="#FFFFFF",
             font = ("Motiva Sans Regular", 25 * -1)
 
@@ -257,7 +290,7 @@ def analytics(name, avatarurl, status, steamid64):
             890.0,
             762.0,
             anchor="nw",
-            text=recommendedgames[1],
+            text=formatted_game_name1,
             fill="#FFFFFF",
             font=("Motiva Sans Regular", 25 * -1)
 
@@ -273,7 +306,7 @@ def analytics(name, avatarurl, status, steamid64):
             890.0,
             837.0,
             anchor="nw",
-            text=recommendedgames[2],
+            text=formatted_game_name2,
             fill="#FFFFFF",
             font=("Motiva Sans Regular", 25 * -1)
 
@@ -289,7 +322,7 @@ def analytics(name, avatarurl, status, steamid64):
             890.0,
             912.0,
             anchor="nw",
-            text=recommendedgames[3],
+            text=formatted_game_name3,
             fill="#FFFFFF",
             font=("Motiva Sans Regular", 25 * -1)
 
@@ -305,7 +338,7 @@ def analytics(name, avatarurl, status, steamid64):
             890.0,
             987.0,
             anchor="nw",
-            text=recommendedgames[4],
+            text=formatted_game_name4,
             fill="#FFFFFF",
             font=("Motiva Sans Regular", 25 * -1)
 
@@ -316,7 +349,7 @@ def analytics(name, avatarurl, status, steamid64):
             880.0,
             622.0,
             anchor="nw",
-            text="5 recommended games.",
+            text="Top 5 recommended games.",
             fill="#FFFFFF",
             font=("Motiva Sans Bold", 25 * -1)
 

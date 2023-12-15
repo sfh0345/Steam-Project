@@ -236,8 +236,6 @@ def dashboardwindow(name, avatarurl, status, steamid64):
 
 
 
-
-
     if friendlist == 0:
         canvas.create_text(
             78.0,
@@ -251,13 +249,13 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         if len(friendlist[0]) >= 1:
             canvas.create_text(
                 86.0,
-                # 263.0,
-                270,
+                260.0,
+                # 270,
 
                 anchor="nw",
-                text=friendlist[0][0],
+                text=friendlist[0][0][0],
                 fill="#FFFFFF",
-                font=("Motiva Sans Medium", 30 * -1)
+                font=("Motiva Sans Medium", 28 * -1)
             )
 
             entry_image_3 = PhotoImage(
@@ -273,14 +271,36 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 fg="#000716",
                 highlightthickness=0
             )
+            if friendlist[0][0][2] is not None:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    291.0,
+                    anchor="nw",
+                    text=f"Playing {friendlist[0][0][2]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+            else:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    291.0,
+                    anchor="nw",
+                    text=f"{friendlist[0][0][1]}",
+                    fill="#CACACA",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+
+
         if len(friendlist[0]) >= 2:
             canvas.create_text(
                 86.0,
-                361.0,
+                351.0,
                 anchor="nw",
-                text=friendlist[0][1],
+                text=friendlist[0][1][0],
                 fill="#FFFFFF",
-                font=("Motiva Sans Medium", 30 * -1)
+                font=("Motiva Sans Medium", 28 * -1)
             )
 
             entry_image_4 = PhotoImage(
@@ -296,15 +316,35 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 fg="#000716",
                 highlightthickness=0
             )
+            if friendlist[0][1][2] is not None:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    382.0,
+                    anchor="nw",
+                    text=f"Playing {friendlist[0][1][2]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+            else:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    382.0,
+                    anchor="nw",
+                    text=f"{friendlist[0][1][1]}",
+                    fill="#CACACA",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
 
         if len(friendlist[0]) >= 3:
             canvas.create_text(
                 86.0,
-                453.0,
+                443.0,
                 anchor="nw",
-                text=friendlist[0][2],
+                text=friendlist[0][2][0],
                 fill="#FFFFFF",
-                font=("Motiva Sans Medium", 30 * -1)
+                font=("Motiva Sans Medium", 28 * -1)
             )
 
             entry_image_5 = PhotoImage(
@@ -319,15 +359,35 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 bg="#66C0F4",
                 fg="#000716",
                 highlightthickness=0
-         )
+            )
+            if friendlist[0][2][2] is not None:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    474.0,
+                    anchor="nw",
+                    text=f"Playing {friendlist[0][2][2]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+            else:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    474.0,
+                    anchor="nw",
+                    text=f"{friendlist[0][2][1]}",
+                    fill="#CACACA",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
         if len(friendlist[0]) >= 4:
             canvas.create_text(
                 86.0,
-                541.0,
+                531.0,
                 anchor="nw",
-                text=friendlist[0][3],
+                text=friendlist[0][3][0],
                 fill="#FFFFFF",
-                font=("Motiva Sans Medium", 30 * -1)
+                font=("Motiva Sans Medium", 28 * -1)
             )
 
             entry_image_6 = PhotoImage(
@@ -343,15 +403,35 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 fg="#000716",
                 highlightthickness=0
             )
+            if friendlist[0][3][2] is not None:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    562.0,
+                    anchor="nw",
+                    text=f"Playing {friendlist[0][3][2]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+            else:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    562.0,
+                    anchor="nw",
+                    text=f"{friendlist[0][3][1]}",
+                    fill="#CACACA",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
         if len(friendlist[0]) >= 5:
 
             canvas.create_text(
                 86.0,
-                634.0,
+                624.0,
                 anchor="nw",
-                text=friendlist[0][4],
+                text=friendlist[0][4][0],
                 fill="#FFFFFF",
-                font=("Motiva Sans Medium", 30 * -1)
+                font=("Motiva Sans Medium", 28 * -1)
             )
 
             entry_image_7 = PhotoImage(
@@ -367,15 +447,35 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 fg="#000716",
                 highlightthickness=0
             )
+            if friendlist[0][4][2] is not None:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    654.0,
+                    anchor="nw",
+                    text=f"Playing {friendlist[0][4][2]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+            else:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    654.0,
+                    anchor="nw",
+                    text=f"{friendlist[0][4][1]}",
+                    fill="#CACACA",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
         if len(friendlist[0]) >= 6:
 
             canvas.create_text(
                 86.0,
-                725.0,
+                715.0,
                 anchor="nw",
-                text=friendlist[0][5],
+                text=friendlist[0][5][0],
                 fill="#FFFFFF",
-                font=("Motiva Sans Medium", 30 * -1)
+                font=("Motiva Sans Medium", 28 * -1)
             )
 
             entry_image_8 = PhotoImage(
@@ -391,14 +491,34 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 fg="#000716",
                 highlightthickness=0
             )
+            if friendlist[0][5][2] is not None:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    746.0,
+                    anchor="nw",
+                    text=f"Playing {friendlist[0][5][2]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+            else:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    746.0,
+                    anchor="nw",
+                    text=f"{friendlist[0][5][1]}",
+                    fill="#CACACA",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
         if len(friendlist[0]) >= 7:
             canvas.create_text(
                 86.0,
-                816.0,
+                806.0,
                 anchor="nw",
-                text=friendlist[0][6],
+                text=friendlist[0][6][0],
                 fill="#FFFFFF",
-                font=("Motiva Sans Medium", 30 * -1)
+                font=("Motiva Sans Medium", 28 * -1)
             )
 
             entry_image_9 = PhotoImage(
@@ -414,15 +534,35 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 fg="#000716",
                 highlightthickness=0
             )
+            if friendlist[0][6][2] is not None:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    837.0,
+                    anchor="nw",
+                    text=f"Playing {friendlist[0][6][2]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+            else:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    837.0,
+                    anchor="nw",
+                    text=f"{friendlist[0][6][1]}",
+                    fill="#CACACA",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
         if len(friendlist[0]) >= 8:
 
             canvas.create_text(
                 86.0,
-                907.0,
+                897.0,
                 anchor="nw",
-                text=friendlist[0][7],
+                text=friendlist[0][7][0],
                 fill="#FFFFFF",
-                font=("Motiva Sans Medium", 30 * -1)
+                font=("Motiva Sans Medium", 28 * -1)
             )
 
             entry_image_10 = PhotoImage(
@@ -438,6 +578,26 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 fg="#000716",
                 highlightthickness=0
             )
+            if friendlist[0][7][2] is not None:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    928.0,
+                    anchor="nw",
+                    text=f"Playing {friendlist[0][7][2]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
+            else:
+                canvas.create_text(
+                    86.0,
+                    # 270.0,
+                    928.0,
+                    anchor="nw",
+                    text=f"{friendlist[0][7][1]}",
+                    fill="#CACACA",
+                    font=("Motiva Sans Regular", 20 * -1)
+                )
 
         canvas.create_text(
             112.0,
@@ -546,11 +706,17 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     )
     recommended_games = getrecommendedgames(steamid64)
 
+    if len(recommended_games[0]) > 32:
+        formatted_game_name_not = recommended_games[0]
+        formattedgamename123 = formatted_game_name_not[:29] + "..."
+    else:
+        formattedgamename123 = recommended_games[0]
+
     canvas.create_text(
         697.0,
         859.0,
         anchor="nw",
-        text=f"{recommended_games[0]}",
+        text=f"{formattedgamename123}",
         fill="#FFFFFF",
         font=("Motiva Sans Bold", 48 * -1)
     )
@@ -662,5 +828,5 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     window.resizable(False, False)
     window.mainloop()
 
-# dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738"  )
+# dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561197960435530"  )
 
