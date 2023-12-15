@@ -26,7 +26,8 @@ def getrecommendedgames(steamid64):
         response = requests.get(url)
         data = response.json()
         if data[str(appid)]['success']:
-            return data[str(appid)]['data']['name']
+            gamevar = data[str(appid)]['data']['name']
+            return gamevar
         else:
             return "Game name not found"
 

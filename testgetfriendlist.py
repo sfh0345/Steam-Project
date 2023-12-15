@@ -38,18 +38,11 @@ def get_friend_usernames(steamid64):
                     # Check if the friend is in-game
                     if 'gameid' in player and player['gameid'] != "0":
                         game_name = player['gameextrainfo']
-                        if len(game_name) > 25:
-                            formatted_game_name = game_name[:25] + "..."
-                        else:
-                            formatted_game_name = game_name
-                        friend_info.append((player['personaname'], online_status, formatted_game_name))
+                        friend_info.append((player['personaname'], online_status, game_name))
                     else:
                         friend_info.append((player['personaname'], online_status, None))
 
-            remaining_count = len(friend_info) - 8
-            remaining = max(remaining_count, 0)
-
-            return friend_info[:8], remaining
+            return friend_info
         else:
             print(f"Error 1: {response.status_code}")
     else:
@@ -57,4 +50,5 @@ def get_friend_usernames(steamid64):
         print(f"Error 2: {response.status_code}")
 
 # Replace with your API key and the Steam ID of the user
-# print(get_friend_usernames("76561197960435530"))
+# var = get_friend_usernames("76561198343709779")
+# print(var[0][0])
