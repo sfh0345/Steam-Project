@@ -1,8 +1,7 @@
 from machine import Pin, I2C
 from pico_i2c_lcd import I2cLcd
-from RC522_read import MFRC522, getblockvalue
+from rc522_read import MFRC522, getblockvalue
 import utime
-import time
 import neopixel
 
 np = neopixel.NeoPixel(Pin(21), 30)
