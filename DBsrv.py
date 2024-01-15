@@ -2,13 +2,12 @@ import psycopg2
 
 def connect_to_azure_postgresql():
     try:
-        # Replace the placeholder values with your actual Azure PostgreSQL connection details
         connection_params = {
             "database": "DBsrv",
-            "user": "DBsrv",
-            "password": "your_password",
-            "host": "your_server_name.postgres.database.azure.com",
-            "port": 5432,  # Default PostgreSQL port
+            "user": "postgres",
+            "password": "Steam2023!@#",
+            "host": "51.11.163.195",
+            "port": 5432,
             "sslmode": "require",
         }
 
@@ -34,7 +33,6 @@ def execute_query(connection, query):
         cursor = connection.cursor()
         cursor.execute(query)
 
-        # Fetch and print the results
         results = cursor.fetchall()
         for row in results:
             print(row)
@@ -48,7 +46,7 @@ def execute_query(connection, query):
 if __name__ == "__main__":
     azure_postgresql_connection = connect_to_azure_postgresql()
 
-    example_query = "SELECT * FROM your_table_name;"
+    example_query = "SELECT genres FROM gameproperties"
     execute_query(azure_postgresql_connection, example_query)
 
     # Close the connection when done
