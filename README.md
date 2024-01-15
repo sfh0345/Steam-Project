@@ -33,6 +33,10 @@ pip install Matplotlib
 ```ruby
 pip install Numpy
 ```
+**Psycopg2**
+```ruby
+pip install Psycopg2
+```
 
 
 
