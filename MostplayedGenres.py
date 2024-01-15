@@ -81,4 +81,4 @@ def meest_gespeelde_genres(steamid):
         conn.close()
 
 # Druk het resultaat van de functie af
-print(meest_gespeelde_genres("76561198035864385"))
+print(meest_gespeelde_genres("76561199022018738"))
