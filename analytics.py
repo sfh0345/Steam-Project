@@ -7,6 +7,7 @@ def analytics(name, avatarurl, status, steamid64):
     from getnewgame import getrecommendedgames
     import requests
     import datetime
+    from dashboard import dashboardwindow
 
     from sys import platform
 
@@ -96,7 +97,6 @@ def analytics(name, avatarurl, status, steamid64):
         341.0,
         image=entry_image_1
     )
-
 
     entry_image_2 = PhotoImage(
         file=relative_to_assets("entry_2.png"))

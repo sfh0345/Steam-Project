@@ -1,8 +1,8 @@
 def dashboardwindow(name, avatarurl, status, steamid64):
     import sys
-    from analytics import analytics
     from getuserfriendlist import get_friend_usernames
     from getnewgame import getrecommendedgames
+    from analytics import analytics
 
     friendlist = get_friend_usernames(steamid64)
     if friendlist == 10:
@@ -216,25 +216,6 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         fill="#FFFFFF",
         font=("Motiva Sans Medium", 40 * -1)
     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     if friendlist == 0:
         canvas.create_text(
