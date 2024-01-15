@@ -1,6 +1,6 @@
 Project Steam
 ===============
-### Lettertype instalation 
+### Lettertype instalation
 **Motiva Sans**
 ```ruby
 https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.zip
@@ -10,7 +10,7 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
 
 **Requests**
 ```ruby
-pip install Requests 
+pip install Requests
 ```
 **PIL**
 ```ruby
