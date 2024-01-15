@@ -1,6 +1,6 @@
 import requests
 import psycopg2
-from DBsrv import connect_to_azure_postgresql, close_connection
+from database_connection import connect_to_azure_postgresql, close_connection
 """ 
     Deze functie geeft de top 5 genres van een gebruiker terug op basis van de speeltijd van hun gespeelde games.
 """
