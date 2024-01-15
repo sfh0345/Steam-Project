@@ -1,12 +1,12 @@
 import requests
 import psycopg2
-from database_connection import connect_to_azure_postgresql, close_connection
+from DBsrv import connect_to_azure_postgresql, close_connection
 """ 
     Deze functie geeft de top 5 genres van een gebruiker terug op basis van de speeltijd van hun gespeelde games.
 """
 
 # Maak een verbinding met de PostgreSQL-database. Staat op localhost!!
-connect_to_azure_postgresql()
+conn = connect_to_azure_postgresql()
 
 # Maak een cursor
 c = conn.cursor()
@@ -73,7 +73,7 @@ def meest_gespeelde_genres(steamid):
     finally:
         # Sluit de cursor en de databaseverbinding
         c.close()
-        close_connection(connection)
+        close_connection(conn)
 
 # Druk het resultaat van de functie af
 print(meest_gespeelde_genres("76561199022018738"))
