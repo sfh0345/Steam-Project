@@ -125,6 +125,7 @@ stop_event = threading.Event()
 def serial_thread(stop_event):
     """Function to run serial communication in a separate thread."""
     # predifine de port voor serial
+    
     picoport1 = input("Op welke poort zit de pico aangesloten? ")
     pico_port = f"COM{picoport1}"
 
