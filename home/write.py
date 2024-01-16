@@ -43,6 +43,7 @@ def write_steamid_to_card(reader, key, steam_id, blockid):
     except KeyboardInterrupt:
         print("Bye")
 
+
 # Setup voor de RFID-reader
 reader = MFRC522(sck=10, mosi=11, miso=12, rst=14, cs=15, spi_id=1)
 
@@ -50,7 +51,11 @@ reader = MFRC522(sck=10, mosi=11, miso=12, rst=14, cs=15, spi_id=1)
 key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
 
 # splits het SteamID: 76561199022018738
+765611990
+22018738
+
 steam_id_1 = 7656119900000000
+
 steam_id_2 = 2201873800000000
 
 # schrijf de eerste 8 bytes van SteamID naar keycard
