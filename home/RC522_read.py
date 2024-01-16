@@ -360,7 +360,7 @@ class MFRC522:
                     block_values += chr(value) if (value > 0x20) and (
                                 value < 0x7f) else '.'  # Concatenate characters to the string
 
-        # print("SteamID64:", block_values)
+        #print("steamid64:", block_values)
 
         if status == self.ERR:
             print("Authentication error")
@@ -373,4 +373,5 @@ def getblockvalue():
     global block_values
     steamid64 = block_values
     return steamid64
+
 
