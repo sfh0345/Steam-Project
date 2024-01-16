@@ -51,8 +51,6 @@ reader = MFRC522(sck=10, mosi=11, miso=12, rst=14, cs=15, spi_id=1)
 key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
 
 # splits het SteamID: 76561199022018738
-765611990
-22018738
 
 steam_id_1 = 7656119900000000
 
