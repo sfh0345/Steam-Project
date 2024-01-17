@@ -143,9 +143,9 @@ def serial_thread(stop_event):
     # Open een verbinding met de Pico
     with serial.Serial(port=pico_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
         if serial_port.isOpen():
-            print("[INFO] Gebruik seriële poort", serial_port.name)
+            print("[INFO] SteamCard word gestart op poort", serial_port.name)
         else:
-            print("[INFO] Open seriële poort", serial_port.name, "...")
+            print("[INFO] SteamCard word gestart op poort", serial_port.name, "\n Even gedult...")
             serial_port.open()
 
     # Open een verbinding met de Pico
@@ -153,7 +153,6 @@ def serial_thread(stop_event):
         if serial_port.isOpen():
             pass
         else:
-            print("[INFO] Open seriële poort", serial_port.name, "...")
             serial_port.open()
 
         try:
@@ -166,7 +165,6 @@ def serial_thread(stop_event):
                 # Controleer of de ontvangen gegevens de verwachte indeling hebben
                 if pico_output.startswith("steamid64:"):
                     steamid64 = pico_output.split(":")[1].strip()
-                    print("[PICO] SteamID64 ontvangen:", steamid64)
 
                     # Set the flag to True to exit the loop
                     steamid_received = True
@@ -186,7 +184,7 @@ def serial_thread(stop_event):
         finally:
             # Sluit verbinding met de Pico
             serial_port.close()
-            print("[INFO] Loging in with steamcard...")
+            print("[INFO] Inloggen met SteamCard...")
 
 if rasberry == "ja":
 # Create a thread for serial communication
@@ -272,11 +270,11 @@ text_widget = Text(
     wrap="word",  #zorg ervoor dat de woorden binnen de box blijven
     padx=10,  # padding op de box zodat de text niet buiten de box komt
     pady=20,  # padding op de box zodat de text niet butien de box komt
-    font=("Motiva Sans Bold", 18),  # pas het font aan naar rubik
+    font=("Motiva Sans Bold", 21),  # pas het font aan naar rubik
 )
 text_widget.place(
     x=206.0,
-    y=336.0,
+    y=335.0,
     width=790.0,
     height=88.0
 )

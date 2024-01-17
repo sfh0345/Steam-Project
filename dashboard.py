@@ -741,7 +741,6 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     )
 
     genresai = meest_gespeelde_genres(steamid64)
-    print(genresai[0][0])
     canvas.create_text(
         697.0,
         605.0,

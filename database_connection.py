@@ -22,10 +22,4 @@ def connect_to_azure_postgresql():
         raise
 
 def close_connection(connection):
-    # try:
-    #     if connection:
-    #         connection.close()
-    # except Exception as e:
-    #     print(f"Error: Unable to close the connection. {e}")
-    #     raise
     pass
