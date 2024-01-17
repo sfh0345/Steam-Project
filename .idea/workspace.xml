@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8f8935e-bcf8-4ab3-bc54-76faceec8e72" name="Changes" comment="genre toegevoegd in het dashboard. systeem gemaakt waarop je kan kiezen of je wel of niet een rasberry pi gebruikt">
-      <change afterPath="$PROJECT_DIR$/analytics/mostplayed_76561199022018738_17-01-2024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561197960435530_17-01-2024.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561199022018738_17-01-2024.csv" afterDir="false" />
+    <list default="true" id="b8f8935e-bcf8-4ab3-bc54-76faceec8e72" name="Changes" comment="problemen met de genres. database connection werd gesloten wat niet goed was. daarin heb ik ook een paar andere dingen gefixed oa main input scherm">
+      <change afterPath="$PROJECT_DIR$/analytics/mostplayed_76561198343709779_17-01-2024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/mostplayed_76561198833365401_17-01-2024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561198343709779_17-01-2024.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561198833365401_17-01-2024.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analytics.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/database_connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getmostplayedgenres.py" beforeDir="false" afterPath="$PROJECT_DIR$/getmostplayedgenres.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +236,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705506835408</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="problemen met de genres. database connection werd gesloten wat niet goed was. daarin heb ik ook een paar andere dingen gefixed oa main input scherm">
+      <option name="closed" value="true" />
+      <created>1705513629564</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705513629564</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,22 +258,23 @@
     <MESSAGE value="jj" />
     <MESSAGE value="made an azure version" />
     <MESSAGE value="genre toegevoegd in het dashboard. systeem gemaakt waarop je kan kiezen of je wel of niet een rasberry pi gebruikt" />
-    <option name="LAST_COMMIT_MESSAGE" value="genre toegevoegd in het dashboard. systeem gemaakt waarop je kan kiezen of je wel of niet een rasberry pi gebruikt" />
+    <MESSAGE value="problemen met de genres. database connection werd gesloten wat niet goed was. daarin heb ik ook een paar andere dingen gefixed oa main input scherm" />
+    <option name="LAST_COMMIT_MESSAGE" value="problemen met de genres. database connection werd gesloten wat niet goed was. daarin heb ik ook een paar andere dingen gefixed oa main input scherm" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Steamproject$teststeamlist.coverage" NAME="teststeamlist Coverage Results" MODIFIED="1701114013130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$copymain.coverage" NAME="copymain Coverage Results" MODIFIED="1701899965071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$dashboardsteam.coverage" NAME="dashboardsteam Coverage Results" MODIFIED="1700730553789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$analytics.coverage" NAME="analytics Coverage Results" MODIFIED="1705513091885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$analytics.coverage" NAME="analytics Coverage Results" MODIFIED="1705514852892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$getsteamuserinfo.coverage" NAME="getsteamuserinfo Coverage Results" MODIFIED="1700688594203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$threading.coverage" NAME="threading Coverage Results" MODIFIED="1701980580241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$dashboard.coverage" NAME="dashboard Coverage Results" MODIFIED="1705506925498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$dashboard.coverage" NAME="dashboard Coverage Results" MODIFIED="1705526026457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$analytics.coverage" NAME="analytics Coverage Results" MODIFIED="1704720024063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$chart_most_played_games_friends.coverage" NAME="chart_most_played_games_friends Coverage Results" MODIFIED="1702303814144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$testgetfriendlist.coverage" NAME="testgetfriendlist Coverage Results" MODIFIED="1702590026910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$friendlist2_0.coverage" NAME="friendlist2.0 Coverage Results" MODIFIED="1701114609978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$testfriendlist.coverage" NAME="testfriendlist Coverage Results" MODIFIED="1701115080162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1705513394586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1705525684018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$dashboardanalytics.coverage" NAME="dashboardanalytics Coverage Results" MODIFIED="1701088458698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$analyticsophalen.coverage" NAME="analyticsophalen Coverage Results" MODIFIED="1702367114666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$MostplayedGenres.coverage" NAME="MostplayedGenres Coverage Results" MODIFIED="1705327780796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

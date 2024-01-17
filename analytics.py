@@ -361,149 +361,189 @@ def analytics(name, avatarurl, status, steamid64):
 
 
     def mostplayedgenres():
-        getgenres = meest_gespeelde_genres(steamid64)
         global entry_image_20
         global entry_image_21
         global entry_image_10
 
+        getgenres = meest_gespeelde_genres(steamid64)
+        if len(getgenres) < 5:
+            entry_image_20 = PhotoImage(
+                file=relative_to_assets("entry_9.png"))
+            entry_bg_9 = canvas.create_image(
+                1050.0,
+                341.0,
+                image=entry_image_20
+            )
 
-        entry_image_20 = PhotoImage(
-            file=relative_to_assets("entry_9.png"))
-        entry_bg_9 = canvas.create_image(
-            1050.0,
-            341.0,
-            image=entry_image_20
-        )
+            entry_image_21 = PhotoImage(
+                file=relative_to_assets("entry_10.png"))
+            entry_bg_10 = canvas.create_image(
+                869.5,
+                219,
+                image=entry_image_21
+            )
+            canvas.create_text(
+                880.0,
+                140.5,
+                anchor="nw",
+                text="Top 5 played genres.",
+                fill="#FFFFFF",
+                font=("Motiva Sans Bold", 25 * -1)
 
-        entry_image_21 = PhotoImage(
-            file=relative_to_assets("entry_10.png"))
-        entry_bg_10 = canvas.create_image(
-            869.5,
-            219,
-            image=entry_image_21
-        )
+            )
+            canvas.create_text(
+                890.0,
+                193.5,
+                anchor="nw",
+                text=f"Er kon geen informatie worden \nopgehaald voor deze gebruiker",
+                fill="#FAFAFA",
+                font=("Motiva Sans Regular", 20 * -1)
 
-
-        # if len(recommendedgames[0]) > 28:
-        #     formatted_game_name_not = recommendedgames[0]
-        #     formatted_game_name0 = formatted_game_name_not[:26] + "..."
-        # else:
-        #     formatted_game_name0 = recommendedgames[0]
-        #
-        # if len(recommendedgames[1]) > 28:
-        #     formatted_game_name_not = recommendedgames[1]
-        #     formatted_game_name1 = formatted_game_name_not[:26] + "..."
-        # else:
-        #     formatted_game_name1 = recommendedgames[1]
-        #
-        # if len(recommendedgames[2]) > 28:
-        #     formatted_game_name_not = recommendedgames[2]
-        #     formatted_game_name2 = formatted_game_name_not[:26] + "..."
-        # else:
-        #     formatted_game_name2 = recommendedgames[2]
-        #
-        # if len(recommendedgames[3]) > 28:
-        #     formatted_game_name_not = recommendedgames[3]
-        #     formatted_game_name3 = formatted_game_name_not[:26] + "..."
-        # else:
-        #     formatted_game_name3 = recommendedgames[3]
-        #
-        # if len(recommendedgames[4]) > 28:
-        #     formatted_game_name_not = recommendedgames[4]
-        #     formatted_game_name4 = formatted_game_name_not[:26] + "..."
-        # else:
-        #     formatted_game_name4 = recommendedgames[4]
+            )
 
 
 
-
-        canvas.create_text(
-            890.0,
-            205.5,
-            anchor="nw",
-            text=f"{getgenres[0][0]} [{int(getgenres[0][1] / 60)} hours]",
-            fill="#FFFFFF",
-            font = ("Motiva Sans Regular", 25 * -1)
-
-        )
-        entry_image_22 = PhotoImage(
-            file=relative_to_assets("entry_10.png"))
-        entry_bg_11 = canvas.create_image(
-            869.5,
-            294,
-            image=entry_image_10
-        )
-        canvas.create_text(
-            890.0,
-            280.5,
-            anchor="nw",
-            text=f"{getgenres[1][0]} [{int(getgenres[1][1] / 60)} hours]",
-            fill="#FFFFFF",
-            font=("Motiva Sans Regular", 25 * -1)
-
-        )
-        entry_image_23 = PhotoImage(
-            file=relative_to_assets("entry_10.png"))
-        entry_bg_12 = canvas.create_image(
-            869.5,
-            369.0,
-            image=entry_image_10
-        )
-        canvas.create_text(
-            890.0,
-            355.5,
-            anchor="nw",
-            text=f"{getgenres[2][0]} [{int(getgenres[2][1] / 60)} hours]",
-            fill="#FFFFFF",
-            font=("Motiva Sans Regular", 25 * -1)
-
-        )
-        entry_image_24 = PhotoImage(
-            file=relative_to_assets("entry_10.png"))
-        entry_bg_13 = canvas.create_image(
-            869.5,
-            444,
-            image=entry_image_10
-        )
-        canvas.create_text(
-            890.0,
-            430.5,
-            anchor="nw",
-            text=f"{getgenres[3][0]} [{int(getgenres[3][1] / 60)} hours]",
-            fill="#FFFFFF",
-            font=("Motiva Sans Regular", 25 * -1)
-
-        )
+        else:
 
 
 
-        entry_image_25 = PhotoImage(
-            file=relative_to_assets("entry_10.png"))
-        entry_bg_14 = canvas.create_image(
-            869.5,
-            519.0,
-            image=entry_image_10
-        )
-        canvas.create_text(
-            890.0,
-            505.5,
-            anchor="nw",
-            text=f"{getgenres[4][0]} [{int(getgenres[4][1] / 60)} hours]",
-            fill="#FFFFFF",
-            font=("Motiva Sans Regular", 25 * -1)
+            entry_image_20 = PhotoImage(
+                file=relative_to_assets("entry_9.png"))
+            entry_bg_9 = canvas.create_image(
+                1050.0,
+                341.0,
+                image=entry_image_20
+            )
 
-        )
+            entry_image_21 = PhotoImage(
+                file=relative_to_assets("entry_10.png"))
+            entry_bg_10 = canvas.create_image(
+                869.5,
+                219,
+                image=entry_image_21
+            )
 
 
-        canvas.create_text(
-            880.0,
-            140.5,
-            anchor="nw",
-            text="Top 5 played genres.",
-            fill="#FFFFFF",
-            font=("Motiva Sans Bold", 25 * -1)
+            # if len(recommendedgames[0]) > 28:
+            #     formatted_game_name_not = recommendedgames[0]
+            #     formatted_game_name0 = formatted_game_name_not[:26] + "..."
+            # else:
+            #     formatted_game_name0 = recommendedgames[0]
+            #
+            # if len(recommendedgames[1]) > 28:
+            #     formatted_game_name_not = recommendedgames[1]
+            #     formatted_game_name1 = formatted_game_name_not[:26] + "..."
+            # else:
+            #     formatted_game_name1 = recommendedgames[1]
+            #
+            # if len(recommendedgames[2]) > 28:
+            #     formatted_game_name_not = recommendedgames[2]
+            #     formatted_game_name2 = formatted_game_name_not[:26] + "..."
+            # else:
+            #     formatted_game_name2 = recommendedgames[2]
+            #
+            # if len(recommendedgames[3]) > 28:
+            #     formatted_game_name_not = recommendedgames[3]
+            #     formatted_game_name3 = formatted_game_name_not[:26] + "..."
+            # else:
+            #     formatted_game_name3 = recommendedgames[3]
+            #
+            # if len(recommendedgames[4]) > 28:
+            #     formatted_game_name_not = recommendedgames[4]
+            #     formatted_game_name4 = formatted_game_name_not[:26] + "..."
+            # else:
+            #     formatted_game_name4 = recommendedgames[4]
 
-        )
+
+
+
+            canvas.create_text(
+                890.0,
+                205.5,
+                anchor="nw",
+                text=f"{getgenres[0][0]} [{int(getgenres[0][1] / 60)} hours]",
+                fill="#FFFFFF",
+                font = ("Motiva Sans Regular", 25 * -1)
+
+            )
+            entry_image_22 = PhotoImage(
+                file=relative_to_assets("entry_10.png"))
+            entry_bg_11 = canvas.create_image(
+                869.5,
+                294,
+                image=entry_image_10
+            )
+            canvas.create_text(
+                890.0,
+                280.5,
+                anchor="nw",
+                text=f"{getgenres[1][0]} [{int(getgenres[1][1] / 60)} hours]",
+                fill="#FFFFFF",
+                font=("Motiva Sans Regular", 25 * -1)
+
+            )
+            entry_image_23 = PhotoImage(
+                file=relative_to_assets("entry_10.png"))
+            entry_bg_12 = canvas.create_image(
+                869.5,
+                369.0,
+                image=entry_image_10
+            )
+            canvas.create_text(
+                890.0,
+                355.5,
+                anchor="nw",
+                text=f"{getgenres[2][0]} [{int(getgenres[2][1] / 60)} hours]",
+                fill="#FFFFFF",
+                font=("Motiva Sans Regular", 25 * -1)
+
+            )
+            entry_image_24 = PhotoImage(
+                file=relative_to_assets("entry_10.png"))
+            entry_bg_13 = canvas.create_image(
+                869.5,
+                444,
+                image=entry_image_10
+            )
+            canvas.create_text(
+                890.0,
+                430.5,
+                anchor="nw",
+                text=f"{getgenres[3][0]} [{int(getgenres[3][1] / 60)} hours]",
+                fill="#FFFFFF",
+                font=("Motiva Sans Regular", 25 * -1)
+
+            )
+
+
+
+            entry_image_25 = PhotoImage(
+                file=relative_to_assets("entry_10.png"))
+            entry_bg_14 = canvas.create_image(
+                869.5,
+                519.0,
+                image=entry_image_10
+            )
+            canvas.create_text(
+                890.0,
+                505.5,
+                anchor="nw",
+                text=f"{getgenres[4][0]} [{int(getgenres[4][1] / 60)} hours]",
+                fill="#FFFFFF",
+                font=("Motiva Sans Regular", 25 * -1)
+
+            )
+
+
+            canvas.create_text(
+                880.0,
+                140.5,
+                anchor="nw",
+                text="Top 5 played genres.",
+                fill="#FFFFFF",
+                font=("Motiva Sans Bold", 25 * -1)
+
+            )
 
 
     def analyticsmulticore1234():
@@ -519,6 +559,6 @@ def analytics(name, avatarurl, status, steamid64):
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738"  )
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198343709779"  )
 
 

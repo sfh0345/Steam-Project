@@ -741,22 +741,33 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     )
 
     genresai = meest_gespeelde_genres(steamid64)
-    canvas.create_text(
-        697.0,
-        605.0,
-        anchor="nw",
-        text=f"{genresai[0][0]}",
-        fill="#FFFFFF",
-        font=("Motiva Sans Bold", 48 * -1)
-    )
-    canvas.create_text(
-        697.0,
-        655.0,
-        anchor="nw",
-        text=f"{int(genresai[0][1] / 60)} hours on record",
-        fill="#bbbbbb",
-        font=("Motiva Sans General", 24 * -1)
-    )
+
+    if len(genresai) >= 1:
+        canvas.create_text(
+            697.0,
+            605.0,
+            anchor="nw",
+            text=f"{genresai[0][0]}",
+            fill="#FFFFFF",
+            font=("Motiva Sans Bold", 48 * -1)
+        )
+        canvas.create_text(
+            697.0,
+            655.0,
+            anchor="nw",
+            text=f"{int(genresai[0][1] / 60)} hours on record",
+            fill="#bbbbbb",
+            font=("Motiva Sans General", 24 * -1)
+        )
+    else:
+        canvas.create_text(
+            697.0,
+            605.0,
+            anchor="nw",
+            text=f"Er is geen speeltijd gevonden voor deze gebruiker \nCheck of de gebruiker zijn profiel op openbaar heeft",
+            fill="#dadada",
+            font=("Motiva Sans regular", 24 * -1)
+        )
 
     # canvas.create_rectangle(
     #     1388.0,
@@ -818,5 +829,5 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     window.resizable(False, False)
     window.mainloop()
 
-# dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738"  )
+# dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198343709779"  )
 
