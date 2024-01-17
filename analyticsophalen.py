@@ -27,7 +27,6 @@ def analyticsmulticore(steamid64):
 
 def task_function_1(steamid64):
     getrecommendedgames(steamid64)
-    # var[0], var[1], var[2], var[3], var[4], var[5], var[6]
 
 
 def task_function_2(steamid64):

@@ -70,10 +70,5 @@ def meest_gespeelde_genres(steamid):
         print(f"Fout met PostgreSQL: {e}")
         return {}
 
-    finally:
-        # Sluit de cursor en de databaseverbinding
-        c.close()
-        close_connection(conn)
-
 # Druk het resultaat van de functie af
-print(meest_gespeelde_genres("76561199022018738"))
+
