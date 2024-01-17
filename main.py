@@ -64,15 +64,35 @@ def read_serial(port):
     line = port.read(1000)
     return line.decode()
 
-# First manually select the serial port that connects to the Pico
-serial_ports = list_ports.comports()
+loop1234 = True
 
-print("[INFO] Serial ports found:")
-for i, port in enumerate(serial_ports):
-    print(str(i) + ". " + str(port.device))
+while loop1234:
+    rasberry = input("Wilt u de Rasberry Pi gebruiken? (Ja/Nee) ").lower()
 
-pico_port_index = int(input("Which port is the Raspberry Pi Pico connected to? "))
-pico_port = serial_ports[pico_port_index].device
+    if rasberry == "nee":
+        loop1234 = False
+        print("[INFO] Programma start op zonder SteamCard...")
+        pass
+    elif rasberry == "ja":
+        # First manually select the serial port that connects to the Pico
+        serial_ports = list_ports.comports()
+
+        print("[INFO] De volgende poorten zijn gevonden:")
+        for i, port in enumerate(serial_ports):
+            print(str(i) + ". " + str(port.device))
+
+        pico_port_index = input("Op welke poort is de Raspberry Pi Pico verbonden? ")
+        try:
+            pico_port = serial_ports[int(pico_port_index)].device
+        except:
+            rasberry = "nee"
+            print("[ERROR] De Rasberry Pi Pico is niet gevonden. Programma start zonder SteamCard...")
+        loop1234 = False
+
+    else:
+        print("Geen geldige invoer gekregen. (Ja/Nee)")
+
+
 
 def steamidinput(steamid64):
     if len(steamid64) != 17:
@@ -168,9 +188,10 @@ def serial_thread(stop_event):
             serial_port.close()
             print("[INFO] Loging in with steamcard...")
 
+if rasberry == "ja":
 # Create a thread for serial communication
-serial_thread = threading.Thread(target=serial_thread, args=(stop_event,), daemon=True)
-serial_thread.start()
+    serial_thread = threading.Thread(target=serial_thread, args=(stop_event,), daemon=True)
+    serial_thread.start()
 
 # Function to be called when the window is closed
 def on_close():

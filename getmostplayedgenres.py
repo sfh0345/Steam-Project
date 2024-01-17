@@ -76,4 +76,4 @@ def meest_gespeelde_genres(steamid):
         close_connection(conn)
 
 # Druk het resultaat van de functie af
-print(meest_gespeelde_genres("76561199022018738"))
+
