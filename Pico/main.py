@@ -1,6 +1,6 @@
 from machine import Pin, I2C
 from pico_i2c_lcd import I2cLcd
-from rc522_read import MFRC522, getblockvalue
+from RC522_read import MFRC522, getblockvalue
 import utime
 import neopixel
 
@@ -12,7 +12,7 @@ num_leds = 30
 
 def whitewave():
     animation_length = 5
-    sleep_time = 0.01
+    sleep_time = 0.03
     for i in range(num_leds - animation_length + 1):
         # Set all LEDs to black
         np.fill((0, 0, 0))
@@ -135,8 +135,8 @@ while True:  # Outer loop for continuous operation
                     defaultKey = [255, 255, 255, 255, 255, 255]
                     var = reader.MFRC522_DumpClassic1K(uid, Start=4, End=6, keyA=defaultKey)
                     # print("debug auth")
-                    while loop < 3:
-                        if loop < 3:
+                    while loop < 2:
+                        if loop < 2:
                             lcd.move_to(0, 0)
                             lcd.putstr(" AUTHENTICATING ")
                             if output > 0:
@@ -171,7 +171,7 @@ while True:  # Outer loop for continuous operation
 
                         else:
                             steamid64 = getblockvalue()
-                            print(steamid64)
+                            print(f"steamid64: {steamid64}")
                             gelukt = True
                             if gelukt == True:
                                 lcd.move_to(0, 0)

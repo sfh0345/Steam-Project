@@ -3,7 +3,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     from getuserfriendlist import get_friend_usernames
     from getnewgame import getrecommendedgames
     from analytics import analytics
-
+    from getmostplayedgenres import meest_gespeelde_genres
     friendlist = get_friend_usernames(steamid64)
     if friendlist == 10:
         print("Kan uw steam profiel niet ophalen...")
@@ -636,8 +636,8 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         309.0,
         anchor="nw",
         text="Welke games spelen mijn vrienden?",
-        fill="#FFFFFF",
-        font=("Motiva Sans Medium", 32 * -1)
+        fill="#FAFAFA",
+        font=("Motiva Sans Medium", 28 * -1)
     )
 
     canvas.create_text(
@@ -681,9 +681,9 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         697.0,
         787.0,
         anchor="nw",
-        text="Deze game vind je misschien leuk",
-        fill="#FFFFFF",
-        font=("Motiva Sans Medium", 32 * -1)
+        text="Misschien is deze game iets voor jou",
+        fill="#FAFAFA",
+        font=("Motiva Sans Medium", 28 * -1)
     )
     recommended_games = getrecommendedgames(steamid64)
 
@@ -695,7 +695,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
 
     canvas.create_text(
         697.0,
-        859.0,
+        854.0,
         anchor="nw",
         text=f"{formattedgamename123}",
         fill="#FFFFFF",
@@ -735,19 +735,39 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         697.0,
         548.0,
         anchor="nw",
-        text="Wanneer spelen mijn vrienden?",
-        fill="#FFFFFF",
-        font=("Motiva Sans Medium", 32 * -1)
+        text="Deze genre is echt jouw favoriet",
+        fill="#FAFAFA",
+        font=("Motiva Sans Medium", 28 * -1)
     )
 
-    canvas.create_text(
-        697.0,
-        620.0,
-        anchor="nw",
-        text="Tussen 18:00 en 00:00",
-        fill="#FFFFFF",
-        font=("Motiva Sans Bold", 48 * -1)
-    )
+    genresai = meest_gespeelde_genres(steamid64)
+
+    if len(genresai) >= 1:
+        canvas.create_text(
+            697.0,
+            605.0,
+            anchor="nw",
+            text=f"{genresai[0][0]}",
+            fill="#FFFFFF",
+            font=("Motiva Sans Bold", 48 * -1)
+        )
+        canvas.create_text(
+            697.0,
+            655.0,
+            anchor="nw",
+            text=f"{int(genresai[0][1] / 60)} hours on record",
+            fill="#bbbbbb",
+            font=("Motiva Sans General", 24 * -1)
+        )
+    else:
+        canvas.create_text(
+            697.0,
+            605.0,
+            anchor="nw",
+            text=f"Er is geen speeltijd gevonden voor deze gebruiker \nCheck of de gebruiker zijn profiel op openbaar heeft",
+            fill="#dadada",
+            font=("Motiva Sans regular", 24 * -1)
+        )
 
     # canvas.create_rectangle(
     #     1388.0,
@@ -809,5 +829,5 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     window.resizable(False, False)
     window.mainloop()
 
-# dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561197960435530"  )
+# dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198343709779"  )
 

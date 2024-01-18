@@ -335,7 +335,6 @@ class MFRC522:
         return self.ERR, None
 
     def MFRC522_DumpClassic1K(self, uid, Start=0, End=64, keyA=None, keyB=None):
-        global block_values
         data = {}
         for absoluteBlock in range(Start, End):
             status = self.authKeys(uid, absoluteBlock, keyA, keyB)
@@ -347,29 +346,18 @@ class MFRC522:
                     break
             else:
                 break
-
-        block_values = ""
-        # Print the data outside the loop
         for absoluteBlock, block in data.items():
-            if absoluteBlock == 4:
-                for value in block[:-7]:
-                    block_values += chr(value) if (value > 0x20) and (
-                                value < 0x7f) else '.'  # Concatenate characters to the string
-            elif absoluteBlock == 5:
-                for value in block[:-8]:
-                    block_values += chr(value) if (value > 0x20) and (
-                                value < 0x7f) else '.'  # Concatenate characters to the string
-
-        # print("SteamID64:", block_values)
-
+            print("{:02d} S{:02d} B{:1d}: ".format(absoluteBlock, absoluteBlock // 4, absoluteBlock % 4), end="")
+            for value in block:
+                print("{:02X} ".format(value), end="")
+            print("  ", end="")
+            for value in block:
+                if (value > 0x20) and (value < 0x7f):
+                    print(chr(value), end="")
+                else:
+                    print('.', end="")
+            print("")
         if status == self.ERR:
             print("Authentication error")
             return self.ERR
-
         return self.OK
-
-
-def getblockvalue():
-    global block_values
-    steamid64 = block_values
-    return steamid64
