@@ -72,6 +72,10 @@ def voorspel_playtime(gamename):
     verhouding_rating = result[0]
     y_pred = round(linear_regression(verhouding_rating))
 
+    # sluit de database verbinding
+    c.close()
+    conn.close()
+
     print(f"De verwachte speeltijd is {y_pred} minuten.")
     return y_pred
 
