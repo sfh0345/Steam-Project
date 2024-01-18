@@ -125,7 +125,9 @@ stop_event = threading.Event()
 def serial_thread(stop_event):
     """Function to run serial communication in a separate thread."""
     # predifine de port voor serial
-    pico_port = "COM10"
+    
+    picoport1 = input("Op welke poort zit de pico aangesloten? ")
+    pico_port = f"COM{picoport1}"
 
     # Open een verbinding met de Pico
     with serial.Serial(port=pico_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
@@ -138,7 +140,7 @@ def serial_thread(stop_event):
     # Open een verbinding met de Pico
     with serial.Serial(port=pico_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
         if serial_port.isOpen():
-            print("[INFO] Gebruik seriële poort", serial_port.name)
+            pass
         else:
             print("[INFO] Open seriële poort", serial_port.name, "...")
             serial_port.open()
@@ -162,7 +164,8 @@ def serial_thread(stop_event):
                     window.after(100, lambda: steamidinput(steamid64))  # Use after() to call steamidinput
 
                 else:
-                    print("[PICO] Ongeldige gegevensindeling ontvangen:", pico_output)
+                    # print("[PICO] Ongeldige gegevensindeling ontvangen:", pico_output)
+                    pass
 
                 # Een korte pauze om overbelasting te voorkomen
                 time.sleep(1)
@@ -172,7 +175,7 @@ def serial_thread(stop_event):
         finally:
             # Sluit verbinding met de Pico
             serial_port.close()
-            print("[INFO] Seriële poort gesloten. Tot ziens.")
+            print("[INFO] Loging in with steamcard...")
 ##
 
 
