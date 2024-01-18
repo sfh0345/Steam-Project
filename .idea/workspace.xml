@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f8935e-bcf8-4ab3-bc54-76faceec8e72" name="Changes" comment="made an azure version">
-      <change afterPath="$PROJECT_DIR$/analytics/mostplayed_76561198833365401_15-01-2024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/mostplayed_76561199022018738_15-01-2024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561198833365401_15-01-2024.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561199022018738_15-01-2024.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MostplayedGenres.py" beforeDir="false" afterPath="$PROJECT_DIR$/MostplayedGenres.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +143,13 @@
       <workItem from="1705323545898" duration="16000" />
       <workItem from="1705323627736" duration="675000" />
       <workItem from="1705324328328" duration="3611000" />
+      <workItem from="1705334089555" duration="308000" />
+      <workItem from="1705346273745" duration="29000" />
+      <workItem from="1705346470259" duration="12000" />
+      <workItem from="1705395402500" duration="923000" />
+      <workItem from="1705398558949" duration="1215000" />
+      <workItem from="1705505201240" duration="1639000" />
+      <workItem from="1705582703741" duration="598000" />
     </task>
     <task id="LOCAL-00001" summary="Barchart over de meest gespeelde games van vrienden">
       <option name="closed" value="true" />
@@ -227,7 +231,23 @@
       <option name="project" value="LOCAL" />
       <updated>1705327613700</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="made an azure version">
+      <option name="closed" value="true" />
+      <created>1705334118874</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705334118874</updated>
+    </task>
+    <task id="LOCAL-00012" summary="made an azure version">
+      <option name="closed" value="true" />
+      <created>1705334289852</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705334289852</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +265,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1705326379495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$MostPlayedGenres_azure.coverage" NAME="MostPlayedGenres_azure Coverage Results" MODIFIED="1705327569729" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$MostplayedGenres.coverage" NAME="MostplayedGenres Coverage Results" MODIFIED="1705327780796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$MostplayedGenres.coverage" NAME="MostplayedGenres Coverage Results" MODIFIED="1705505584119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$getsteamuserinfo.coverage" NAME="getsteamuserinfo Coverage Results" MODIFIED="1705325384656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$chart_most_played_games_friends.coverage" NAME="chart_most_played_games_friends Coverage Results" MODIFIED="1702303814144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
