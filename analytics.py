@@ -10,6 +10,12 @@ def analytics(name, avatarurl, status, steamid64):
     from getmostplayedgenres import meest_gespeelde_genres
     from sys import platform
 
+
+    try:
+        from dashboard import dashboardwindow
+    except:
+        pass
+
     # from tkinter import *
     # Explicit imports to satisfy Flake8
     from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
@@ -154,6 +160,28 @@ def analytics(name, avatarurl, status, steamid64):
         text=name,
         fill="#FFFFFF",
         font=("Motiva Sans Medium", 40 * -1)
+
+
+    )
+    def backbutton():
+        window.destroy()
+        dashboardwindow(name, avatarurl, status, steamid64)
+
+
+    button_image_1 = PhotoImage(
+        file=relative_to_assets("button_1.png"))
+    button_1 = Button(
+        image=button_image_1,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: backbutton(),
+        relief="flat"
+    )
+    button_1.place(
+        x=-15.0,
+        y=403.0,
+        width=54.0,
+        height=357.0
     )
 
     if status == 1:
@@ -546,12 +574,14 @@ def analytics(name, avatarurl, status, steamid64):
             )
 
 
+
+
     def analyticsmulticore1234():
         analyticsmulticore(steamid64)
 
     window.after(1100, mostplayeddef)
-    window.after(800, recommendedgamesdef)
-    window.after(900, mostplayedgenres)
+    window.after(750, recommendedgamesdef)
+    window.after(800, mostplayedgenres)
 
     window.after(50, analyticsmulticore1234)
 
