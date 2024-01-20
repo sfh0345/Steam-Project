@@ -2,7 +2,11 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     import sys
     from getuserfriendlist import get_friend_usernames
     from getnewgame import getrecommendedgames
-    from analytics import analytics
+    try:
+        from analytics import analytics
+    except:
+        pass
+
     from getmostplayedgenres import meest_gespeelde_genres
     friendlist = get_friend_usernames(steamid64)
     if friendlist == 10:
@@ -31,7 +35,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     def relative_to_assets(path: str) -> Path:
         return ASSETS_PATH / Path(path)
 
-    def add_image_to_canvas(canvas, image_path, x, y, width, height):
+    def add_image_to_canvas1(canvas, image_path, x, y, width, height):
         # Load the image and resize it
         original_image = Image.open(image_path)
         resized_image = original_image.resize((width, height))
@@ -114,7 +118,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     #     fill="#000000",
     #     outline="")
     image_path = "assets\logo_steam.png"
-    image = add_image_to_canvas(canvas, image_path, x=55, y=40, width=267, height=77)
+    image = add_image_to_canvas1(canvas, image_path, x=55, y=40, width=267, height=77)
 
     canvas.create_text(
         1500.0,
@@ -217,6 +221,90 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         font=("Motiva Sans Medium", 40 * -1)
     )
 
+    button_image_4 = PhotoImage(
+        file=relative_to_assets("button_4.png"))
+    button_4 = Button(
+        image=button_image_4,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: moreinfodashboard(),
+        relief="flat"
+    )
+    button_4.place(
+        x=1875.0,
+        y=409.0,
+        width=54.0,
+        height=442.0
+    )
+
+
+    friendlistcount = len(friendlist[0]) -1
+
+    if friendlistcount >= 0:
+        if friendlist[0][0][0] is not None:
+            if len(friendlist[0][0][0]) > 25:
+                formatted_friend_name_not = friendlist[0][0][0]
+                formatted_friend_name0 = formatted_friend_name_not[:22] + "..."
+            else:
+                formatted_friend_name0 = friendlist[0][0][0]
+
+    if friendlistcount >= 1:
+        if friendlist[0][1][0] is not None:
+            if len(friendlist[0][1][0]) > 25:
+                formatted_friend_name_not = friendlist[0][1][0]
+                formatted_friend_name1 = formatted_friend_name_not[:22] + "..."
+            else:
+                formatted_friend_name1 = friendlist[0][1][0]
+
+    if friendlistcount >= 2:
+        if friendlist[0][2][0] is not None:
+            if len(friendlist[0][2][0]) > 25:
+                formatted_friend_name_not = friendlist[0][2][0]
+                formatted_friend_name2 = formatted_friend_name_not[:22] + "..."
+            else:
+                formatted_friend_name2 = friendlist[0][2][0]
+
+    if friendlistcount >= 3:
+        if friendlist[0][3][0] is not None:
+            if len(friendlist[0][3][0]) > 25:
+                formatted_friend_name_not = friendlist[0][3][0]
+                formatted_friend_name3 = formatted_friend_name_not[:22] + "..."
+            else:
+                formatted_friend_name3 = friendlist[0][3][0]
+
+    if friendlistcount >= 4:
+        if friendlist[0][4][0] is not None:
+            if len(friendlist[0][4][0]) > 25:
+                formatted_friend_name_not = friendlist[0][4][0]
+                formatted_friend_name4 = formatted_friend_name_not[:22] + "..."
+            else:
+                formatted_friend_name4 = friendlist[0][4][0]
+
+    if friendlistcount >= 5:
+        if friendlist[0][5][0] is not None:
+            if len(friendlist[0][5][0]) > 25:
+                formatted_friend_name_not = friendlist[0][5][0]
+                formatted_friend_name5 = formatted_friend_name_not[:22] + "..."
+            else:
+                formatted_friend_name5 = friendlist[0][5][0]
+
+    if friendlistcount >= 6:
+        if friendlist[0][6][0] is not None:
+            if len(friendlist[0][6][0]) > 25:
+                formatted_friend_name_not = friendlist[0][6][0]
+                formatted_friend_name6 = formatted_friend_name_not[:22] + "..."
+            else:
+                formatted_friend_name6 = friendlist[0][6][0]
+
+    if friendlistcount >= 7:
+        if friendlist[0][7][0] is not None:
+            if len(friendlist[0][7][0]) > 25:
+                formatted_friend_name_not = friendlist[0][7][0]
+                formatted_friend_name7 = formatted_friend_name_not[:22] + "..."
+            else:
+                formatted_friend_name7 = friendlist[0][7][0]
+
+
     if friendlist == 0:
         canvas.create_text(
             78.0,
@@ -234,7 +322,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 # 270,
 
                 anchor="nw",
-                text=friendlist[0][0][0],
+                text=formatted_friend_name0,
                 fill="#FFFFFF",
                 font=("Motiva Sans Medium", 28 * -1)
             )
@@ -279,7 +367,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 86.0,
                 351.0,
                 anchor="nw",
-                text=friendlist[0][1][0],
+                text=formatted_friend_name1,
                 fill="#FFFFFF",
                 font=("Motiva Sans Medium", 28 * -1)
             )
@@ -323,7 +411,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 86.0,
                 443.0,
                 anchor="nw",
-                text=friendlist[0][2][0],
+                text=formatted_friend_name2,
                 fill="#FFFFFF",
                 font=("Motiva Sans Medium", 28 * -1)
             )
@@ -366,7 +454,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 86.0,
                 531.0,
                 anchor="nw",
-                text=friendlist[0][3][0],
+                text=formatted_friend_name3,
                 fill="#FFFFFF",
                 font=("Motiva Sans Medium", 28 * -1)
             )
@@ -410,7 +498,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 86.0,
                 624.0,
                 anchor="nw",
-                text=friendlist[0][4][0],
+                text=formatted_friend_name4,
                 fill="#FFFFFF",
                 font=("Motiva Sans Medium", 28 * -1)
             )
@@ -454,7 +542,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 86.0,
                 715.0,
                 anchor="nw",
-                text=friendlist[0][5][0],
+                text=formatted_friend_name5,
                 fill="#FFFFFF",
                 font=("Motiva Sans Medium", 28 * -1)
             )
@@ -497,7 +585,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 86.0,
                 806.0,
                 anchor="nw",
-                text=friendlist[0][6][0],
+                text=formatted_friend_name6,
                 fill="#FFFFFF",
                 font=("Motiva Sans Medium", 28 * -1)
             )
@@ -541,7 +629,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 86.0,
                 897.0,
                 anchor="nw",
-                text=friendlist[0][7][0],
+                text=formatted_friend_name7,
                 fill="#FFFFFF",
                 font=("Motiva Sans Medium", 28 * -1)
             )
@@ -635,16 +723,16 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         697.0,
         309.0,
         anchor="nw",
-        text="Welke games spelen mijn vrienden?",
+        text="Deze game heb je het meeste gespeeld",
         fill="#FAFAFA",
         font=("Motiva Sans Medium", 28 * -1)
     )
 
     canvas.create_text(
         697.0,
-        381.0,
+        375.0,
         anchor="nw",
-        text="Grand Theft Auto 6",
+        text="Placeholder Game",
         fill="#FFFFFF",
         font=("Motiva Sans Bold", 48 * -1)
     )
@@ -695,7 +783,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
 
     canvas.create_text(
         697.0,
-        854.0,
+        851.0,
         anchor="nw",
         text=f"{formattedgamename123}",
         fill="#FFFFFF",
