@@ -32,6 +32,4 @@ def task_function_1(steamid64):
 def task_function_2(steamid64):
     getmostplayed(steamid64)
 
-
-
 # analyticsmulticore("76561199022018738")

@@ -9,7 +9,7 @@ def analytics(name, avatarurl, status, steamid64):
     import datetime
     from getmostplayedgenres import meest_gespeelde_genres
     from sys import platform
-
+    from getmostplayedgameself import getmostplayedgamemyself
 
     try:
         from dashboard import dashboardwindow
@@ -183,7 +183,6 @@ def analytics(name, avatarurl, status, steamid64):
         width=54.0,
         height=357.0
     )
-
     if status == 1:
         canvas.create_text(
             1500.0,
@@ -374,11 +373,20 @@ def analytics(name, avatarurl, status, steamid64):
 
         canvas.create_text(
             880.0,
-            622.0,
+            612.0,
             anchor="nw",
             text="Top 5 recommended games.",
             fill="#FFFFFF",
             font=("Motiva Sans Bold", 25 * -1)
+
+        )
+        canvas.create_text(
+            880.0,
+            637.5,
+            anchor="nw",
+            text="In the last 2 weeks",
+            fill="#AAAAAA",
+            font=("Motiva Sans regular", 20 * -1)
 
         )
 
@@ -412,7 +420,7 @@ def analytics(name, avatarurl, status, steamid64):
             )
             canvas.create_text(
                 880.0,
-                140.5,
+                135.5,
                 anchor="nw",
                 text="Top 5 played genres.",
                 fill="#FFFFFF",
@@ -565,11 +573,233 @@ def analytics(name, avatarurl, status, steamid64):
 
             canvas.create_text(
                 880.0,
-                140.5,
+                130.5,
                 anchor="nw",
                 text="Top 5 played genres.",
                 fill="#FFFFFF",
                 font=("Motiva Sans Bold", 25 * -1)
+
+            )
+            canvas.create_text(
+                880.0,
+                157.5,
+                anchor="nw",
+                text="Played genres in hours",
+                fill="#AAAAAA",
+                font=("Motiva Sans regular", 20 * -1)
+
+            )
+
+
+    def mostplayedgamesself():
+        global entry_image_30
+        global entry_image_31
+        global entry_image_10
+
+        mostplayedgamesself = getmostplayedgamemyself(steamid64)
+        if mostplayedgamesself == "Het ophalen van de favoriete game is niet gelukt." or len(mostplayedgamesself) < 1:
+            entry_image_30 = PhotoImage(
+                file=relative_to_assets("entry_9.png"))
+            entry_bg_9 = canvas.create_image(
+                641.0,
+                341.0,
+                image=entry_image_30
+            )
+
+            entry_image_31 = PhotoImage(
+                file=relative_to_assets("entry_10.png"))
+            entry_bg_10 = canvas.create_image(
+                460.5,
+                219,
+                image=entry_image_31
+            )
+            canvas.create_text(
+                471.0,
+                140.5,
+                anchor="nw",
+                text="Top 5 most played games.",
+                fill="#FFFFFF",
+                font=("Motiva Sans Bold", 25 * -1)
+
+            )
+            canvas.create_text(
+                481.0,
+                193.5,
+                anchor="nw",
+                text=f"Er kon geen informatie worden \nopgehaald voor deze gebruiker",
+                fill="#FAFAFA",
+                font=("Motiva Sans Regular", 20 * -1)
+
+            )
+
+
+
+        else:
+
+
+
+            entry_image_30 = PhotoImage(
+                file=relative_to_assets("entry_9.png"))
+            entry_bg_9 = canvas.create_image(
+                641.0,
+                341.0,
+                image=entry_image_30
+            )
+
+            lengtemostplayed = len(mostplayedgamesself)
+
+            if len(mostplayedgamesself) >= 1:
+                if len(mostplayedgamesself[0][0]) > 18:
+                    formatted_game_name_not = mostplayedgamesself[0][0]
+                    formatted_game_name01 = formatted_game_name_not[:15] + "..."
+                else:
+                    formatted_game_name01 = mostplayedgamesself[0][0]
+
+            if len(mostplayedgamesself) >= 2:
+                if len(mostplayedgamesself[1][0]) > 18:
+                    formatted_game_name_not = mostplayedgamesself[1][0]
+                    formatted_game_name11 = formatted_game_name_not[:15] + "..."
+                else:
+                    formatted_game_name11 = mostplayedgamesself[1][0]
+
+            if len(mostplayedgamesself) >= 3:
+                if len(mostplayedgamesself[2][0]) > 18:
+                    formatted_game_name_not = mostplayedgamesself[2][0]
+                    formatted_game_name21 = formatted_game_name_not[:15] + "..."
+                else:
+                    formatted_game_name21 = mostplayedgamesself[2][0]
+
+            if len(mostplayedgamesself) >= 4:
+                if len(mostplayedgamesself[3][0]) > 18:
+                    formatted_game_name_not = mostplayedgamesself[3][0]
+                    formatted_game_name31 = formatted_game_name_not[:15] + "..."
+                else:
+                    formatted_game_name31 = mostplayedgamesself[3][0]
+
+            if len(mostplayedgamesself) >= 5:
+                if len(mostplayedgamesself[4][0]) > 18:
+                    formatted_game_name_not = mostplayedgamesself[4][0]
+                    formatted_game_name41 = formatted_game_name_not[:15] + "..."
+                else:
+                    formatted_game_name41 = mostplayedgamesself[4][0]
+
+
+
+            if len(mostplayedgamesself) >= 1:
+
+                entry_image_31 = PhotoImage(
+                    file=relative_to_assets("entry_10.png"))
+                entry_bg_10 = canvas.create_image(
+                    460.5,
+                    219,
+                    image=entry_image_31
+                )
+
+
+                canvas.create_text(
+                    481.0,
+                    205.5,
+                    anchor="nw",
+                    text=f"{formatted_game_name01} [{int(mostplayedgamesself[0][1] / 60)} hours]",
+                    fill="#FFFFFF",
+                    font = ("Motiva Sans Regular", 25 * -1)
+
+                )
+
+
+            if len(mostplayedgamesself) >= 2:
+
+                entry_image_22 = PhotoImage(
+                    file=relative_to_assets("entry_10.png"))
+                entry_bg_11 = canvas.create_image(
+                    460.5,
+                    294,
+                    image=entry_image_10
+                )
+                canvas.create_text(
+                    481.0,
+                    280.5,
+                    anchor="nw",
+                    text=f"{formatted_game_name11} [{int(mostplayedgamesself[1][1] / 60)} hours]",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 25 * -1)
+
+                )
+
+            if len(mostplayedgamesself) >= 3:
+
+                entry_image_23 = PhotoImage(
+                    file=relative_to_assets("entry_10.png"))
+                entry_bg_12 = canvas.create_image(
+                    460.5,
+                    369.0,
+                    image=entry_image_10
+                )
+                canvas.create_text(
+                    481.0,
+                    355.5,
+                    anchor="nw",
+                    text=f"{formatted_game_name21} [{int(mostplayedgamesself[2][1] / 60)} hours]",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 25 * -1)
+
+                )
+            if len(mostplayedgamesself) >= 4:
+
+                entry_image_24 = PhotoImage(
+                    file=relative_to_assets("entry_10.png"))
+                entry_bg_13 = canvas.create_image(
+                    460.5,
+                    444,
+                    image=entry_image_10
+                )
+                canvas.create_text(
+                    481.0,
+                    430.5,
+                    anchor="nw",
+                    text=f"{formatted_game_name31} [{int(mostplayedgamesself[3][1] / 60)} hours]",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 25 * -1)
+
+                )
+
+
+            if len(mostplayedgamesself) >= 5:
+
+                entry_image_25 = PhotoImage(
+                    file=relative_to_assets("entry_10.png"))
+                entry_bg_14 = canvas.create_image(
+                    460.5,
+                    519.0,
+                    image=entry_image_10
+                )
+                canvas.create_text(
+                    481.0,
+                    505.5,
+                    anchor="nw",
+                    text=f"{formatted_game_name41} [{int(mostplayedgamesself[4][1] / 60)} hours]",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Regular", 25 * -1)
+
+                )
+
+
+            canvas.create_text(
+                471.0,
+                130.5,
+                anchor="nw",
+                text="Top 5 most played games.",
+                fill="#FFFFFF",
+                font=("Motiva Sans Bold", 25 * -1)
+
+            )
+            canvas.create_text(
+                471.0,
+                157.5,
+                anchor="nw",
+                text="In the last 2 weeks",
+                fill="#AAAAAA",
+                font=("Motiva Sans regular", 20 * -1)
 
             )
 
@@ -579,16 +809,19 @@ def analytics(name, avatarurl, status, steamid64):
     def analyticsmulticore1234():
         analyticsmulticore(steamid64)
 
+    window.after(50, analyticsmulticore1234)
+
     window.after(1100, mostplayeddef)
     window.after(750, recommendedgamesdef)
     window.after(800, mostplayedgenres)
+    window.after(850, mostplayedgamesself)
 
-    window.after(50, analyticsmulticore1234)
+
 
     window.resizable(False, False)
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198343709779"  )
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198075040510"  )
 
 

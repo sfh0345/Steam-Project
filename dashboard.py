@@ -7,6 +7,8 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     except:
         pass
 
+    from getmostplayedgameself import getmostplayedgamemyself
+
     from getmostplayedgenres import meest_gespeelde_genres
     friendlist = get_friend_usernames(steamid64)
     if friendlist == 10:
@@ -727,15 +729,37 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         fill="#FAFAFA",
         font=("Motiva Sans Medium", 28 * -1)
     )
-
-    canvas.create_text(
-        697.0,
-        375.0,
-        anchor="nw",
-        text="Placeholder Game",
-        fill="#FFFFFF",
-        font=("Motiva Sans Bold", 48 * -1)
-    )
+    mostplayedgamemyself = getmostplayedgamemyself(steamid64)
+    if mostplayedgamemyself == "Het ophalen van de favoriete game is niet gelukt.":
+        canvas.create_text(
+            697.0,
+            375.0,
+            anchor="nw",
+            text="Het ophalen van de favoriete game is niet gelukt.",
+            fill="#FFFFFF",
+            font=("Motiva Sans Bold", 30 * -1)
+        )
+    else:
+        if len(mostplayedgamemyself) >= 1:
+            try:
+                canvas.create_text(
+                    697.0,
+                    375.0,
+                    anchor="nw",
+                    text=mostplayedgamemyself[0][0],
+                    fill="#FFFFFF",
+                    font=("Motiva Sans Bold", 48 * -1)
+                )
+                canvas.create_text(
+                    697.0,
+                    430.0,
+                    anchor="nw",
+                    text=f"{int(mostplayedgamemyself[0][1] / 60)} hours on record",
+                    fill="#bbbbbb",
+                    font=("Motiva Sans General", 24 * -1)
+                )
+            except:
+                pass
 
     entry_image_13 = PhotoImage(
         file=relative_to_assets("entry_13.png"))
@@ -841,7 +865,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         )
         canvas.create_text(
             697.0,
-            655.0,
+            660.0,
             anchor="nw",
             text=f"{int(genresai[0][1] / 60)} hours on record",
             fill="#bbbbbb",
