@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8f8935e-bcf8-4ab3-bc54-76faceec8e72" name="Changes" comment="getmostplayedgameself.py toegevoegd. hierbij kan je zien welke game je het meeste heb gespeeld">
-      <change afterPath="$PROJECT_DIR$/analytics/mostplayed_76561198066243767_21-01-2024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561198066243767_21-01-2024.csv" afterDir="false" />
+    <list default="true" id="b8f8935e-bcf8-4ab3-bc54-76faceec8e72" name="Changes" comment="nu ook in dashboard gefixed dat het als previeuw komt. wel eerste tekenen van problemen bij het ophalen van games. rewind point">
+      <change afterPath="$PROJECT_DIR$/analytics/mostplayed_76561198414336852_21-01-2024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561198074306305_21-01-2024.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561198414336852_21-01-2024.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testmap/testmostplayed.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analytics.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +152,8 @@
       <workItem from="1705679088996" duration="4000" />
       <workItem from="1705681732270" duration="858000" />
       <workItem from="1705772045975" duration="11271000" />
+      <workItem from="1705795348731" duration="216000" />
+      <workItem from="1705833741720" duration="4470000" />
     </task>
     <task id="LOCAL-00001" summary="Barchart over de meest gespeelde games van vrienden">
       <option name="closed" value="true" />
@@ -279,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705793414255</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="nu ook in dashboard gefixed dat het als previeuw komt. wel eerste tekenen van problemen bij het ophalen van games. rewind point">
+      <option name="closed" value="true" />
+      <created>1705795399530</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1705795399530</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,14 +310,15 @@
     <MESSAGE value="3 puntjes als de username te lang is" />
     <MESSAGE value="analytics en back button toegevoegd. Ook meerdere andere dingen aangepast" />
     <MESSAGE value="getmostplayedgameself.py toegevoegd. hierbij kan je zien welke game je het meeste heb gespeeld" />
-    <option name="LAST_COMMIT_MESSAGE" value="getmostplayedgameself.py toegevoegd. hierbij kan je zien welke game je het meeste heb gespeeld" />
+    <MESSAGE value="nu ook in dashboard gefixed dat het als previeuw komt. wel eerste tekenen van problemen bij het ophalen van games. rewind point" />
+    <option name="LAST_COMMIT_MESSAGE" value="nu ook in dashboard gefixed dat het als previeuw komt. wel eerste tekenen van problemen bij het ophalen van games. rewind point" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/main_py$getmostplayedgameself.coverage" NAME="getmostplayedgameself Coverage Results" MODIFIED="1705792982436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$getmostplayedgameself.coverage" NAME="getmostplayedgameself Coverage Results" MODIFIED="1705836578950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$teststeamlist.coverage" NAME="teststeamlist Coverage Results" MODIFIED="1701114013130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$copymain.coverage" NAME="copymain Coverage Results" MODIFIED="1701899965071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$dashboardsteam.coverage" NAME="dashboardsteam Coverage Results" MODIFIED="1700730553789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$analytics.coverage" NAME="analytics Coverage Results" MODIFIED="1705795203872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$analytics.coverage" NAME="analytics Coverage Results" MODIFIED="1705834638798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$getsteamuserinfo.coverage" NAME="getsteamuserinfo Coverage Results" MODIFIED="1700688594203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$threading.coverage" NAME="threading Coverage Results" MODIFIED="1701980580241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$dashboard.coverage" NAME="dashboard Coverage Results" MODIFIED="1705791864271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -313,9 +326,9 @@
     <SUITE FILE_PATH="coverage/main_py$chart_most_played_games_friends.coverage" NAME="chart_most_played_games_friends Coverage Results" MODIFIED="1702303814144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$testgetfriendlist.coverage" NAME="testgetfriendlist Coverage Results" MODIFIED="1702590026910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$friendlist2_0.coverage" NAME="friendlist2.0 Coverage Results" MODIFIED="1701114609978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$getuserfriendlist.coverage" NAME="getuserfriendlist Coverage Results" MODIFIED="1705773687426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$getuserfriendlist.coverage" NAME="getuserfriendlist Coverage Results" MODIFIED="1705835275069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$testfriendlist.coverage" NAME="testfriendlist Coverage Results" MODIFIED="1701115080162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1705795210697" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1705838956713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$dashboardanalytics.coverage" NAME="dashboardanalytics Coverage Results" MODIFIED="1701088458698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$analyticsophalen.coverage" NAME="analyticsophalen Coverage Results" MODIFIED="1702367114666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$MostplayedGenres.coverage" NAME="MostplayedGenres Coverage Results" MODIFIED="1705327780796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -325,12 +338,14 @@
     <SUITE FILE_PATH="coverage/main_py$gui.coverage" NAME="gui Coverage Results" MODIFIED="1705775910285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/OneDrive/Bureaublad/buttonanalytcs/build" />
     <SUITE FILE_PATH="coverage/Steamproject$test123123123.coverage" NAME="test123123123 Coverage Results" MODIFIED="1700560299426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$testdots.coverage" NAME="testdots Coverage Results" MODIFIED="1702369819638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$testmostplayed.coverage" NAME="testmostplayed Coverage Results" MODIFIED="1705836675520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testmap" />
     <SUITE FILE_PATH="coverage/Steamproject$multicorethread.coverage" NAME="multicorethread Coverage Results" MODIFIED="1702059369189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$main.coverage" NAME="main Coverage Results" MODIFIED="1705327046560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1700686546613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$playtime.coverage" NAME="playtime Coverage Results" MODIFIED="1701163418853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$getsteamuserinfo.coverage" NAME="getsteamuserinfo Coverage Results" MODIFIED="1705325384656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$getmostplayedgenres.coverage" NAME="getmostplayedgenres Coverage Results" MODIFIED="1705507277105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$analyticsophalen.coverage" NAME="analyticsophalen Coverage Results" MODIFIED="1705838783929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$connection.coverage" NAME="connection Coverage Results" MODIFIED="1701764396368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$MostplayedGenres.coverage" NAME="MostplayedGenres Coverage Results" MODIFIED="1705323720173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$gui.coverage" NAME="gui Coverage Results" MODIFIED="1700727007929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/OneDrive/Bureaublad/dashboard steam/build" />
