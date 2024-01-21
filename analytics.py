@@ -809,12 +809,14 @@ def analytics(name, avatarurl, status, steamid64):
     def analyticsmulticore1234():
         analyticsmulticore(steamid64)
 
+    window.after(50, analyticsmulticore1234)
+
     window.after(1100, mostplayeddef)
     window.after(750, recommendedgamesdef)
     window.after(800, mostplayedgenres)
-    window.after(900, mostplayedgamesself)
+    window.after(850, mostplayedgamesself)
 
-    window.after(50, analyticsmulticore1234)
+
 
     window.resizable(False, False)
     window.mainloop()
