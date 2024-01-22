@@ -802,7 +802,9 @@ def analytics(name, avatarurl, status, steamid64):
                 font=("Motiva Sans regular", 20 * -1)
 
             )
-
+    window.after(500, recommendedgamesdef)
+    window.after(850, mostplayedgamesself)
+    window.after(800, mostplayedgenres)
 
 
 
@@ -810,11 +812,7 @@ def analytics(name, avatarurl, status, steamid64):
         analyticsmulticore(steamid64)
 
     window.after(50, analyticsmulticore1234)
-
     window.after(1100, mostplayeddef)
-    window.after(750, recommendedgamesdef)
-    window.after(800, mostplayedgenres)
-    window.after(850, mostplayedgamesself)
 
 
 

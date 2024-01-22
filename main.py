@@ -67,7 +67,7 @@ def read_serial(port):
 loop1234 = True
 
 while loop1234:
-    rasberry = input("Wilt u de Rasberry Pi gebruiken? (Ja/Nee) ").lower()
+    rasberry = input("Wilt u de Rasberry Pi gebruiken? (ja/nee) ").lower()
 
     if rasberry == "nee":
         loop1234 = False
