@@ -1,13 +1,7 @@
-import psycopg2
+from database_connection import connect_to_azure_postgresql
 
 # Maak een verbinding met de PostgreSQL-database. Staat op localhost!!
-conn = psycopg2.connect(
-    database="steam",
-    user="postgres",
-    password="@Hilversum02@",
-    port="5432"
-)
-
+conn = connect_to_azure_postgresql()
 # Maak een cursor
 c = conn.cursor()
 
