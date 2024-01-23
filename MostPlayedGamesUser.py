@@ -159,5 +159,3 @@ def most_played_games_user(steamid):
         filepath = file_name
     else:
         create_pie_chart(steamid)
-
-most_played_games_user(76561198414336852)

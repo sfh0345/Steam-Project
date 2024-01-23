@@ -1,12 +1,13 @@
 import threading
 from getnewgame import getrecommendedgames
 from getmostplayedgame import getmostplayed
+from MostPlayedGamesUser import mostplayedgamesuser
 
 
 def analyticsmulticore(steamid64):
     # global steamid64
     # Define the task functions
-    task_functions = [task_function_1, task_function_2]
+    task_functions = [task_function_1, task_function_2, task_function_3]
 
     # Create threads
     threads = []
@@ -31,5 +32,8 @@ def task_function_1(steamid64):
 
 def task_function_2(steamid64):
     getmostplayed(steamid64)
+
+def task_function_3(steamid64):
+    mostplayedgamesuser(steamid64)
 
 # analyticsmulticore("76561199022018738")
