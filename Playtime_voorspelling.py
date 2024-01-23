@@ -64,10 +64,11 @@ def voorspel_playtime(gamename):
               "WHERE name = %s", (gamename,))
     result = c.fetchone()
     verhouding_rating = result[0]
-    y_pred = round(linear_regression(verhouding_rating))
+    y_pred = linear_regression(verhouding_rating)
+    pred_playtime = round(y_pred / 60)
 
     # sluit de database verbinding
     c.close()
     close_connection(conn)
 
-    return y_pred
+    return pred_playtime
