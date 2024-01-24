@@ -71,4 +71,4 @@ def meest_gespeelde_genres(steamid):
         return {}
 
 # Druk het resultaat van de functie af
-
+# print(meest_gespeelde_genres("76561198414336852"))
