@@ -352,11 +352,12 @@ def analytics(name, avatarurl, status, steamid64):
 
 
                 canvas.create_text(
-                    632.0,
-                    802.0,
-                    anchor="nw",
-                    text="2100 Hours",
+                    696.0,
+                    814.0,
+                    anchor="center",
+                    text="3000 Hours",
                     fill="#FFFFFF",
+                    justify="center",
                     font=("Motiva Sans SemiBold", 24 * -1)
                 )
 
@@ -380,11 +381,12 @@ def analytics(name, avatarurl, status, steamid64):
 
 
                 canvas.create_text(
-                    632.0,
-                    888.0,
-                    anchor="nw",
-                    text="2100 Hours",
+                    696.0,
+                    900.0,
+                    anchor="center",
+                    text="105 Hours",
                     fill="#FFFFFF",
+                    justify="center",
                     font=("Motiva Sans SemiBold", 24 * -1)
                 )
 
@@ -407,10 +409,10 @@ def analytics(name, avatarurl, status, steamid64):
                 )
 
                 canvas.create_text(
-                    632.0,
-                    974.0,
-                    anchor="nw",
-                    text="2100 Hours",
+                    696.0,
+                    986.0,
+                    anchor="center",
+                    text="10 Hours",
                     fill="#FFFFFF",
                     font=("Motiva Sans SemiBold", 24 * -1)
                 )
