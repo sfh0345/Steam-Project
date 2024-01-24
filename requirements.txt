@@ -1,0 +1,11 @@
+adafruit_circuitpython_neopixel==6.3.11
+machine==0.0.1
+matplotlib==3.8.2
+numpy==1.26.3
+Pillow==10.1.0
+Pillow==10.2.0
+psycopg2==2.9.9
+pyserial==3.5
+Requests==2.31.0
+ujson==5.9.0
+utime==1.1.7
