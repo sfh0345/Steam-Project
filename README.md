@@ -1,12 +1,12 @@
 Project Steam
 ===============
-### Lettertype instalation
+### Lettertype installation
 **Motiva Sans**
 ```ruby
 https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.zip
 ```
 
-### Module instalation
+### Module installation
 
 **Requests**
 ```ruby
@@ -62,4 +62,20 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 <br>
 
 ### Instructies
-n.t.b
+
+Deze instructie beschrijft hoe de gebruiker de code uitvoert om de applicatie te gebruiken.
+
+a. zorg ervoor dat alle modules zijn geinstalleerd en het lettertype
+
+
+1. de applicatie opstarten 
+   - open main.py en klik op run (Shift + F10)
+   - Ga verder in de python console
+   - kies of je gebruik wilt maken van de Pi Pico (ja of nee)
+   - Het dashboard wordt hierna geopend
+   
+2. inloggen
+   - Ga verder in het dashboard. 
+   - Login met een SteamID of NFC
+   - Klik op inloggen
+   - Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken.
