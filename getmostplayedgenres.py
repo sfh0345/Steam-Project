@@ -72,3 +72,4 @@ def meest_gespeelde_genres(steamid):
         return {}
     finally:
         close_connection(conn)
+
