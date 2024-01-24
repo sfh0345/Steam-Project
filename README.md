@@ -74,12 +74,10 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
   https://www.jetbrains.com/pycharm/download/
   ```
 
-2. Install modules/packages
-```ruby
-
-```
-
-
+2. Install modules
+  ```ruby
+  pip install -r requirements.txt
+  ```
 
 3. Clone the repo
   ```ruby
