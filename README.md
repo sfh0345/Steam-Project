@@ -1,6 +1,7 @@
 Project Steam
 ---
-![Project Banner](https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/SteamBanner.png)
+![header steam](https://github.com/sfh0345/Steam-Project/assets/144694375/cd48b2fe-4d6a-4e8c-9e12-74bb18668f84)
+
 
 ### Lettertype installation
 **Motiva Sans**
