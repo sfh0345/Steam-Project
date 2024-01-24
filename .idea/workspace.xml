@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8f8935e-bcf8-4ab3-bc54-76faceec8e72" name="Changes" comment="nu ook in dashboard gefixed dat het als previeuw komt. wel eerste tekenen van problemen bij het ophalen van games. rewind point">
-      <change afterPath="$PROJECT_DIR$/MostPlayedGamesUser.py" afterDir="false" />
+    <list default="true" id="b8f8935e-bcf8-4ab3-bc54-76faceec8e72" name="Changes" comment="made a pie chart that shows your playtime">
       <change afterPath="$PROJECT_DIR$/analytics/mostplayed_76561199022018738_23-01-2024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/piechart_76561198414336852_23-01-2024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/piechart_76561199022018738_23-01-2024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561198414336852_23-01-2024.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/analytics/recommendedgame_76561199022018738_23-01-2024.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -61,29 +63,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.MostPlayedGamesUser.executor": "Run",
-    "Python.MostPlayedGenres_azure.executor": "Run",
-    "Python.MostplayedGenres.executor": "Run",
-    "Python.Playtime_voorspelling.executor": "Run",
-    "Python.chart_most_played_games_friends.executor": "Run",
-    "Python.getsteamuserinfo.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Maarten",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.MostPlayedGamesUser.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MostPlayedGenres_azure.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MostplayedGenres.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Playtime_voorspelling.executor&quot;: &quot;Run&quot;,
+    &quot;Python.analyticsophalen.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chart_most_played_games_friends.executor&quot;: &quot;Run&quot;,
+    &quot;Python.getsteamuserinfo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Maarten&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Steamproject" />
@@ -154,7 +157,7 @@
       <workItem from="1705772045975" duration="11271000" />
       <workItem from="1705795348731" duration="216000" />
       <workItem from="1705833741720" duration="4470000" />
-      <workItem from="1706004907686" duration="13400000" />
+      <workItem from="1706004907686" duration="14409000" />
     </task>
     <task id="LOCAL-00001" summary="Barchart over de meest gespeelde games van vrienden">
       <option name="closed" value="true" />
@@ -300,7 +303,55 @@
       <option name="project" value="LOCAL" />
       <updated>1706007394978</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="nu ook in dashboard gefixed dat het als previeuw komt. wel eerste tekenen van problemen bij het ophalen van games. rewind point">
+      <option name="closed" value="true" />
+      <created>1706021445445</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1706021445445</updated>
+    </task>
+    <task id="LOCAL-00020" summary="made a pie chart that shows your playtime">
+      <option name="closed" value="true" />
+      <created>1706021485891</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1706021485891</updated>
+    </task>
+    <task id="LOCAL-00021" summary="made a pie chart that shows your playtime">
+      <option name="closed" value="true" />
+      <created>1706021638590</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1706021638590</updated>
+    </task>
+    <task id="LOCAL-00022" summary="made a pie chart that shows your playtime">
+      <option name="closed" value="true" />
+      <created>1706021993496</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1706021993496</updated>
+    </task>
+    <task id="LOCAL-00023" summary="made a pie chart that shows your playtime">
+      <option name="closed" value="true" />
+      <created>1706022183290</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1706022183290</updated>
+    </task>
+    <task id="LOCAL-00024" summary="made a pie chart that shows your playtime">
+      <option name="closed" value="true" />
+      <created>1706022302718</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1706022302718</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,7 +371,8 @@
     <MESSAGE value="analytics en back button toegevoegd. Ook meerdere andere dingen aangepast" />
     <MESSAGE value="getmostplayedgameself.py toegevoegd. hierbij kan je zien welke game je het meeste heb gespeeld" />
     <MESSAGE value="nu ook in dashboard gefixed dat het als previeuw komt. wel eerste tekenen van problemen bij het ophalen van games. rewind point" />
-    <option name="LAST_COMMIT_MESSAGE" value="nu ook in dashboard gefixed dat het als previeuw komt. wel eerste tekenen van problemen bij het ophalen van games. rewind point" />
+    <MESSAGE value="made a pie chart that shows your playtime" />
+    <option name="LAST_COMMIT_MESSAGE" value="made a pie chart that shows your playtime" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Steamproject$testgetfriendlist.coverage" NAME="testgetfriendlist Coverage Results" MODIFIED="1702590026910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -342,7 +394,7 @@
     <SUITE FILE_PATH="coverage/Steamproject$multicorethread.coverage" NAME="multicorethread Coverage Results" MODIFIED="1702059369189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$testdashboard.coverage" NAME="testdashboard Coverage Results" MODIFIED="1701117766151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$playtime.coverage" NAME="playtime Coverage Results" MODIFIED="1701163418853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Steam_Project$main.coverage" NAME="main Coverage Results" MODIFIED="1706009712648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Steam_Project$main.coverage" NAME="main Coverage Results" MODIFIED="1706022010104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$getuserfriendlist.coverage" NAME="getuserfriendlist Coverage Results" MODIFIED="1702591513602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$dashboardanalytics.coverage" NAME="dashboardanalytics Coverage Results" MODIFIED="1701088458698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1705838956713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -359,7 +411,8 @@
     <SUITE FILE_PATH="coverage/Steamproject$test123123123.coverage" NAME="test123123123 Coverage Results" MODIFIED="1700560299426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$threading.coverage" NAME="threading Coverage Results" MODIFIED="1701980580241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$chart_most_played_games_friends.coverage" NAME="chart_most_played_games_friends Coverage Results" MODIFIED="1702303814144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Steam_Project$MostPlayedGamesUser.coverage" NAME="MostPlayedGamesUser Coverage Results" MODIFIED="1706021302921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Steam_Project$MostPlayedGamesUser.coverage" NAME="MostPlayedGamesUser Coverage Results" MODIFIED="1706021374353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Steam_Project$analyticsophalen.coverage" NAME="analyticsophalen Coverage Results" MODIFIED="1706021981780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$analytics.coverage" NAME="analytics Coverage Results" MODIFIED="1704720024063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Steamproject$getnewgame.coverage" NAME="getnewgame Coverage Results" MODIFIED="1702667471280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$getvoorspellingplaytime.coverage" NAME="getvoorspellingplaytime Coverage Results" MODIFIED="1705787581934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
