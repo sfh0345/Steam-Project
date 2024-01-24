@@ -11,6 +11,7 @@ conn = connect_to_azure_postgresql()
 # Maak een cursor
 c = conn.cursor()
 
+
 def meest_gespeelde_genres(steamid):
     try:
         # Haal de speeltijd op van alle games die door de gebruiker zijn gespeeld
@@ -69,6 +70,6 @@ def meest_gespeelde_genres(steamid):
     except psycopg2.Error as e:
         print(f"Fout met PostgreSQL: {e}")
         return {}
+    finally:
+        close_connection(conn)
 
-# Druk het resultaat van de functie af
-# print(meest_gespeelde_genres("76561198414336852"))
