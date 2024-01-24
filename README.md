@@ -65,19 +65,19 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 
 Deze instructie beschrijft hoe de gebruiker de code uitvoert om de applicatie te gebruiken.
 
-**Zorg ervoor dat alle modules en het lettertype is geinstalleerd.**
+**Zorg ervoor dat alle modules en het lettertype is geinstalleerd!**
 
 
 1. De applicatie opstarten 
-   a. open main.py en klik op run (Shift + F10)
-   b. Ga verder in de python console
-   c. kies of je gebruik wilt maken van de Pi Pico (ja of nee)
+   - open main.py en klik op run (Shift + F10)
+   - Ga verder in de python console
+   - kies of je gebruik wilt maken van de Pi Pico (ja of nee)
    
    Het dashboard wordt hierna geopend
    
 2. Inloggen
-   a. Ga verder in het dashboard. 
-   b. Login met een SteamID of NFC
-   c. Klik op inloggen
+   - Ga verder in het dashboard. 
+   - Login met een SteamID of NFC
+   - Klik op inloggen
 
    Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken.
