@@ -12,7 +12,9 @@
 
 ![header steam](https://github.com/sfh0345/Steam-Project/assets/144694375/cd48b2fe-4d6a-4e8c-9e12-74bb18668f84)
 
-## Table of Contents
+<details>
+  <summary>Table of Contents</summary>
+
 - [About the Project](#about-the-project)
 - [The Team](#the-team)
 - [Getting Started](#getting-started)
@@ -20,6 +22,7 @@
   - [Installation](#installation)
   - [Instructions](#instructions)
 - [Contact](#contact)
+</details>
 
 
 
@@ -36,7 +39,7 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 ## The Team
 
 | MEMBER | STUDENTNUMBER |  USERNAME  |
-|:----------:|:----------:|:----------:|
+|:----------|:----------:|----------:|
 | Abdullah El Hannaoui | 1856772  |  Abdl2000  |
 | Maarten Eijgenhuijsen | 1868212  | Maartenlevi |
 | Sander Hol | 1859176  |   sfh0345  |
@@ -78,6 +81,8 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
 
 ```
 
+
+
 3. Clone the repo
   ```ruby
   git clone https://github.com/sfh0345/Steam-Project
@@ -90,15 +95,17 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
 > Volg deze stappen voor het gebruik van de applicatie!
 <br>
 
-1. Open main.py en klik op run (Shift + F10)
-2. Ga verder in de python console
-3. Kies of je gebruik wilt maken van de Pi Pico (ja/nee)
-4. Het dashboard wordt hierna geopend. 
-4. Ga verder in het dashboard
-5. Login met een SteamID of NFC
-6. Klik op inloggen
+- [X] Open main.py en klik op run (Shift + F10) <br>
+- [X] Ga verder in de python console <br>
+- [x] Kies of je gebruik wilt maken van de Pi Pico (ja/nee) <br>
+- [x] Het dashboard wordt hierna geopend. <br>
+- [x] Ga verder in het dashboard <br>
+- [x] Login met een SteamID of NFC <br>
+- [x] Klik op inloggen <br>
 
-Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken over het gamegedrag. Veel plezier met het gebruik van de applicatie.
+<br>
+
+> Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken over het gamegedrag. Veel plezier met het gebruik van de applicatie.
 
 <br>
 
