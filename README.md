@@ -1,6 +1,5 @@
 # Project Steam
 
-
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
@@ -11,9 +10,7 @@
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=for-the-badge&logo=steam&logoColor=white)
 
-
 ![header steam](https://github.com/sfh0345/Steam-Project/assets/144694375/cd48b2fe-4d6a-4e8c-9e12-74bb18668f84)
-
 
 ## Table of Contents
 - [About the Project](#about-the-project)
@@ -110,6 +107,6 @@ git clone https://github.com/sfh0345/Steam-Project
 
 ## Contact
 
-website: https://www.hu.nl/contact
+- **Website:** https://www.hu.nl/contact
 
-Project: https://github.com/sfh0345/Steam-Project
+- **Project:** [GitHub Repository](https://github.com/sfh0345/Steam-Project)
