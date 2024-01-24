@@ -61,7 +61,7 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 
 <br>
 
-[Instructies]
+### Instructies
 
 Deze instructie beschrijft hoe de gebruiker de code uitvoert om de applicatie te gebruiken.
 
