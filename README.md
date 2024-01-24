@@ -71,13 +71,13 @@ Deze instructie beschrijft hoe de gebruiker de code uitvoert om de applicatie te
 1. De applicatie opstarten 
    - open main.py en klik op run (Shift + F10)
    - Ga verder in de python console
-   - kies of je gebruik wilt maken van de Pi Pico (ja of nee)
+   - kies of je gebruik wilt maken van de Pi Pico (ja/nee?)
    
-   Het dashboard wordt hierna geopend
+   Het dashboard wordt hierna geopend. 
    
 2. Inloggen
    - Ga verder in het dashboard. 
    - Login met een SteamID of NFC
    - Klik op inloggen
 
-   Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken.
+   Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken over het gamegedrag.
