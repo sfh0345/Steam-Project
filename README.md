@@ -103,7 +103,7 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
 
 <br>
 
-> Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken over het gamegedrag. Veel plezier met het gebruik van de applicatie.
+> Na het uitvoeren van de stappen wordt het profiel geladen met alle bijbehorende data zoals informatie over je account en statistieken over het gamegedrag. Veel plezier met het gebruik van het Dashboard!
 
 <br>
 
