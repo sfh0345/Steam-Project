@@ -4,6 +4,7 @@ Project Steam
 ===============
 
 ### Lettertype installation
+===============
 **Motiva Sans**
 ```ruby
 https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.zip
@@ -47,6 +48,7 @@ pip install Psycopg2
 
 
 ### Inleiding
+===============
 Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gamegedrag van vrienden op Steam. De opdracht is om een basisapplicatie met een dashboard te bouwen. De verplichte onderdelen omvatten het creëren van een basisapplicatie in Python, het laden van data via de Steam-API, en het tonen van enkele elementen op een GUI op basis van AI-algoritmen. Bovendien wordt er een koppeling gerealiseerd tussen het dashboard en TI voor de toepassing van hardware.
 
 
@@ -66,7 +68,7 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 <br>
 
 ### Instructies
-
+===============
 Deze instructie beschrijft hoe de gebruiker de code uitvoert om de applicatie te gebruiken.
 
 **Zorg ervoor dat alle modules en het lettertype is geinstalleerd!**
