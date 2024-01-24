@@ -76,7 +76,7 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
 
 2. Install modules
   ```ruby
-  pip install -r requirements.txt
+  pip install -r .\Steam-Project\requirements.txt
   ```
 
 3. Clone the repo
