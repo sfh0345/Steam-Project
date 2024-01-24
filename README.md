@@ -1,5 +1,5 @@
 Project Steam
-===============
+---
 ![Project Banner](https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/SteamBanner.png)
 
 ### Lettertype installation
@@ -44,11 +44,13 @@ pip install Psycopg2
 
 <img align="right" src="https://github.com/sfh0345/Steam-Project/blob/main/Projectarchief/Steamlogo2.png">
 
+---
 
 ### Inleiding
 
 Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gamegedrag van vrienden op Steam. De opdracht is om een basisapplicatie met een dashboard te bouwen. De verplichte onderdelen omvatten het creëren van een basisapplicatie in Python, het laden van data via de Steam-API, en het tonen van enkele elementen op een GUI op basis van AI-algoritmen. Bovendien wordt er een koppeling gerealiseerd tussen het dashboard en TI voor de toepassing van hardware.
 
+---
 
 <br>
 
