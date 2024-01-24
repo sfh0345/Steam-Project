@@ -74,12 +74,10 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
   https://www.jetbrains.com/pycharm/download/
   ```
 
-2. Install modules/packages
-```ruby
-
-```
-
-
+2. Install modules
+  ```ruby
+  pip install -r requirements.txt
+  ```
 
 3. Clone the repo
   ```ruby
@@ -103,7 +101,7 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
 
 <br>
 
-> Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken over het gamegedrag. Veel plezier met het gebruik van de applicatie.
+> Na het uitvoeren van de stappen wordt het profiel geladen met alle bijbehorende data zoals informatie over je account, statistieken over het gamegedrag en meer. Veel plezier met het gebruik van het Dashboard!
 
 <br>
 
