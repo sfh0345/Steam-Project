@@ -53,12 +53,14 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 
 ### Prerequisites
 
-> Installeer het volgende lettertype voor de beste werking van de GUI
+> Hieronder volgen alle vereiste voor de applicatie. Installeer het volgende lettertype voor de beste werking van de GUI
 
 **Motiva Sans**
 ```ruby
 https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.zip
 ```
+
+<br>
 
 ### Installation
 
@@ -67,41 +69,36 @@ https://github.com/sfh0345/Steam-Project/blob/main/assets/motiva-sans%20INSTALL.
 
 1. Get a version of Pycharm
 
-```ruby
-https://www.jetbrains.com/pycharm/download/
-```
+  ```ruby
+  https://www.jetbrains.com/pycharm/download/
+  ```
 
-
-3. Install modules/packages
+2. Install modules/packages
 ```ruby
 
 ```
 
 3. Clone the repo
-```ruby
-git clone https://github.com/sfh0345/Steam-Project
-```
+  ```ruby
+  git clone https://github.com/sfh0345/Steam-Project
+  ```
+
 
 <br>
 
 ### Instructions
-> Deze instructie beschrijft de vereiste stappen voor het gebruik van de applicatie. Zorg ervoor dat alle modules en het lettertype hier al zijn geinstalleerd!
+> Volg deze stappen voor het gebruik van de applicatie!
 <br>
 
-
-**De applicatie opstarten**
-1. open main.py en klik op run (Shift + F10)
+1. Open main.py en klik op run (Shift + F10)
 2. Ga verder in de python console
-3. kies of je gebruik wilt maken van de Pi Pico (ja/nee?)
-   
-- Het dashboard wordt hierna geopend. 
-   
-**Inloggen**
+3. Kies of je gebruik wilt maken van de Pi Pico (ja/nee)
+4. Het dashboard wordt hierna geopend. 
 4. Ga verder in het dashboard
 5. Login met een SteamID of NFC
 6. Klik op inloggen
 
-- Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken over het gamegedrag.
+Het profiel wordt geladen met alle bijbehorende data zoals informatie over je account en statistieken over het gamegedrag. Veel plezier met het gebruik van de applicatie.
 
 <br>
 
