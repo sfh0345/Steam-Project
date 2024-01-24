@@ -226,7 +226,10 @@ def analytics(name, avatarurl, status, steamid64):
     image_path = "assets\logo_steam.png"
     image = add_image_to_canvas(canvas, image_path, x=52, y=20, width=267, height=77)
 
+    image_item = canvas.create_image(52, 20, anchor=tk.NW, image=image)
 
+    # Bind click event to the image on the canvas
+    canvas.tag_bind(image_item, "<Button-1>", backbutton)
 
     def mostplayeddef():
         # mostplayed games
