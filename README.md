@@ -50,14 +50,14 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 
 ### Het Team
 
-| LID | STUDENTNUMMER |  USERNAME   |
-|:----------:|:----------:|:-----------:|
-| Abdullah El Hannaoui | 1856772  |  Abdl2000   |
+| LID | STUDENTNUMMER |  USERNAME  |
+|:----------:|:----------:|:----------:|
+| Abdullah El Hannaoui | 1856772  |  Abdl2000  |
 | Maarten Eijgenhuijsen | 1868212  | Maartenlevi |
-| Sander Hol | 1859176  |   sfh0345   |
+| Sander Hol | 1859176  |   sfh0345  |
 | Sander Neele | 1812756 | SanderNeele | 
 | Lucia Lange | 1857133  | lucialange1 |
-| Hurkan Yildiz | 1781066  |   Hurkooo   |
+| Hurkan Yildiz | 1781066  |  Hurkooo   |
 
 <br>
 
