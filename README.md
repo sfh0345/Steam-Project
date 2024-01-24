@@ -61,11 +61,11 @@ Dit project richt zich op de ontwikkeling van een visueel dashboard voor het gam
 
 <br>
 
-### Instructies
+[Instructies]
 
 Deze instructie beschrijft hoe de gebruiker de code uitvoert om de applicatie te gebruiken.
 
-|**Zorg ervoor dat alle modules en het lettertype is geinstalleerd.**|
+**Zorg ervoor dat alle modules en het lettertype is geinstalleerd.**
 
 
 1. De applicatie opstarten 
