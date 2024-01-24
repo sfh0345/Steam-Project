@@ -310,40 +310,25 @@ def analytics(name, avatarurl, status, steamid64):
             lengtemostplayed = len(mostplayedgamesself)
 
             if len(mostplayedgamesself) >= 1:
-                if len(mostplayedgamesself[0][0]) > 18:
+                if len(mostplayedgamesself[0][0]) > 35:
                     formatted_game_name_not = mostplayedgamesself[0][0]
-                    formatted_game_name01 = formatted_game_name_not[:15] + "..."
+                    formatted_game_name01 = formatted_game_name_not[:32] + "..."
                 else:
                     formatted_game_name01 = mostplayedgamesself[0][0]
 
             if len(mostplayedgamesself) >= 2:
-                if len(mostplayedgamesself[1][0]) > 18:
+                if len(mostplayedgamesself[1][0]) > 35:
                     formatted_game_name_not = mostplayedgamesself[1][0]
-                    formatted_game_name11 = formatted_game_name_not[:15] + "..."
+                    formatted_game_name11 = formatted_game_name_not[:32] + "..."
                 else:
                     formatted_game_name11 = mostplayedgamesself[1][0]
 
             if len(mostplayedgamesself) >= 3:
-                if len(mostplayedgamesself[2][0]) > 18:
+                if len(mostplayedgamesself[2][0]) > 35:
                     formatted_game_name_not = mostplayedgamesself[2][0]
-                    formatted_game_name21 = formatted_game_name_not[:15] + "..."
+                    formatted_game_name21 = formatted_game_name_not[:32] + "..."
                 else:
                     formatted_game_name21 = mostplayedgamesself[2][0]
-
-            if len(mostplayedgamesself) >= 4:
-                if len(mostplayedgamesself[3][0]) > 18:
-                    formatted_game_name_not = mostplayedgamesself[3][0]
-                    formatted_game_name31 = formatted_game_name_not[:15] + "..."
-                else:
-                    formatted_game_name31 = mostplayedgamesself[3][0]
-
-            if len(mostplayedgamesself) >= 5:
-                if len(mostplayedgamesself[4][0]) > 18:
-                    formatted_game_name_not = mostplayedgamesself[4][0]
-                    formatted_game_name41 = formatted_game_name_not[:15] + "..."
-                else:
-                    formatted_game_name41 = mostplayedgamesself[4][0]
-
 
 
             if len(mostplayedgamesself) >= 1:
@@ -916,4 +901,4 @@ def analytics(name, avatarurl, status, steamid64):
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198414336852"  )
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198066243767"  )
