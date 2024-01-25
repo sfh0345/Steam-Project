@@ -77,7 +77,7 @@ def single_player_or_multi_player(steamid):
                      fontsize=10, color=text_color)
 
         plt.axis("equal")
-        plt.title("Single-player vs Multi-player Games", color=text_color)
+        plt.title("Single-player vs Multi-player Games", color=text_color, fontsize=13, y=1.02)
 
         plt.legend(labels, loc="lower center", bbox_to_anchor=(0.2, -0.15),
                    fontsize=8, mode='expand', ncol=2, frameon=False, labelcolor=text_color,

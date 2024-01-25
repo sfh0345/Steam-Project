@@ -10,7 +10,7 @@ def analytics(name, avatarurl, status, steamid64):
     from getmostplayedgenres import meest_gespeelde_genres
     from sys import platform
     from getmostplayedgameself import getmostplayedgamemyself
-
+    from Playtime_voorspelling import voorspel_playtime
     try:
         from dashboard import dashboardwindow
     except:
@@ -203,14 +203,14 @@ def analytics(name, avatarurl, status, steamid64):
         67.0,
         614.0,
         anchor="nw",
-        text="Expected playtime",
+        text="Expected playtime in hours",
         fill="#FFFFFF",
         font=("Motiva Sans Bold", 25 * -1)
     )
 
     canvas.create_text(
         67.0,
-        639.5,
+        641.5,
         anchor="nw",
         text="with linair regression",
         fill="#AAAAAA",
@@ -220,7 +220,8 @@ def analytics(name, avatarurl, status, steamid64):
 
     def searchlinair(entry):
         gamename = entry
-        print(gamename)
+        voorspelde_uren = voorspel_playtime(gamename)
+        print(voorspelde_uren)
 
 
     button_image_2 = PhotoImage(
@@ -542,6 +543,36 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_8
         )
 
+
+
+    def mostplayedpiedef():
+        # mostplayed games
+        date = datetime.datetime.now()
+        date = date.strftime("%d-%m-%Y")
+        global entry_image_88
+        entry_image_88 = PhotoImage(
+            file=f"analytics/piechart_{steamid64}_{date}.png")
+        entry_bg_7 = canvas.create_image(
+            232.0,
+            341.0,
+            image=entry_image_88
+        )
+
+
+
+
+    def multiplayerpiedef():
+        # mostplayed games
+        date = datetime.datetime.now()
+        date = date.strftime("%d-%m-%Y")
+        global entry_image_888
+        entry_image_888 = PhotoImage(
+            file=f"analytics/singleplayerormultiplayer_{steamid64}_{date}.png")
+        entry_bg_7 = canvas.create_image(
+            641.0,
+            341.0,
+            image=entry_image_888
+        )
 
     def recommendedgamesdef():
         recommendedgames = getrecommendedgames(steamid64)
@@ -885,9 +916,9 @@ def analytics(name, avatarurl, status, steamid64):
 
             )
 
-    window.after(500, recommendedgamesdef)
+    window.after(800, recommendedgamesdef)
     window.after(850, mostplayedgamesself)
-    window.after(800, mostplayedgenres)
+    window.after(825, mostplayedgenres)
 
 
 
@@ -896,6 +927,10 @@ def analytics(name, avatarurl, status, steamid64):
 
     window.after(50, analyticsmulticore1234)
     window.after(1100, mostplayeddef)
+    window.after(1200, mostplayedpiedef)
+    window.after(1300, multiplayerpiedef)
+
+
 
 
 
@@ -903,4 +938,4 @@ def analytics(name, avatarurl, status, steamid64):
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198066243767"  )
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
