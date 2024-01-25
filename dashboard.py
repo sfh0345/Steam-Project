@@ -744,7 +744,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
             try:
                 canvas.create_text(
                     697.0,
-                    375.0,
+                    370.0,
                     anchor="nw",
                     text=mostplayedgamemyself[0][0],
                     fill="#FFFFFF",
@@ -752,7 +752,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
                 )
                 canvas.create_text(
                     697.0,
-                    430.0,
+                    425.0,
                     anchor="nw",
                     text=f"{int(mostplayedgamemyself[0][1] / 60)} hours on record",
                     fill="#bbbbbb",
