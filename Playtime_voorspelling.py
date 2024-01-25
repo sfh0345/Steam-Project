@@ -77,9 +77,9 @@ def voorspel_playtime(gamename):
     pred_playtime = round(y_pred / 60)
 
     # sluit de database verbinding
-    c.close()
-    close_connection(conn)
+    # c.close()
+    # close_connection(conn)
 
     return pred_playtime
 
-# print(voorspel_playtime("Grand Theft Auto V"))
+print(voorspel_playtime("Grand Theft Auto V"))
