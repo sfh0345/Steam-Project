@@ -132,7 +132,7 @@ def most_played_games_user(steamid):
 
             # Equal aspect ratio ensures the pie chart is circular
             plt.axis("equal")
-            plt.title("Top Games Based on Playtime", color=text_color)
+            plt.title("Top Games Based on Playtime", color=text_color, fontsize=14, y=1.02)
 
             # Add a legend at the bottom left of the pie chart
             plt.legend(labels, loc="lower center", bbox_to_anchor=(0.5, -0.15),

@@ -81,3 +81,5 @@ def voorspel_playtime(gamename):
     close_connection(conn)
 
     return pred_playtime
+
+# print(voorspel_playtime("Grand Theft Auto V"))
