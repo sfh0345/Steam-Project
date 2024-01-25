@@ -58,10 +58,19 @@ def linear_regression(verhouding_rating):
 
 
 def voorspel_playtime(gamename):
-    # Haal de data op uit de database
-    c.execute("SELECT verhouding_rating "
-              "FROM gameproperties "
-              "WHERE name = %s", (gamename,))
+
+    if gamename is str:
+        # Haal de data op uit de database
+        c.execute("SELECT verhouding_rating "
+                  "FROM gameproperties "
+                  "WHERE name = %s", (gamename,))
+    elif gamename is int:
+        c.execute("SELECT verhouding_rating "
+                  "FROM gameproperties "
+                  "WHERE appid = %s", (gamename,))
+    else:
+        print("Er is iets mis gegaan")
+
     result = c.fetchone()
     verhouding_rating = result[0]
     y_pred = linear_regression(verhouding_rating)

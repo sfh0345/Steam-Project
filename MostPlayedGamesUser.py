@@ -80,6 +80,9 @@ def most_played_games_user(steamid):
             playtimes = [entry[1]["playtime"] for entry in sorted_playtime_data]
             labels = [entry[1]["name"] for entry in sorted_playtime_data]
 
+            # make sure the labels are not too long
+            labels = [label[:20] + "..." if len(label) > 20 else label for label in labels]
+
             # Group items with less than 3% playtime as a single "Other" category
             threshold_percentage = 3.0
             min_playtime = total_playtime * (threshold_percentage / 100.0)
@@ -131,8 +134,8 @@ def most_played_games_user(steamid):
             plt.axis("equal")
             plt.title("Top Games Based on Playtime", color=text_color)
 
-            # add a legend at the bottom of the pie chart
-            plt.legend(labels, loc="lower center", bbox_to_anchor=(0.2, -0.15),
+            # Add a legend at the bottom left of the pie chart
+            plt.legend(labels, loc="lower center", bbox_to_anchor=(0.5, -0.15),
                        fontsize=8, mode='expand', ncol=2, frameon=False, labelcolor=text_color,
                        borderpad=0.5, handletextpad=0.5, columnspacing=0.5, handlelength=1.5, labelspacing=0.5)
 
