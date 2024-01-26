@@ -10,7 +10,7 @@ def analytics(name, avatarurl, status, steamid64):
     from getmostplayedgenres import meest_gespeelde_genres
     from sys import platform
     from getmostplayedgameself import getmostplayedgamemyself
-
+    from Playtime_voorspelling import voorspel_playtime
     try:
         from dashboard import dashboardwindow
     except:
@@ -56,26 +56,6 @@ def analytics(name, avatarurl, status, steamid64):
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if platform == "linux" or platform == "linux2":
         pass
     elif platform == "darwin":
@@ -120,30 +100,6 @@ def analytics(name, avatarurl, status, steamid64):
         image=entry_image_1
     )
 
-    # entry_image_2 = PhotoImage(
-    #     file=relative_to_assets("entry_2.png"))
-    # entry_bg_2 = canvas.create_image(
-    #     232.0,
-    #     822.5,
-    #     image=entry_image_2
-    # )
-    #
-    # entry_image_3 = PhotoImage(
-    #     file=relative_to_assets("entry_3.png"))
-    # entry_bg_3 = canvas.create_image(
-    #     641.0,
-    #     341.0,
-    #     image=entry_image_3
-    # )
-    #
-    # entry_image_4 = PhotoImage(
-    #     file=relative_to_assets("entry_4.png"))
-    # entry_bg_4 = canvas.create_image(
-    #     641.0,
-    #     822.5,
-    #     image=entry_image_4
-    # )
-
     entry_image_3 = PhotoImage(
         file=relative_to_assets("frame2/entry_3.png"))
     entry_bg_3 = canvas.create_image(
@@ -159,12 +115,6 @@ def analytics(name, avatarurl, status, steamid64):
         341.0,
         image=entry_image_30
     )
-
-
-
-
-
-
 
     entry_image_20 = PhotoImage(
         file=relative_to_assets("frame2/entry_7.png"))
@@ -191,26 +141,18 @@ def analytics(name, avatarurl, status, steamid64):
         height=48.0
     )
 
-
-
-
-
-
-
-
-
     canvas.create_text(
         67.0,
         614.0,
         anchor="nw",
-        text="Expected playtime",
+        text="Expected playtime in hours",
         fill="#FFFFFF",
         font=("Motiva Sans Bold", 25 * -1)
     )
 
     canvas.create_text(
         67.0,
-        639.5,
+        641.5,
         anchor="nw",
         text="with linair regression",
         fill="#AAAAAA",
@@ -220,7 +162,12 @@ def analytics(name, avatarurl, status, steamid64):
 
     def searchlinair(entry):
         gamename = entry
-        print(gamename)
+        voorspelde_uren = voorspel_playtime(gamename)
+        gamename1 = gamename
+        lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[1:]
+        lijstrecentenzoekopdrachten = [gamename1, voorspelde_uren] + lijstrecentenzoekopdrachten
+
+        print(lijstrecentenzoekopdrachten)
 
 
     button_image_2 = PhotoImage(
@@ -278,6 +225,7 @@ def analytics(name, avatarurl, status, steamid64):
         global entry_image_11
         global entry_image_12
         global entry_image_13
+        global lijstrecentenzoekopdrachten
 
         mostplayedgamesself = getmostplayedgamemyself(steamid64)
         if mostplayedgamesself == "Het ophalen van de favoriete game is niet gelukt." or len(mostplayedgamesself) < 1:
@@ -301,9 +249,6 @@ def analytics(name, avatarurl, status, steamid64):
                 font=("Motiva Sans regular", 19 * -1)
 
             )
-
-
-
 
         else:
 
@@ -331,13 +276,41 @@ def analytics(name, avatarurl, status, steamid64):
                     formatted_game_name21 = mostplayedgamesself[2][0]
 
 
+            lengtemostplayedgames = len(mostplayedgamesself)
+
+            if lengtemostplayedgames < 3:
+                lengtemostplayedgames1 = lengtemostplayedgames
+            else:
+                lengtemostplayedgames1 = 3
+
+            lijstrecentenzoekopdrachten = []
+
+            for i in range(lengtemostplayedgames1):
+                if i == 0:
+                    gamename = formatted_game_name01
+                if i == 1:
+                    gamename = formatted_game_name11
+                if i == 2:
+                    gamename = formatted_game_name21
+
+                lijstrecentenzoekopdrachten.append([gamename, voorspel_playtime(gamename)])
+
+            print(lijstrecentenzoekopdrachten)
+
+
+
+
+
+
+
+
             if len(mostplayedgamesself) >= 1:
 
                 canvas.create_text(
                     84.0,
                     796.0,
                     anchor="nw",
-                    text=f"{formatted_game_name01}",
+                    text=f"{lijstrecentenzoekopdrachten[0][0]}",
                     fill="#FFFFFF",
                     font=("Motiva Sans SemiBold", 29 * -1)
                 )
@@ -348,14 +321,11 @@ def analytics(name, avatarurl, status, steamid64):
                     816.0,
                     image=entry_image_11
                 )
-
-
-
                 canvas.create_text(
                     696.0,
                     814.0,
                     anchor="center",
-                    text="3000 Hours",
+                    text=f"{lijstrecentenzoekopdrachten[0][1]}",
                     fill="#FFFFFF",
                     justify="center",
                     font=("Motiva Sans SemiBold", 24 * -1)
@@ -367,7 +337,7 @@ def analytics(name, avatarurl, status, steamid64):
                     84.0,
                     882.0,
                     anchor="nw",
-                    text=f"{formatted_game_name11}",
+                    text=f"{lijstrecentenzoekopdrachten[1][0]}",
                     fill="#FFFFFF",
                     font=("Motiva Sans SemiBold", 29 * -1)
                 )
@@ -384,7 +354,7 @@ def analytics(name, avatarurl, status, steamid64):
                     696.0,
                     900.0,
                     anchor="center",
-                    text="105 Hours",
+                    text=f"{lijstrecentenzoekopdrachten[1][1]}",
                     fill="#FFFFFF",
                     justify="center",
                     font=("Motiva Sans SemiBold", 24 * -1)
@@ -396,7 +366,7 @@ def analytics(name, avatarurl, status, steamid64):
                     84.0,
                     968.0,
                     anchor="nw",
-                    text=f"{formatted_game_name21}",
+                    text=f"{lijstrecentenzoekopdrachten[2][0]}",
                     fill="#FFFFFF",
                     font=("Motiva Sans SemiBold", 29 * -1)
                 )
@@ -412,18 +382,10 @@ def analytics(name, avatarurl, status, steamid64):
                     696.0,
                     986.0,
                     anchor="center",
-                    text="10 Hours",
+                    text=f"{lijstrecentenzoekopdrachten[2][1]}",
                     fill="#FFFFFF",
                     font=("Motiva Sans SemiBold", 24 * -1)
                 )
-
-
-
-
-
-
-
-
 
     entry_image_5 = PhotoImage(
         file=relative_to_assets("entry_5.png"))
@@ -440,8 +402,6 @@ def analytics(name, avatarurl, status, steamid64):
         822.5,
         image=entry_image_6
     )
-
-
 
     entry_image_7 = PhotoImage(
         file=relative_to_assets("entry_7.png"))
@@ -526,9 +486,6 @@ def analytics(name, avatarurl, status, steamid64):
 
     image_item = canvas.create_image(52, 20, anchor=tk.NW, image=image)
 
-    # Bind click event to the image on the canvas
-    # canvas.tag_bind(image_item, "<Button-1>", backbutton)
-
     def mostplayeddef():
         # mostplayed games
         date = datetime.datetime.now()
@@ -542,6 +499,36 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_8
         )
 
+
+
+    def mostplayedpiedef():
+        # mostplayed games
+        date = datetime.datetime.now()
+        date = date.strftime("%d-%m-%Y")
+        global entry_image_88
+        entry_image_88 = PhotoImage(
+            file=f"analytics/piechart_{steamid64}_{date}.png")
+        entry_bg_7 = canvas.create_image(
+            232.0,
+            341.0,
+            image=entry_image_88
+        )
+
+
+
+
+    def multiplayerpiedef():
+        # mostplayed games
+        date = datetime.datetime.now()
+        date = date.strftime("%d-%m-%Y")
+        global entry_image_888
+        entry_image_888 = PhotoImage(
+            file=f"analytics/singleplayerormultiplayer_{steamid64}_{date}.png")
+        entry_bg_7 = canvas.create_image(
+            641.0,
+            341.0,
+            image=entry_image_888
+        )
 
     def recommendedgamesdef():
         recommendedgames = getrecommendedgames(steamid64)
@@ -732,11 +719,7 @@ def analytics(name, avatarurl, status, steamid64):
 
             )
 
-
-
         else:
-
-
 
             entry_image_20 = PhotoImage(
                 file=relative_to_assets("entry_9.png"))
@@ -753,40 +736,6 @@ def analytics(name, avatarurl, status, steamid64):
                 219,
                 image=entry_image_21
             )
-
-
-            # if len(recommendedgames[0]) > 28:
-            #     formatted_game_name_not = recommendedgames[0]
-            #     formatted_game_name0 = formatted_game_name_not[:26] + "..."
-            # else:
-            #     formatted_game_name0 = recommendedgames[0]
-            #
-            # if len(recommendedgames[1]) > 28:
-            #     formatted_game_name_not = recommendedgames[1]
-            #     formatted_game_name1 = formatted_game_name_not[:26] + "..."
-            # else:
-            #     formatted_game_name1 = recommendedgames[1]
-            #
-            # if len(recommendedgames[2]) > 28:
-            #     formatted_game_name_not = recommendedgames[2]
-            #     formatted_game_name2 = formatted_game_name_not[:26] + "..."
-            # else:
-            #     formatted_game_name2 = recommendedgames[2]
-            #
-            # if len(recommendedgames[3]) > 28:
-            #     formatted_game_name_not = recommendedgames[3]
-            #     formatted_game_name3 = formatted_game_name_not[:26] + "..."
-            # else:
-            #     formatted_game_name3 = recommendedgames[3]
-            #
-            # if len(recommendedgames[4]) > 28:
-            #     formatted_game_name_not = recommendedgames[4]
-            #     formatted_game_name4 = formatted_game_name_not[:26] + "..."
-            # else:
-            #     formatted_game_name4 = recommendedgames[4]
-
-
-
 
             canvas.create_text(
                 890.0,
@@ -885,22 +834,21 @@ def analytics(name, avatarurl, status, steamid64):
 
             )
 
-    window.after(500, recommendedgamesdef)
+    window.after(800, recommendedgamesdef)
     window.after(850, mostplayedgamesself)
-    window.after(800, mostplayedgenres)
-
-
+    window.after(825, mostplayedgenres)
 
     def analyticsmulticore1234():
         analyticsmulticore(steamid64)
 
     window.after(50, analyticsmulticore1234)
     window.after(1100, mostplayeddef)
-
+    window.after(1200, mostplayedpiedef)
+    window.after(1300, multiplayerpiedef)
 
 
     window.resizable(False, False)
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198066243767"  )
+analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
