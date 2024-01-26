@@ -59,12 +59,12 @@ def linear_regression(verhouding_rating):
 
 def voorspel_playtime(gamename):
 
-    if gamename is str:
+    if isinstance(gamename, str):
         # Haal de data op uit de database
         c.execute("SELECT verhouding_rating "
                   "FROM gameproperties "
                   "WHERE name = %s", (gamename,))
-    elif gamename is int:
+    elif isinstance(gamename, int):
         c.execute("SELECT verhouding_rating "
                   "FROM gameproperties "
                   "WHERE appid = %s", (gamename,))
