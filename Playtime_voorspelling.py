@@ -1,4 +1,5 @@
 import numpy as np
+import requests
 from database_connection import connect_to_azure_postgresql, close_connection
 
 
@@ -113,7 +114,9 @@ def voorspel_playtime(gamename):
     result = c.fetchone()
 
     if result is None:
-        raise ValueError("No data found for the given gamename or appid")
+        print(f"Geen data gevonden voor {gamename}")
+        return None
+
 
     verhouding_rating = result[0]
     y_pred = linear_regression(verhouding_rating)
@@ -125,3 +128,4 @@ def voorspel_playtime(gamename):
 
     return pred_playtime
 
+voorspel_playtime(629520)
