@@ -169,11 +169,20 @@ def analytics(name, avatarurl, status, steamid64):
         global entry_image_12
         global entry_image_13
 
+        text_widget.delete("1.0", "end")
+
         gamename = entry
         voorspelde_uren = voorspel_playtime(gamename)
         gamename1 = gamename
+
+        if len(gamename1) > 35:
+            formatted_game_name1234 = gamename1[:32] + "..."
+        else:
+            formatted_game_name1234 = gamename1
+
+
         lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[:2]
-        lijstrecentenzoekopdrachten = [[gamename1, voorspelde_uren]] + lijstrecentenzoekopdrachten
+        lijstrecentenzoekopdrachten = [[formatted_game_name1234, voorspelde_uren]] + lijstrecentenzoekopdrachten
 
         # print(lijstrecentenzoekopdrachten)
 
