@@ -114,8 +114,8 @@ def voorspel_playtime(gamename):
     result = c.fetchone()
 
     if result is None:
-        print(f"Geen data gevonden voor {gamename}")
-        return None
+        # print(f"Geen data gevonden voor {gamename}")
+        return "--"
 
 
     verhouding_rating = result[0]
@@ -123,9 +123,9 @@ def voorspel_playtime(gamename):
     pred_playtime = round(y_pred / 60)
 
     # sluit de database verbinding
-    c.close()
-    close_connection(conn)
+    # c.close()
+    # close_connection(conn)
 
-    return pred_playtime
+    return f"{pred_playtime} Hours"
 
-voorspel_playtime(629520)
+# print(voorspel_playtime(10))

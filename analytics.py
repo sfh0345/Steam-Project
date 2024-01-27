@@ -161,13 +161,126 @@ def analytics(name, avatarurl, status, steamid64):
     )
 
     def searchlinair(entry):
+        global lijstrecentenzoekopdrachten
+        global entry_image_8888
+        global entry_image_9999
+        global entry_image_10000
+        global entry_image_11
+        global entry_image_12
+        global entry_image_13
+
         gamename = entry
         voorspelde_uren = voorspel_playtime(gamename)
         gamename1 = gamename
-        lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[1:]
-        lijstrecentenzoekopdrachten = [gamename1, voorspelde_uren] + lijstrecentenzoekopdrachten
+        lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[:2]
+        lijstrecentenzoekopdrachten = [[gamename1, voorspelde_uren]] + lijstrecentenzoekopdrachten
 
-        print(lijstrecentenzoekopdrachten)
+        # print(lijstrecentenzoekopdrachten)
+
+        entry_image_8888 = PhotoImage(
+            file=relative_to_assets("frame2/entry_8.png"))
+        entry_bg_8888 = canvas.create_image(
+            436.0,
+            815.5,
+            image=entry_image_8888
+        )
+
+        entry_image_9999 = PhotoImage(
+            file=relative_to_assets("frame2/entry_9.png"))
+        entry_bg_9999 = canvas.create_image(
+            436.0,
+            901.5,
+            image=entry_image_9999
+        )
+
+        entry_image_10000 = PhotoImage(
+            file=relative_to_assets("frame2/entry_10.png"))
+        entry_bg_10000 = canvas.create_image(
+            436.0,
+            987.5,
+            image=entry_image_10000
+        )
+
+
+        text1 = canvas.create_text(
+            84.0,
+            796.0,
+            anchor="nw",
+            text=f"{lijstrecentenzoekopdrachten[0][0]}",
+            fill="#FFFFFF",
+            font=("Motiva Sans SemiBold", 29 * -1)
+        )
+        entry_image_11 = PhotoImage(
+            file=relative_to_assets("frame2/entry_11.png"))
+        entry_bg_11 = canvas.create_image(
+            698.0,
+            816.0,
+            image=entry_image_11
+        )
+        text11 = canvas.create_text(
+            696.0,
+            814.0,
+            anchor="center",
+            text=f"{lijstrecentenzoekopdrachten[0][1]}",
+            fill="#FFFFFF",
+            justify="center",
+            font=("Motiva Sans SemiBold", 24 * -1)
+        )
+
+        text21 = canvas.create_text(
+            84.0,
+            882.0,
+            anchor="nw",
+            text=f"{lijstrecentenzoekopdrachten[1][0]}",
+            fill="#FFFFFF",
+            font=("Motiva Sans SemiBold", 29 * -1)
+        )
+        entry_image_12 = PhotoImage(
+            file=relative_to_assets("frame2/entry_12.png"))
+        entry_bg_12 = canvas.create_image(
+            698.0,
+            902.0,
+            image=entry_image_12
+        )
+
+        text22 = canvas.create_text(
+            696.0,
+            900.0,
+            anchor="center",
+            text=f"{lijstrecentenzoekopdrachten[1][1]}",
+            fill="#FFFFFF",
+            justify="center",
+            font=("Motiva Sans SemiBold", 24 * -1)
+        )
+
+        text31 = canvas.create_text(
+            84.0,
+            968.0,
+            anchor="nw",
+            text=f"{lijstrecentenzoekopdrachten[2][0]}",
+            fill="#FFFFFF",
+            font=("Motiva Sans SemiBold", 29 * -1)
+        )
+        entry_image_13 = PhotoImage(
+            file=relative_to_assets("frame2/entry_13.png"))
+        entry_bg_13 = canvas.create_image(
+            698.0,
+            988.0,
+            image=entry_image_13
+        )
+
+        text32 = canvas.create_text(
+            696.0,
+            986.0,
+            anchor="center",
+            text=f"{lijstrecentenzoekopdrachten[2][1]}",
+            fill="#FFFFFF",
+            font=("Motiva Sans SemiBold", 24 * -1)
+        )
+
+
+
+
 
 
     button_image_2 = PhotoImage(
@@ -226,6 +339,12 @@ def analytics(name, avatarurl, status, steamid64):
         global entry_image_12
         global entry_image_13
         global lijstrecentenzoekopdrachten
+        global text_var
+
+
+
+
+
 
         mostplayedgamesself = getmostplayedgamemyself(steamid64)
         if mostplayedgamesself == "Het ophalen van de favoriete game is niet gelukt." or len(mostplayedgamesself) < 1:
@@ -295,22 +414,17 @@ def analytics(name, avatarurl, status, steamid64):
 
                 lijstrecentenzoekopdrachten.append([gamename, voorspel_playtime(gamename)])
 
-            print(lijstrecentenzoekopdrachten)
-
-
-
-
-
+            # print(lijstrecentenzoekopdrachten)
 
 
 
             if len(mostplayedgamesself) >= 1:
 
-                canvas.create_text(
+                text1 = canvas.create_text(
                     84.0,
                     796.0,
                     anchor="nw",
-                    text=f"{lijstrecentenzoekopdrachten[0][0]}",
+                    text= f"{lijstrecentenzoekopdrachten[0][0]}",
                     fill="#FFFFFF",
                     font=("Motiva Sans SemiBold", 29 * -1)
                 )
@@ -321,7 +435,7 @@ def analytics(name, avatarurl, status, steamid64):
                     816.0,
                     image=entry_image_11
                 )
-                canvas.create_text(
+                text11 = canvas.create_text(
                     696.0,
                     814.0,
                     anchor="center",
@@ -333,7 +447,7 @@ def analytics(name, avatarurl, status, steamid64):
 
 
             if len(mostplayedgamesself) >= 2:
-                canvas.create_text(
+                text21 = canvas.create_text(
                     84.0,
                     882.0,
                     anchor="nw",
@@ -350,7 +464,7 @@ def analytics(name, avatarurl, status, steamid64):
                 )
 
 
-                canvas.create_text(
+                text22 = canvas.create_text(
                     696.0,
                     900.0,
                     anchor="center",
@@ -362,7 +476,7 @@ def analytics(name, avatarurl, status, steamid64):
 
             if len(mostplayedgamesself) >= 3:
 
-                canvas.create_text(
+                text31 = canvas.create_text(
                     84.0,
                     968.0,
                     anchor="nw",
@@ -378,7 +492,7 @@ def analytics(name, avatarurl, status, steamid64):
                     image=entry_image_13
                 )
 
-                canvas.create_text(
+                text32 = canvas.create_text(
                     696.0,
                     986.0,
                     anchor="center",
@@ -846,9 +960,8 @@ def analytics(name, avatarurl, status, steamid64):
     window.after(1200, mostplayedpiedef)
     window.after(1300, multiplayerpiedef)
 
-
     window.resizable(False, False)
     window.mainloop()
 
 
-analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
