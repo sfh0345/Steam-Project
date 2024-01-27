@@ -175,7 +175,7 @@ def analytics(name, avatarurl, status, steamid64):
         lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[:2]
         lijstrecentenzoekopdrachten = [[gamename1, voorspelde_uren]] + lijstrecentenzoekopdrachten
 
-        print(lijstrecentenzoekopdrachten)
+        # print(lijstrecentenzoekopdrachten)
 
         entry_image_8888 = PhotoImage(
             file=relative_to_assets("frame2/entry_8.png"))
@@ -414,7 +414,7 @@ def analytics(name, avatarurl, status, steamid64):
 
                 lijstrecentenzoekopdrachten.append([gamename, voorspel_playtime(gamename)])
 
-            print(lijstrecentenzoekopdrachten)
+            # print(lijstrecentenzoekopdrachten)
 
 
 
@@ -964,4 +964,4 @@ def analytics(name, avatarurl, status, steamid64):
     window.mainloop()
 
 
-analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
