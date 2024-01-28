@@ -17,7 +17,7 @@ class LcdApi:
     # HD44780 LCD controller command set
 
     LCD_CLR = 0x01              # DB0: clear display
-    LCD_HOME = 0x02             # DB1: return to home position
+    LCD_HOME = 0x02             # DB1: return to Pico position
 
     LCD_ENTRY_MODE = 0x04       # DB2: set entry mode
     LCD_ENTRY_INC = 0x02        # --DB1: increment
@@ -210,3 +210,4 @@ class LcdApi:
     def hal_sleep_us(self, usecs):
         """Sleep for some time (given in microseconds)."""
         time.sleep_us(usecs)  # NOTE this is not part of Standard Python library, specific hal layers will need to override this
+

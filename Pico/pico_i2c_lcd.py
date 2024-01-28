@@ -1,7 +1,8 @@
 import utime
 import gc
 
-from lcd_api2 import LcdApi
+from lcd_api import LcdApi
+from machine import I2C
 
 # PCF8574 pin definitions
 MASK_RS = 0x01  # P0
@@ -67,7 +68,7 @@ class I2cLcd(LcdApi):
         self.i2c.writeto(self.i2c_addr, bytes([byte | MASK_E]))
         self.i2c.writeto(self.i2c_addr, bytes([byte]))
         if cmd <= 3:
-            # The home and clear commands require a worst case delay of 4.1 msec
+            # The Pico and clear commands require a worst case delay of 4.1 msec
             utime.sleep_ms(5)
         gc.collect()
 
@@ -84,3 +85,4 @@ class I2cLcd(LcdApi):
         self.i2c.writeto(self.i2c_addr, bytes([byte | MASK_E]))
         self.i2c.writeto(self.i2c_addr, bytes([byte]))
         gc.collect()
+

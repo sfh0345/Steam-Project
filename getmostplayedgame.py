@@ -114,8 +114,8 @@ def getmostplayed(steamID):
         y_pos = np.arange(len(names))
         plt.bar(y_pos, playtime, align='center', alpha=0.9, color='#6AACF3')
         plt.xticks(y_pos, names, fontsize=10, rotation=45, ha="right", color='#FFFFFF')
-        plt.ylabel('Uren gespeeld', fontsize=14, labelpad=10, color='#FFFFFF')
-        plt.title('Meest gespeeld in de laatste 2 weken', fontsize=13, pad=17, color='#FFFFFF')
+        plt.ylabel('Hours played', fontsize=14, labelpad=10, color='#FFFFFF')
+        plt.title('Most played games in the last 2 weeks by friends', fontsize=13, pad=17, color='#FFFFFF')
         plt.tight_layout()
 
         # geef de ticks de juiste kleur

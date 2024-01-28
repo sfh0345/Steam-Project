@@ -13,7 +13,7 @@ def connect_to_azure_postgresql():
         }
 
         connection = psycopg2.connect(**connection_params)
-        print("Connected to the database!")
+
 
         return connection
 
@@ -22,10 +22,4 @@ def connect_to_azure_postgresql():
         raise
 
 def close_connection(connection):
-    try:
-        if connection:
-            connection.close()
-            print("Connection closed.")
-    except Exception as e:
-        print(f"Error: Unable to close the connection. {e}")
-        raise
+    pass
