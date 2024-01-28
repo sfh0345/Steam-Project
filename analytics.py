@@ -169,123 +169,205 @@ def analytics(name, avatarurl, status, steamid64):
         global entry_image_12
         global entry_image_13
 
-        text_widget.delete("1.0", "end")
-
-        gamename = entry
-        voorspelde_uren = voorspel_playtime(gamename)
-        gamename1 = gamename
-
-        if len(gamename1) > 35:
-            formatted_game_name1234 = gamename1[:32] + "..."
+        if entry.strip() == "":
+            text_widget.delete("1.0", "end")
         else:
-            formatted_game_name1234 = gamename1
+            text_widget.delete("1.0", "end")
+
+            gamename = entry
+            voorspelde_uren = voorspel_playtime(gamename)
+            gamename1 = gamename
+
+            if len(gamename1) > 35:
+                formatted_game_name1234 = gamename1[:32] + "..."
+            else:
+                formatted_game_name1234 = gamename1
+
+            lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[:2]
+            lijstrecentenzoekopdrachten = [[formatted_game_name1234, voorspelde_uren]] + lijstrecentenzoekopdrachten
+
+            # print(lijstrecentenzoekopdrachten)
+
+            entry_image_8888 = PhotoImage(
+                file=relative_to_assets("frame2/entry_8.png"))
+            entry_bg_8888 = canvas.create_image(
+                436.0,
+                815.5,
+                image=entry_image_8888
+            )
+
+            entry_image_9999 = PhotoImage(
+                file=relative_to_assets("frame2/entry_9.png"))
+            entry_bg_9999 = canvas.create_image(
+                436.0,
+                901.5,
+                image=entry_image_9999
+            )
+
+            entry_image_10000 = PhotoImage(
+                file=relative_to_assets("frame2/entry_10.png"))
+            entry_bg_10000 = canvas.create_image(
+                436.0,
+                987.5,
+                image=entry_image_10000
+            )
 
 
-        lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[:2]
-        lijstrecentenzoekopdrachten = [[formatted_game_name1234, voorspelde_uren]] + lijstrecentenzoekopdrachten
 
-        # print(lijstrecentenzoekopdrachten)
+            if lijstrecentenzoekopdrachten[0][1] == "--":
+                text1 = canvas.create_text(
+                    84.0,
+                    796.0,
+                    anchor="nw",
+                    text=f"{lijstrecentenzoekopdrachten[0][0]}",
+                    fill="#AAAAAA",
+                    font=("Motiva Sans SemiBold", 29 * -1)
+                )
+                entry_image_11 = PhotoImage(
+                    file=relative_to_assets("frame2/entry_11.png"))
+                entry_bg_11 = canvas.create_image(
+                    698.0,
+                    816.0,
+                    image=entry_image_11
+                )
+                text11 = canvas.create_text(
+                    696.0,
+                    814.0,
+                    anchor="center",
+                    text=f"{lijstrecentenzoekopdrachten[0][1]}",
+                    fill="#FFFFFF",
+                    justify="center",
+                    font=("Motiva Sans SemiBold", 24 * -1)
+                )
+            else:
+                text1 = canvas.create_text(
+                    84.0,
+                    796.0,
+                    anchor="nw",
+                    text=f"{lijstrecentenzoekopdrachten[0][0]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans SemiBold", 29 * -1)
+                )
+                entry_image_11 = PhotoImage(
+                    file=relative_to_assets("frame2/entry_11.png"))
+                entry_bg_11 = canvas.create_image(
+                    698.0,
+                    816.0,
+                    image=entry_image_11
+                )
+                text11 = canvas.create_text(
+                    696.0,
+                    814.0,
+                    anchor="center",
+                    text=f"{lijstrecentenzoekopdrachten[0][1]}",
+                    fill="#FFFFFF",
+                    justify="center",
+                    font=("Motiva Sans SemiBold", 24 * -1)
+                )
 
-        entry_image_8888 = PhotoImage(
-            file=relative_to_assets("frame2/entry_8.png"))
-        entry_bg_8888 = canvas.create_image(
-            436.0,
-            815.5,
-            image=entry_image_8888
-        )
 
-        entry_image_9999 = PhotoImage(
-            file=relative_to_assets("frame2/entry_9.png"))
-        entry_bg_9999 = canvas.create_image(
-            436.0,
-            901.5,
-            image=entry_image_9999
-        )
+            if lijstrecentenzoekopdrachten[1][1] == "--":
+                text21 = canvas.create_text(
+                    84.0,
+                    882.0,
+                    anchor="nw",
+                    text=f"{lijstrecentenzoekopdrachten[1][0]}",
+                    fill="#AAAAAA",
+                    font=("Motiva Sans SemiBold", 29 * -1)
+                )
+                entry_image_12 = PhotoImage(
+                    file=relative_to_assets("frame2/entry_12.png"))
+                entry_bg_12 = canvas.create_image(
+                    698.0,
+                    902.0,
+                    image=entry_image_12
+                )
 
-        entry_image_10000 = PhotoImage(
-            file=relative_to_assets("frame2/entry_10.png"))
-        entry_bg_10000 = canvas.create_image(
-            436.0,
-            987.5,
-            image=entry_image_10000
-        )
+                text22 = canvas.create_text(
+                    696.0,
+                    900.0,
+                    anchor="center",
+                    text=f"{lijstrecentenzoekopdrachten[1][1]}",
+                    fill="#FFFFFF",
+                    justify="center",
+                    font=("Motiva Sans SemiBold", 24 * -1)
+                )
+            else:
+                text21 = canvas.create_text(
+                    84.0,
+                    882.0,
+                    anchor="nw",
+                    text=f"{lijstrecentenzoekopdrachten[1][0]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans SemiBold", 29 * -1)
+                )
+                entry_image_12 = PhotoImage(
+                    file=relative_to_assets("frame2/entry_12.png"))
+                entry_bg_12 = canvas.create_image(
+                    698.0,
+                    902.0,
+                    image=entry_image_12
+                )
+                text22 = canvas.create_text(
+                    696.0,
+                    900.0,
+                    anchor="center",
+                    text=f"{lijstrecentenzoekopdrachten[1][1]}",
+                    fill="#FFFFFF",
+                    justify="center",
+                    font=("Motiva Sans SemiBold", 24 * -1)
+                )
 
+            if lijstrecentenzoekopdrachten[2][1] == "--":
+                text31 = canvas.create_text(
+                    84.0,
+                    968.0,
+                    anchor="nw",
+                    text=f"{lijstrecentenzoekopdrachten[2][0]}",
+                    fill="#AAAAAA",
+                    font=("Motiva Sans SemiBold", 29 * -1)
+                )
+                entry_image_13 = PhotoImage(
+                    file=relative_to_assets("frame2/entry_13.png"))
+                entry_bg_13 = canvas.create_image(
+                    698.0,
+                    988.0,
+                    image=entry_image_13
+                )
 
-        text1 = canvas.create_text(
-            84.0,
-            796.0,
-            anchor="nw",
-            text=f"{lijstrecentenzoekopdrachten[0][0]}",
-            fill="#FFFFFF",
-            font=("Motiva Sans SemiBold", 29 * -1)
-        )
-        entry_image_11 = PhotoImage(
-            file=relative_to_assets("frame2/entry_11.png"))
-        entry_bg_11 = canvas.create_image(
-            698.0,
-            816.0,
-            image=entry_image_11
-        )
-        text11 = canvas.create_text(
-            696.0,
-            814.0,
-            anchor="center",
-            text=f"{lijstrecentenzoekopdrachten[0][1]}",
-            fill="#FFFFFF",
-            justify="center",
-            font=("Motiva Sans SemiBold", 24 * -1)
-        )
+                text32 = canvas.create_text(
+                    696.0,
+                    986.0,
+                    anchor="center",
+                    text=f"{lijstrecentenzoekopdrachten[2][1]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans SemiBold", 24 * -1)
+                )
+            else:
+                text31 = canvas.create_text(
+                    84.0,
+                    968.0,
+                    anchor="nw",
+                    text=f"{lijstrecentenzoekopdrachten[2][0]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans SemiBold", 29 * -1)
+                )
+                entry_image_13 = PhotoImage(
+                    file=relative_to_assets("frame2/entry_13.png"))
+                entry_bg_13 = canvas.create_image(
+                    698.0,
+                    988.0,
+                    image=entry_image_13
+                )
 
-        text21 = canvas.create_text(
-            84.0,
-            882.0,
-            anchor="nw",
-            text=f"{lijstrecentenzoekopdrachten[1][0]}",
-            fill="#FFFFFF",
-            font=("Motiva Sans SemiBold", 29 * -1)
-        )
-        entry_image_12 = PhotoImage(
-            file=relative_to_assets("frame2/entry_12.png"))
-        entry_bg_12 = canvas.create_image(
-            698.0,
-            902.0,
-            image=entry_image_12
-        )
-
-        text22 = canvas.create_text(
-            696.0,
-            900.0,
-            anchor="center",
-            text=f"{lijstrecentenzoekopdrachten[1][1]}",
-            fill="#FFFFFF",
-            justify="center",
-            font=("Motiva Sans SemiBold", 24 * -1)
-        )
-
-        text31 = canvas.create_text(
-            84.0,
-            968.0,
-            anchor="nw",
-            text=f"{lijstrecentenzoekopdrachten[2][0]}",
-            fill="#FFFFFF",
-            font=("Motiva Sans SemiBold", 29 * -1)
-        )
-        entry_image_13 = PhotoImage(
-            file=relative_to_assets("frame2/entry_13.png"))
-        entry_bg_13 = canvas.create_image(
-            698.0,
-            988.0,
-            image=entry_image_13
-        )
-
-        text32 = canvas.create_text(
-            696.0,
-            986.0,
-            anchor="center",
-            text=f"{lijstrecentenzoekopdrachten[2][1]}",
-            fill="#FFFFFF",
-            font=("Motiva Sans SemiBold", 24 * -1)
-        )
+                text32 = canvas.create_text(
+                    696.0,
+                    986.0,
+                    anchor="center",
+                    text=f"{lijstrecentenzoekopdrachten[2][1]}",
+                    fill="#FFFFFF",
+                    font=("Motiva Sans SemiBold", 24 * -1)
+                )
 
 
 
@@ -429,86 +511,162 @@ def analytics(name, avatarurl, status, steamid64):
 
             if len(mostplayedgamesself) >= 1:
 
-                text1 = canvas.create_text(
-                    84.0,
-                    796.0,
-                    anchor="nw",
-                    text= f"{lijstrecentenzoekopdrachten[0][0]}",
-                    fill="#FFFFFF",
-                    font=("Motiva Sans SemiBold", 29 * -1)
-                )
-                entry_image_11 = PhotoImage(
-                    file=relative_to_assets("frame2/entry_11.png"))
-                entry_bg_11 = canvas.create_image(
-                    698.0,
-                    816.0,
-                    image=entry_image_11
-                )
-                text11 = canvas.create_text(
-                    696.0,
-                    814.0,
-                    anchor="center",
-                    text=f"{lijstrecentenzoekopdrachten[0][1]}",
-                    fill="#FFFFFF",
-                    justify="center",
-                    font=("Motiva Sans SemiBold", 24 * -1)
-                )
+                if lijstrecentenzoekopdrachten[0][1] == "--":
+                    text1 = canvas.create_text(
+                        84.0,
+                        796.0,
+                        anchor="nw",
+                        text=f"{lijstrecentenzoekopdrachten[0][0]}",
+                        fill="#AAAAAA",
+                        font=("Motiva Sans SemiBold", 29 * -1)
+                    )
+                    entry_image_11 = PhotoImage(
+                        file=relative_to_assets("frame2/entry_11.png"))
+                    entry_bg_11 = canvas.create_image(
+                        698.0,
+                        816.0,
+                        image=entry_image_11
+                    )
+                    text11 = canvas.create_text(
+                        696.0,
+                        814.0,
+                        anchor="center",
+                        text=f"{lijstrecentenzoekopdrachten[0][1]}",
+                        fill="#FFFFFF",
+                        justify="center",
+                        font=("Motiva Sans SemiBold", 24 * -1)
+                    )
+                else:
+                    text1 = canvas.create_text(
+                        84.0,
+                        796.0,
+                        anchor="nw",
+                        text=f"{lijstrecentenzoekopdrachten[0][0]}",
+                        fill="#FFFFFF",
+                        font=("Motiva Sans SemiBold", 29 * -1)
+                    )
+                    entry_image_11 = PhotoImage(
+                        file=relative_to_assets("frame2/entry_11.png"))
+                    entry_bg_11 = canvas.create_image(
+                        698.0,
+                        816.0,
+                        image=entry_image_11
+                    )
+                    text11 = canvas.create_text(
+                        696.0,
+                        814.0,
+                        anchor="center",
+                        text=f"{lijstrecentenzoekopdrachten[0][1]}",
+                        fill="#FFFFFF",
+                        justify="center",
+                        font=("Motiva Sans SemiBold", 24 * -1)
+                    )
 
 
             if len(mostplayedgamesself) >= 2:
-                text21 = canvas.create_text(
-                    84.0,
-                    882.0,
-                    anchor="nw",
-                    text=f"{lijstrecentenzoekopdrachten[1][0]}",
-                    fill="#FFFFFF",
-                    font=("Motiva Sans SemiBold", 29 * -1)
-                )
-                entry_image_12 = PhotoImage(
-                    file=relative_to_assets("frame2/entry_12.png"))
-                entry_bg_12 = canvas.create_image(
-                    698.0,
-                    902.0,
-                    image=entry_image_12
-                )
+                if lijstrecentenzoekopdrachten[1][1] == "--":
+                    text21 = canvas.create_text(
+                        84.0,
+                        882.0,
+                        anchor="nw",
+                        text=f"{lijstrecentenzoekopdrachten[1][0]}",
+                        fill="#AAAAAA",
+                        font=("Motiva Sans SemiBold", 29 * -1)
+                    )
+                    entry_image_12 = PhotoImage(
+                        file=relative_to_assets("frame2/entry_12.png"))
+                    entry_bg_12 = canvas.create_image(
+                        698.0,
+                        902.0,
+                        image=entry_image_12
+                    )
 
-
-                text22 = canvas.create_text(
-                    696.0,
-                    900.0,
-                    anchor="center",
-                    text=f"{lijstrecentenzoekopdrachten[1][1]}",
-                    fill="#FFFFFF",
-                    justify="center",
-                    font=("Motiva Sans SemiBold", 24 * -1)
-                )
+                    text22 = canvas.create_text(
+                        696.0,
+                        900.0,
+                        anchor="center",
+                        text=f"{lijstrecentenzoekopdrachten[1][1]}",
+                        fill="#FFFFFF",
+                        justify="center",
+                        font=("Motiva Sans SemiBold", 24 * -1)
+                    )
+                else:
+                    text21 = canvas.create_text(
+                        84.0,
+                        882.0,
+                        anchor="nw",
+                        text=f"{lijstrecentenzoekopdrachten[1][0]}",
+                        fill="#FFFFFF",
+                        font=("Motiva Sans SemiBold", 29 * -1)
+                    )
+                    entry_image_12 = PhotoImage(
+                        file=relative_to_assets("frame2/entry_12.png"))
+                    entry_bg_12 = canvas.create_image(
+                        698.0,
+                        902.0,
+                        image=entry_image_12
+                    )
+                    text22 = canvas.create_text(
+                        696.0,
+                        900.0,
+                        anchor="center",
+                        text=f"{lijstrecentenzoekopdrachten[1][1]}",
+                        fill="#FFFFFF",
+                        justify="center",
+                        font=("Motiva Sans SemiBold", 24 * -1)
+                    )
 
             if len(mostplayedgamesself) >= 3:
+                if lijstrecentenzoekopdrachten[2][1] == "--":
+                    text31 = canvas.create_text(
+                        84.0,
+                        968.0,
+                        anchor="nw",
+                        text=f"{lijstrecentenzoekopdrachten[2][0]}",
+                        fill="#AAAAAA",
+                        font=("Motiva Sans SemiBold", 29 * -1)
+                    )
+                    entry_image_13 = PhotoImage(
+                        file=relative_to_assets("frame2/entry_13.png"))
+                    entry_bg_13 = canvas.create_image(
+                        698.0,
+                        988.0,
+                        image=entry_image_13
+                    )
 
-                text31 = canvas.create_text(
-                    84.0,
-                    968.0,
-                    anchor="nw",
-                    text=f"{lijstrecentenzoekopdrachten[2][0]}",
-                    fill="#FFFFFF",
-                    font=("Motiva Sans SemiBold", 29 * -1)
-                )
-                entry_image_13 = PhotoImage(
-                    file=relative_to_assets("frame2/entry_13.png"))
-                entry_bg_13 = canvas.create_image(
-                    698.0,
-                    988.0,
-                    image=entry_image_13
-                )
+                    text32 = canvas.create_text(
+                        696.0,
+                        986.0,
+                        anchor="center",
+                        text=f"{lijstrecentenzoekopdrachten[2][1]}",
+                        fill="#FFFFFF",
+                        font=("Motiva Sans SemiBold", 24 * -1)
+                    )
+                else:
+                    text31 = canvas.create_text(
+                        84.0,
+                        968.0,
+                        anchor="nw",
+                        text=f"{lijstrecentenzoekopdrachten[2][0]}",
+                        fill="#FFFFFF",
+                        font=("Motiva Sans SemiBold", 29 * -1)
+                    )
+                    entry_image_13 = PhotoImage(
+                        file=relative_to_assets("frame2/entry_13.png"))
+                    entry_bg_13 = canvas.create_image(
+                        698.0,
+                        988.0,
+                        image=entry_image_13
+                    )
 
-                text32 = canvas.create_text(
-                    696.0,
-                    986.0,
-                    anchor="center",
-                    text=f"{lijstrecentenzoekopdrachten[2][1]}",
-                    fill="#FFFFFF",
-                    font=("Motiva Sans SemiBold", 24 * -1)
-                )
+                    text32 = canvas.create_text(
+                        696.0,
+                        986.0,
+                        anchor="center",
+                        text=f"{lijstrecentenzoekopdrachten[2][1]}",
+                        fill="#FFFFFF",
+                        font=("Motiva Sans SemiBold", 24 * -1)
+                    )
 
     entry_image_5 = PhotoImage(
         file=relative_to_assets("entry_5.png"))
