@@ -186,7 +186,7 @@ def analytics(name, avatarurl, status, steamid64):
             lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[:2]
             lijstrecentenzoekopdrachten = [[formatted_game_name1234, voorspelde_uren]] + lijstrecentenzoekopdrachten
 
-            print(lijstrecentenzoekopdrachten)
+            # print(lijstrecentenzoekopdrachten)
 
             entry_image_8888 = PhotoImage(
                 file=relative_to_assets("frame2/entry_8.png"))
