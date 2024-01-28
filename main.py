@@ -35,6 +35,20 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame0")
 #path naar de gecurvde vierkanten pngs
 
 
+
+def start_pico():
+    available_ports = list_ports.comports()
+    selected_port = available_ports[0].device
+
+    # Open een verbinding met de Pico
+    with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
+        if serial_port.isOpen():
+            # Stuur een commando om master.py uit te voeren
+            serial_port.write(b'exec(open("master.py").read())\r\n')
+            # Sluit verbinding met de Pico
+            serial_port.close()
+
+
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 #define wat hoort bij het path
@@ -84,6 +98,7 @@ while loop1234:
         pico_port_index = input("Op welke poort is de Raspberry Pi Pico verbonden? ")
         try:
             pico_port = serial_ports[int(pico_port_index)].device
+            start_pico()
         except:
             rasberry = "nee"
             print("[ERROR] De Rasberry Pi Pico is niet gevonden. Programma start zonder SteamCard...")
