@@ -5,9 +5,15 @@ import utime
 import neopixel
 import time
 
+"""
+This is the main code for the components connected to the Pico. It is used to display messages and control the neopixel during the login process for Steam. 
+Additionally, it controls the neopixel according to online friends after the user has successfully logged in.
+
+"""
+
 # Configure parameters for the NeoPixel
 np = neopixel.NeoPixel(Pin(21), 30)
-brightness = 1  # Pas de helderheid aan naar 50%
+brightness = 1  # Set the brightness to 50%
 num_leds = 30
 
 # Configure parameters for the RFID
