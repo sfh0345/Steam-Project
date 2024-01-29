@@ -4,10 +4,10 @@ def connect_to_azure_postgresql2():
     try:
         # Replace the placeholder values with your actual Azure PostgreSQL connection details
         connection_params = {
-            "database": "DBsrv",
+            "database": "DBsrv2",
             "user": "postgres",
             "password": "Steam2023!@#",
-            "host": "51.11.163.195",
+            "host": "172.167.204.36",
             "port": 5432,  # Default PostgreSQL port
             "sslmode": "require",
         }
