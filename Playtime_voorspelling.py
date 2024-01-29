@@ -166,7 +166,7 @@ def voorspel_playtime(gamename):
     y_pred = linear_regression(verhouding_rating)
     pred_playtime = round(y_pred / 60)
 
-    return pred_playtime, name
+    return f"{pred_playtime} Hours", name
 
-
-print(voorspel_playtime(1979280))
+# for testing purposes the code can also be run directly
+# print(voorspel_playtime(1979280))

@@ -1,9 +1,6 @@
 import requests
 import psycopg2
 from database_connection import connect_to_azure_postgresql, close_connection
-""" 
-    Deze functie geeft de top 5 genres van een gebruiker terug op basis van de speeltijd van hun gespeelde games.
-"""
 
 # Maak een verbinding met de PostgreSQL-database. Staat op localhost!!
 conn = connect_to_azure_postgresql()
@@ -11,8 +8,10 @@ conn = connect_to_azure_postgresql()
 # Maak een cursor
 c = conn.cursor()
 
-
 def meest_gespeelde_genres(steamid):
+    """
+        Deze functie geeft de top 5 genres van een gebruiker terug op basis van de speeltijd van hun gespeelde games.
+    """
     try:
         # Haal de speeltijd op van alle games die door de gebruiker zijn gespeeld
         playtime_games_url = f"http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=B5A67039860C1613632C4795B6C36245&steamid={steamid}&format=json"
