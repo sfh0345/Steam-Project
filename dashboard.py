@@ -65,7 +65,90 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
 
+    def friends_on_LED():
+        from getuserfriendlist import get_friend_usernames
+        var = get_friend_usernames(steamid64)
+        friend_list_names = len(var[0])
+        friend_list_count = var[1]
+        friend_list = friend_list_names + friend_list_count
+        return friend_list
 
+    # def read_serial(port):
+    #     line = port.read(1000)
+    #     return line.decode()
+
+    from serial.tools import list_ports
+    import serial
+
+    # detecteer automatisch alle beschikbare serial poorten
+    available_ports = list_ports.comports()
+    if not available_ports:
+        print("[ERROR] Geen serial ports gevonden!")
+        exit()
+
+    # selecteer de eerste beschikbare poort
+    selected_port = available_ports[0].device
+
+    # Open een connectie met de serial poort
+    with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
+        # Gebruik de poort als deze open/beschikbaar is
+        if serial_port.isOpen():
+            # print("[INFO] De serial port wordt gebruikt:", serial_port.name)
+
+            # stuur de data automatisch zonder input te geven met een commando
+            data = f"O{friends_on_LED()}\r"
+            # print(data)
+            serial_port.write(data.encode())
+        # pico_output = read_serial(serial_port)
+        # pico_output = pico_output.replace('\r\n', ' ')
+
+        # printen om de te versturen data te zien (om te testen)
+        # print("[PICO] " + pico_output)
+
+        # Sluit de connectie met Pico
+        serial_port.close()
+        # print("[INFO] De serial port wordt gesloten!")
+
+    def close_pico():
+        import serial
+        from serial.tools import list_ports
+        import time
+
+        # def read_serial(port):
+        #     line = port.read(1000)
+        #     return line.decode()
+
+        # detecteer automatisch alle beschikbare serial poorten
+        available_ports = list_ports.comports()
+        if not available_ports:
+            print("[ERROR] Geen serial ports gevonden!")
+            exit()
+
+        # selecteer de eerste beschikbare poort
+        selected_port = available_ports[0].device
+
+        # Open een connectie met de serial poort
+        with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1,
+                           timeout=1) as serial_port:
+            # Gebruik de poort als deze open/beschikbaar is
+            if serial_port.isOpen():
+                # print("[INFO] De serial port wordt gebruikt:", serial_port.name)
+
+                serial_port.write(b'exec(open("main.py").read())\r\n')
+
+                # Wait for the script execution to complete (adjust the delay as needed)
+                # time.sleep(5)
+
+                # Send Ctrl+C to interrupt execution and reset
+                serial_port.write(b'\x03')
+                time.sleep(1)  # Adjust the delay as needed
+
+            else:
+                # Open de poort als deze niet open is
+                # print("[INFO] De serial port wordt geopend:", serial_port.name, "...")
+                serial_port.open()
+
+                serial_port.write(b'exec(open("main.py").read())\r\n')
 
     def moreinfodashboard():
         window.destroy()
@@ -939,7 +1022,13 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         height=54.0
     )
     window.resizable(False, False)
+
+    friends_on_LED()
     window.mainloop()
+    close_pico()
+
+
+
 
 # dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198343709779"  )
 
