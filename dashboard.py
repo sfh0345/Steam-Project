@@ -910,5 +910,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     window.resizable(False, False)
     window.mainloop()
 
+
+# for testing purposes the window can also be run directly
 # dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198343709779"  )
 

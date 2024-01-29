@@ -1,3 +1,9 @@
+"""
+Create a function that handles the friendlist of a user
+this function handles the json file and gets the information
+then creates a list of online friends and put the remaining friends as a number after
+"""
+
 def get_friend_usernames(steamid64):
     import requests
     # Get the friend list
@@ -56,5 +62,5 @@ def get_friend_usernames(steamid64):
         return 10
         print(f"Error 2: {response.status_code}")
 
-# Replace with your API key and the Steam ID of the user
+# for testing purposes the code can also be run directly
 # print(get_friend_usernames("76561197960435530"))

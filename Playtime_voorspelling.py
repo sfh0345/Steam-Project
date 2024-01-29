@@ -168,5 +168,5 @@ def voorspel_playtime(gamename):
 
     return f"{pred_playtime} Hours", name
 
-
+# for testing purposes the code can also be run directly
 # print(voorspel_playtime(1979280))

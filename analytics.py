@@ -1179,7 +1179,7 @@ def analytics(name, avatarurl, status, steamid64):
     """
     Create a function for multithreading, this is needed to fasten up the loading of the graphs.
     Oterwise function1, function2, function3 would all load after each other. now all the functions are
-    loaded at the same time resulting a higher cpu ussage but also 7x higher loading speeds
+    loaded at the same time resulting a higher cpu usage but also 7x higher loading speeds
     """
     def analyticsmulticore1234():
         analyticsmulticore(steamid64)

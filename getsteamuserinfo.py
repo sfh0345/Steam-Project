@@ -1,10 +1,16 @@
 import requests
 
+"""
+Create a function to get the basic information about the user
+"""
 def get_player_summaries(steamid64):
     url = f'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=B5A67039860C1613632C4795B6C36245&steamids={steamid64}'
     response = requests.get(url)
     return response.json()
 
+"""
+Create a function to handle the json and get the name avatarurl and status of the user
+"""
 def getsteamuserinfo(steamid64):
 
     player_data = get_player_summaries(steamid64)
