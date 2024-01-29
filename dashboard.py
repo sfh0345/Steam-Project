@@ -65,8 +65,6 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
 
-
-
     def moreinfodashboard():
         window.destroy()
         analytics(name, avatarurl, status, steamid64)
@@ -112,13 +110,6 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         fill="#102431",
         outline="")
 
-    # canvas.create_rectangle(
-    #     47.0,
-    #     29.0,
-    #     415.0,
-    #     122.0,
-    #     fill="#000000",
-    #     outline="")
     image_path = "assets\logo_steam.png"
     image = add_image_to_canvas1(canvas, image_path, x=55, y=40, width=267, height=77)
 
@@ -652,7 +643,6 @@ def dashboardwindow(name, avatarurl, status, steamid64):
             if friendlist[0][7][2] is not None:
                 canvas.create_text(
                     86.0,
-                    # 270.0,
                     928.0,
                     anchor="nw",
                     text=f"Playing {friendlist[0][7][2]}",
@@ -678,20 +668,6 @@ def dashboardwindow(name, avatarurl, status, steamid64):
             fill="#C7D5E0",
             font=("Motiva Sans Medium", 20 * -1)
         )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     entry_image_11 = PhotoImage(
         file=relative_to_assets("entry_11.png"))
@@ -881,13 +857,6 @@ def dashboardwindow(name, avatarurl, status, steamid64):
             font=("Motiva Sans regular", 24 * -1)
         )
 
-    # canvas.create_rectangle(
-    #     1388.0,
-    #     32.0,
-    #     1477.0,
-    #     121.0,
-    #     fill="#FFFFFF",
-    #     outline="")
     image_path = avatarurl
     image1 = add_urlimage_to_canvas(canvas, image_path, x=1388, y=30, width=89, height=89)
 

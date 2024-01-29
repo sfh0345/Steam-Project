@@ -6,7 +6,6 @@ from serial.tools import list_ports
 import serial
 import time
 import threading
-
 from sys import platform
 
 if platform == "linux" or platform == "linux2":
@@ -19,7 +18,6 @@ elif platform == "win32":
 
 from getsteamuserinfo import getsteamuserinfo
 from dashboard import dashboardwindow
-
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
@@ -37,7 +35,6 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame0")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
-#define wat hoort bij het path
 
 def add_image_to_canvas(canvas, image_path, x, y, width, height):
     # Load the image and resize it
@@ -58,7 +55,6 @@ def know_more_clicked(event):
     webbrowser.open_new_tab(instructions)
 
 
-
 def read_serial(port):
     """Read data from serial port and return as string."""
     line = port.read(1000)
@@ -67,11 +63,11 @@ def read_serial(port):
 loop1234 = True
 
 while loop1234:
-    rasberry = input("Wilt u de Rasberry Pi gebruiken? (ja/nee) ").lower()
+    rasberry = input("Wilt u de SteamBox gebruiken? (ja/nee) ").lower()
 
     if rasberry == "nee":
         loop1234 = False
-        print("[INFO] Programma start op zonder SteamCard...")
+        print("[INFO] Programma start op zonder SteamBox...")
         pass
     elif rasberry == "ja":
         # First manually select the serial port that connects to the Pico
@@ -86,13 +82,11 @@ while loop1234:
             pico_port = serial_ports[int(pico_port_index)].device
         except:
             rasberry = "nee"
-            print("[ERROR] De Rasberry Pi Pico is niet gevonden. Programma start zonder SteamCard...")
+            print("[ERROR] De Rasberry Pi Pico is niet gevonden. Programma start zonder SteamBox...")
         loop1234 = False
 
     else:
         print("Geen geldige invoer gekregen. (Ja/Nee)")
-
-
 
 def steamidinput(steamid64):
     if len(steamid64) != 17:
@@ -236,8 +230,6 @@ canvas.create_text(
 image_path = "assets\logo_steam.png"
 image = add_image_to_canvas(canvas, image_path, x=540, y=50, width=267, height=77)
 
-
-
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
@@ -329,7 +321,6 @@ button_2.place(
     height=78.0
 )
 
-
 entry_image_3 = PhotoImage(
     file=relative_to_assets("entry_3.png"))
 entry_bg_3 = canvas.create_image(
@@ -367,7 +358,6 @@ canvas.create_text(
     font=("Motiva Sans Medium", 24 * -1)
 )
 
-
 canvas.create_text(
     1165.0,
     770.0,
@@ -388,11 +378,7 @@ canvas.create_text(
     font=("Motiva Sans Light", 20 * -1)
 )
 
-
-
 window.resizable(False, False)
-
 # Bind the stop_event.set() method to the window close event
 window.protocol("WM_DELETE_WINDOW", stop_event.set)
-
 window.mainloop()
