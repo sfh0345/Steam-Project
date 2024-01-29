@@ -112,8 +112,13 @@ def voorspel_playtime(gamename):
     else:
         print("Er is iets mis gegaan")
 
+
     result = c.fetchone()
-    name = result[1]
+    if result == None:
+        return ["--", gamename]
+    else:
+        name = result[1]
+
 
     if result is None:
         # maak connectie met de database lokaal
@@ -172,3 +177,5 @@ def voorspel_playtime(gamename):
     # close_connection(conn)
 
     return pred_playtime, name
+
+# print(voorspel_playtime("Counter-Strike: Source"))
