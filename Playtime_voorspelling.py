@@ -172,5 +172,3 @@ def voorspel_playtime(gamename):
     # close_connection(conn)
 
     return pred_playtime, name
-
-print(voorspel_playtime(10))
