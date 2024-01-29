@@ -2,6 +2,7 @@ import numpy as np
 import requests
 import psycopg2
 from database_connection import connect_to_azure_postgresql
+from database2_connection import connect_to_azure_postgresql2
 
 
 # Maak een verbinding met de PostgreSQL-database.
@@ -115,13 +116,8 @@ def voorspel_playtime(gamename):
     result = c.fetchone()
 
     if result is None:
-        # maak connectie met de database lokaal
-        conn = psycopg2.connect(
-            database="steamdb",
-            user="postgres",
-            password="@Hilversum02@",
-            port="5432"
-        )
+        # maak connectie met de database
+        conn = connect_to_azure_postgresql2()
 
         # maak een cursor
         cursor = conn.cursor()
