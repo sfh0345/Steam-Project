@@ -35,20 +35,6 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame0")
 #path naar de gecurvde vierkanten pngs
 
 
-
-def start_pico():
-    available_ports = list_ports.comports()
-    selected_port = available_ports[0].device
-
-    # Open een verbinding met de Pico
-    with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
-        if serial_port.isOpen():
-            # Stuur een commando om master.py uit te voeren
-            serial_port.write(b'exec(open("master.py").read())\r\n')
-            # Sluit verbinding met de Pico
-            serial_port.close()
-
-
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 #define wat hoort bij het path
@@ -72,6 +58,17 @@ def know_more_clicked(event):
     webbrowser.open_new_tab(instructions)
 
 
+def start_pico():
+    available_ports = list_ports.comports()
+    selected_port = available_ports[0].device
+
+    # Open een verbinding met de Pico
+    with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
+        if serial_port.isOpen():
+            # Stuur een commando om master.py uit te voeren
+            serial_port.write(b'exec(open("master.py").read())\r\n')
+            # Sluit verbinding met de Pico
+            serial_port.close()
 
 def read_serial(port):
     """Read data from serial port and return as string."""
@@ -81,13 +78,13 @@ def read_serial(port):
 loop1234 = True
 
 while loop1234:
-    rasberry = input("Wilt u de Rasberry Pi gebruiken? (ja/nee) ").lower()
+    raspberry = input("Wilt u de Raspberry Pi gebruiken? (ja/nee) ").lower()
 
-    if rasberry == "nee":
+    if raspberry == "nee":
         loop1234 = False
         print("[INFO] Programma start op zonder SteamCard...")
         pass
-    elif rasberry == "ja":
+    elif raspberry == "ja":
         # First manually select the serial port that connects to the Pico
         serial_ports = list_ports.comports()
 
@@ -100,8 +97,8 @@ while loop1234:
             pico_port = serial_ports[int(pico_port_index)].device
             start_pico()
         except:
-            rasberry = "nee"
-            print("[ERROR] De Rasberry Pi Pico is niet gevonden. Programma start zonder SteamCard...")
+            raspberry = "nee"
+            print("[ERROR] De Raspberry Pi Pico is niet gevonden. Programma start zonder SteamCard...")
         loop1234 = False
 
     else:
@@ -201,7 +198,7 @@ def serial_thread(stop_event):
             serial_port.close()
             print("[INFO] Inloggen met SteamCard...")
 
-if rasberry == "ja":
+if raspberry == "ja":
 # Create a thread for serial communication
     serial_thread = threading.Thread(target=serial_thread, args=(stop_event,), daemon=True)
     serial_thread.start()
