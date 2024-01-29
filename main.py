@@ -34,9 +34,17 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame0")
 
 
 def relative_to_assets(path: str) -> Path:
+    """
+    Create a function that creates the path to the assets
+    """
     return ASSETS_PATH / Path(path)
 
+
+
 def add_image_to_canvas(canvas, image_path, x, y, width, height):
+    """
+    Create a function that handles placing images to the canvas
+    """
     # Load the image and resize it
     original_image = Image.open(image_path)
     resized_image = original_image.resize((width, height))
@@ -48,7 +56,11 @@ def add_image_to_canvas(canvas, image_path, x, y, width, height):
     canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
     return tk_image
 
+
 def know_more_clicked(event):
+    """
+    Create a function that opens the webbroser if the "vind je steamid" is clicked to a website where you can input your steamid
+    """
     instructions = (
         "https://steamid.io/"
         )
@@ -89,6 +101,9 @@ while loop1234:
         print("Geen geldige invoer gekregen. (Ja/Nee)")
 
 def steamidinput(steamid64):
+    """
+    Create a function that gets the entry input and verifys it
+    """
     if len(steamid64) != 17:
         time = canvas.create_text(
             162.0,
@@ -122,6 +137,7 @@ def steamidinput(steamid64):
             )
             window.after(4000, lambda: canvas.delete(time))
         else:
+            # Give the name avatar and status to the next window
             name = status1[0]
             avatarurl = status1[1]
             status = status1[2]
@@ -152,31 +168,30 @@ def serial_thread(stop_event):
         try:
             steamid_received = False # Flag to indicate if SteamID has been received
             while not steamid_received and not stop_event.is_set():
-                # Lees de seriële gegevens van de Pico
+                # read serial connections
                 pico_output = read_serial(serial_port)
                 pico_output = pico_output.replace('\r\n', ' ')
 
-                # Controleer of de ontvangen gegevens de verwachte indeling hebben
+                # Check if the right data is presented
                 if pico_output.startswith("steamid64:"):
                     steamid64 = pico_output.split(":")[1].strip()
 
                     # Set the flag to True to exit the loop
                     steamid_received = True
 
-                    # Doe hier iets met de ontvangen steamid64, bijv. sla het op in een variabele of bestand.
+                    # run the function steamidinput to check if the given steamid is a working steamid
                     window.after(100, lambda: steamidinput(steamid64))  # Use after() to call steamidinput
 
                 else:
-                    # print("[PICO] Ongeldige gegevensindeling ontvangen:", pico_output)
                     pass
 
-                # Een korte pauze om overbelasting te voorkomen
+                # A short break to overcome balance
                 time.sleep(1)
 
         except KeyboardInterrupt:
             print("[INFO] Ctrl+C gedetecteerd. Beëindigen.")
         finally:
-            # Sluit verbinding met de Pico
+            # close connection with serial
             serial_port.close()
             print("[INFO] Inloggen met SteamCard...")
 
@@ -253,7 +268,7 @@ entry_bg_2 = canvas.create_image(
     381.0,
     image=entry_image_2
 )
-
+# Create a text entry point
 text_widget = Text(
     bd=0,
     bg="#33333D",
@@ -329,7 +344,7 @@ entry_bg_3 = canvas.create_image(
     image=entry_image_3
 )
 
-
+# place the images on the canvas
 image_path = r"assets/contactless_5227517.png"
 image1 = add_image_to_canvas(canvas, image_path, x=1196, y=365, width=350, height=350)
 

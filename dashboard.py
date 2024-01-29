@@ -1,8 +1,7 @@
-"""
-Create a function to run the main dashboard window
-"""
-
 def dashboardwindow(name, avatarurl, status, steamid64):
+    """
+    Create a function to run the main dashboard window
+    """
     import sys
     from getuserfriendlist import get_friend_usernames
     from getnewgame import getrecommendedgames
@@ -41,17 +40,16 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     import requests
     from sys import platform
 
-
-    """
-    Create a function for the path to the assets
-    """
     def relative_to_assets(path: str) -> Path:
+        """
+            Create a function for the path to the assets
+        """
         return ASSETS_PATH / Path(path)
 
-    """
-    Create a function to handle the placing of images on a canvas
-    """
     def add_image_to_canvas1(canvas, image_path, x, y, width, height):
+        """
+            Create a function to handle the placing of images on a canvas
+        """
         # Load the image and resize it
         original_image = Image.open(image_path)
         resized_image = original_image.resize((width, height))
@@ -63,11 +61,10 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
 
-    """
-    Create a function that places url images on the canvas, profile pictures etc
-    """
-
     def add_urlimage_to_canvas(canvas, image_path, x, y, width, height):
+        """
+        Create a function that places url images on the canvas, profile pictures etc
+        """
         # Download the image from the URL
         response = requests.get(image_path)
         image_data = BytesIO(response.content)
@@ -83,10 +80,10 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
 
-    """
-    Create the moreinfo button, if this button is clicked you go to the analytics window
-    """
     def moreinfodashboard():
+        """
+            Create the moreinfo button, if this button is clicked you go to the analytics window
+        """
         window.destroy()
         analytics(name, avatarurl, status, steamid64)
 

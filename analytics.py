@@ -1,8 +1,7 @@
-"""
-Function to create the analytics window
-"""
-
 def analytics(name, avatarurl, status, steamid64):
+    """
+    Function to create the analytics window
+    """
     from pathlib import Path
     from analyticsophalen import analyticsmulticore
     import tkinter as tk
@@ -29,17 +28,18 @@ def analytics(name, avatarurl, status, steamid64):
     ASSETS_PATH2 = OUTPUT_PATH2 / Path("assets/frame2/")
 
 
-    """
-    Function to create a file path to the existing file paths
-    """
     def relative_to_assets(path: str) -> Path:
+        """
+        Function to create a file path to the existing file paths
+        """
         return ASSETS_PATH2 / Path(path)
 
-    """
-        Function to place images to the window.
-        Possible args are the canvas, imagepath, x and y cords, width and height.
-    """
+
     def add_image_to_canvas(canvas, image_path, x, y, width, height):
+        """
+            Function to place images to the window.
+            Possible args are the canvas, imagepath, x and y cords, width and height.
+        """
         # Load the image and resize it
         original_image = Image.open(image_path)
         resized_image = original_image.resize((width, height))
@@ -51,12 +51,13 @@ def analytics(name, avatarurl, status, steamid64):
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
 
-    """
-        Function to place images to the window.
-        This function places a url to a window so this can be a profile picture. something that changes each time you run it
-    """
+
 
     def add_urlimage_to_canvas(canvas, image_path, x, y, width, height):
+        """
+            Function to place images to the window.
+            This function places a url to a window so this can be a profile picture. something that changes each time you run it
+        """
         # Download the image from the URL
         response = requests.get(image_path)
         image_data = BytesIO(response.content)
@@ -178,12 +179,13 @@ def analytics(name, avatarurl, status, steamid64):
 
     )
 
-    """
-    Create a function to search for a game
-    in this function the given game gets searched up in the database
-    then linair regression, and then place it in a list that rotates like a carousel
-    """
+
     def searchlinair(entry):
+        """
+            Create a function to search for a game
+            in this function the given game gets searched up in the database
+            then linair regression, and then place it in a list that rotates like a carousel
+        """
         global lijstrecentenzoekopdrachten
         global entry_image_8888
         global entry_image_9999
@@ -451,11 +453,12 @@ def analytics(name, avatarurl, status, steamid64):
     )
 
 
-    """
-    create a function that displays 3 suggested games for the linair function before anything is searched
-    the 3 suggested games are your 3 top played games based on playtime
-    """
+
     def mostplayedgamesself():
+        """
+            create a function that displays 3 suggested games for the linair function before anything is searched
+            the 3 suggested games are your 3 top played games based on playtime
+        """
         global entry_image_11
         global entry_image_12
         global entry_image_13
@@ -731,11 +734,12 @@ def analytics(name, avatarurl, status, steamid64):
         font=("Motiva Sans Medium", 40 * -1)
 
     )
-    """
-    This function handles the back button
-    it destroys the current session and opens the dashboardwindow
-    """
+
     def backbutton():
+        """
+            This function handles the back button
+            it destroys the current session and opens the dashboardwindow
+        """
         window.destroy()
         dashboardwindow(name, avatarurl, status, steamid64)
 
@@ -802,14 +806,13 @@ def analytics(name, avatarurl, status, steamid64):
 
     image_item = canvas.create_image(52, 20, anchor=tk.NW, image=image)
 
-
-    """
-    Create a function to handle the making of graphs
-    The function checks if the graph is already created today for this steamid.
-    If that is the case the function chooses that image 
-    because more than 1 time per day would be useless for api calls and waiting times
-    """
     def mostplayeddef():
+        """
+            Create a function to handle the making of graphs
+            The function checks if the graph is already created today for this steamid.
+            If that is the case the function chooses that image
+            because more than 1 time per day would be useless for api calls and waiting times
+        """
         # mostplayed games
         date = datetime.datetime.now()
         date = date.strftime("%d-%m-%Y")
@@ -822,13 +825,14 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_8
         )
 
-    """
-        Create a function to handle the making of graphs
-        The function checks if the graph is already created today for this steamid.
-        If that is the case the function chooses that image 
-        because more than 1 time per day would be useless for api calls and waiting times
-        """
+
     def mostplayedpiedef():
+        """
+            Create a function to handle the making of graphs
+            The function checks if the graph is already created today for this steamid.
+            If that is the case the function chooses that image
+            because more than 1 time per day would be useless for api calls and waiting times
+        """
         # mostplayed games
         date = datetime.datetime.now()
         date = date.strftime("%d-%m-%Y")
@@ -841,13 +845,14 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_88
         )
 
-    """
-        Create a function to handle the making of graphs
-        The function checks if the graph is already created today for this steamid.
-        If that is the case the function chooses that image 
-        because more than 1 time per day would be useless for api calls and waiting times
-        """
+
     def multiplayerpiedef():
+        """
+            Create a function to handle the making of graphs
+            The function checks if the graph is already created today for this steamid.
+            If that is the case the function chooses that image
+            because more than 1 time per day would be useless for api calls and waiting times
+        """
         # mostplayed games
         date = datetime.datetime.now()
         date = date.strftime("%d-%m-%Y")
@@ -860,12 +865,13 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_888
         )
 
-    """
-    Create a function for displaying the recommended games.
-    Recommended games get choosen by games that you dont have but your friends have
-    Also a counter is involved for placing games that more friends have higher that games only 1 friend has
-    """
+
     def recommendedgamesdef():
+        """
+            Create a function for displaying the recommended games.
+            Recommended games get choosen by games that you dont have but your friends have
+            Also a counter is involved for placing games that more friends have higher that games only 1 friend has
+        """
         recommendedgames = getrecommendedgames(steamid64)
         global entry_image_9
         global entry_image_10
@@ -1011,11 +1017,12 @@ def analytics(name, avatarurl, status, steamid64):
 
         )
 
-    """
-        Create a function for displaying the most played genres.
-        The playtime of each genre is also placed after each genre
-        """
+
     def mostplayedgenres():
+        """
+            Create a function for displaying the most played genres.
+            The playtime of each genre is also placed after each genre
+        """
         global entry_image_20
         global entry_image_21
         global entry_image_10
@@ -1176,12 +1183,12 @@ def analytics(name, avatarurl, status, steamid64):
     window.after(850, mostplayedgamesself)
     window.after(825, mostplayedgenres)
 
-    """
-    Create a function for multithreading, this is needed to fasten up the loading of the graphs.
-    Oterwise function1, function2, function3 would all load after each other. now all the functions are
-    loaded at the same time resulting a higher cpu usage but also 7x higher loading speeds
-    """
     def analyticsmulticore1234():
+        """
+            Create a function for multithreading, this is needed to fasten up the loading of the graphs.
+            Oterwise function1, function2, function3 would all load after each other. now all the functions are
+            loaded at the same time resulting a higher cpu usage but also 7x higher loading speeds
+        """
         analyticsmulticore(steamid64)
 
     window.after(50, analyticsmulticore1234)

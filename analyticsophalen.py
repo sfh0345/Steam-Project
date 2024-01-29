@@ -4,13 +4,12 @@ from getmostplayedgame import getmostplayed
 from MostPlayedGamesUser import most_played_games_user
 from SinglePlayerOrMultiPlayer import single_player_or_multi_player
 
-"""
-    Create a function for multithreading, this is needed to fasten up the loading of the graphs.
-    Oterwise function1, function2, function3 would all load after each other. now all the functions are
-    loaded at the same time resulting a higher cpu usage but also 7x higher loading speeds
-"""
-
 def analyticsmulticore(steamid64):
+    """
+        Create a function for multithreading, this is needed to fasten up the loading of the graphs.
+        Oterwise function1, function2, function3 would all load after each other. now all the functions are
+        loaded at the same time resulting a higher cpu usage but also 7x higher loading speeds
+    """
     # global steamid64
     # Define the task functions
     task_functions = [task_function_1, task_function_2, task_function_3, task_function_4]
