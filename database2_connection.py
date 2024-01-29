@@ -6,7 +6,7 @@ def connect_to_azure_postgresql2():
         connection_params = {
             "database": "DBsrv2",
             "user": "postgres",
-            "password": "Steam2023!@#",
+            "password": "postgres",
             "host": "172.167.204.36",
             "port": 5432,  # Default PostgreSQL port
             "sslmode": "require",
