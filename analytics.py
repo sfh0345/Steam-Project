@@ -173,7 +173,10 @@ def analytics(name, avatarurl, status, steamid64):
 
             gamename = entry
             voorspelde_uren = voorspel_playtime(gamename)
-            gamename1 = gamename
+            gamename1 = voorspelde_uren[1]
+
+
+
 
             if len(gamename1) > 35:
                 formatted_game_name1234 = gamename1[:32] + "..."
@@ -181,7 +184,7 @@ def analytics(name, avatarurl, status, steamid64):
                 formatted_game_name1234 = gamename1
 
             lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[:2]
-            lijstrecentenzoekopdrachten = [[formatted_game_name1234, voorspelde_uren]] + lijstrecentenzoekopdrachten
+            lijstrecentenzoekopdrachten = [[formatted_game_name1234, voorspelde_uren[0]]] + lijstrecentenzoekopdrachten
 
             # print(lijstrecentenzoekopdrachten)
 
@@ -493,7 +496,8 @@ def analytics(name, avatarurl, status, steamid64):
                 if i == 2:
                     gamename = formatted_game_name21
 
-                lijstrecentenzoekopdrachten.append([gamename, voorspel_playtime(gamename)])
+                voorspelplaytime = voorspel_playtime(gamename)
+                lijstrecentenzoekopdrachten.append([voorspelplaytime[1], voorspelplaytime[0]])
 
             if len(mostplayedgamesself) >= 1:
 
@@ -1104,4 +1108,4 @@ def analytics(name, avatarurl, status, steamid64):
     window.mainloop()
 
 
-# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
+analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
