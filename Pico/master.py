@@ -5,15 +5,15 @@ import utime
 import neopixel
 import time
 
-# Configure parameters voor the NeoPixel
+# Configure parameters for the NeoPixel
 np = neopixel.NeoPixel(Pin(21), 30)
 brightness = 1  # Pas de helderheid aan naar 50%
 num_leds = 30
 
-# Configureer parameters voor de RFID
+# Configure parameters for the RFID
 reader = MFRC522(sck=10, mosi=11, miso=12, rst=14, cs=15, spi_id=1)
 
-# Configureer parameters voor het LCD-scherm
+# Configure parameters for the LCD
 i2c = I2C(0, sda=Pin(16), scl=Pin(17), freq=400000)
 I2C_ADDR = i2c.scan()[0]
 lcd = I2cLcd(i2c, I2C_ADDR, 2, 16)
@@ -24,9 +24,7 @@ def whitewave():
     animation_length = 5
     sleep_time = 0.03
     for i in range(num_leds - animation_length + 1):
-        # Set all LEDs to black
-        np.fill((0, 0, 0))
-
+        np.fill((0, 0, 0)) # Set all LEDs to black
         # Set the animation color for the current position
         for j in range(animation_length):
             position = i + j
@@ -36,9 +34,7 @@ def whitewave():
         utime.sleep(sleep_time)
 
     for i in range(num_leds - 1, animation_length - 1, -1):
-        # Set all LEDs to black
-        np.fill((0, 0, 0))
-
+        np.fill((0, 0, 0)) # Set all LEDs to black
         # Set the animation color for the current position
         for j in range(animation_length):
             position = i - j
@@ -51,9 +47,7 @@ def whitewave():
 # Function to create a green wave on the neopixel
 def greensucces():
     for i in range(15):
-        # Set all LEDs to black
-        np.fill((0, 0, 0))
-
+        np.fill((0, 0, 0)) # Set all LEDs to black
         # Set the green component for the LEDs in the middle and create a wave
         for j in range(i + 1):
             np[14 - j] = [0, int(255 * brightness), 0]
@@ -66,9 +60,7 @@ def greensucces():
 # Function to create a red wave on the neopixel
 def rederror():
     for i in range(15):
-        # Set all LEDs to black
-        np.fill((0, 0, 0))
-
+        np.fill((0, 0, 0)) # Set all LEDs to black
         # Set the green component for the LEDs in the middle and create a wave
         for j in range(i + 1):
             np[14 - j] = [int(255 * brightness), 0, 0]
@@ -148,8 +140,7 @@ while True:  # Outer loop for continuous operation
                             whitewave()
                             lcd.move_to(0, 1)
                             loop = loop + 1
-                        # error if no user is found
-                    else:
+                    else: # error if no user is found
                         if friendlist == 10:
                             lcd.move_to(0, 1)
                             lcd.clear()
@@ -180,6 +171,7 @@ while True:  # Outer loop for continuous operation
                                     greensucces()
                                     loop5 = loop5 + 1
 
+                                # turn off all LEDs between succes and showing online friends on the neopixel
                                 np.fill((0, 0, 0))
                                 np.write()
                                 time.sleep(3.0)
@@ -196,7 +188,7 @@ while True:  # Outer loop for continuous operation
             print(f"Error: {e}")
             # Add any error handling or logging if needed
 
-    # Wait for data from the serial connection
+    # Wait for data (online friends) from the serial connection
     while True:
         data = input()
 
