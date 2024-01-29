@@ -1,5 +1,6 @@
 import numpy as np
 import requests
+import psycopg2
 from database_connection import connect_to_azure_postgresql, close_connection
 
 
@@ -101,24 +102,68 @@ def voorspel_playtime(gamename):
 
     if isinstance(gamename, str):
         # Haal de data op uit de database
-        c.execute("SELECT verhouding_rating "
+        c.execute("SELECT verhouding_rating,name "
                   "FROM gameproperties "
                   "WHERE name ILIKE %s", ('%' + gamename + '%',))
     elif isinstance(gamename, int):
-        c.execute("SELECT verhouding_rating "
+        c.execute("SELECT verhouding_rating,name "
                   "FROM gameproperties "
                   "WHERE appid = %s", (gamename,))
     else:
         print("Er is iets mis gegaan")
 
     result = c.fetchone()
+    name = result[1]
 
     if result is None:
-        # print(f"Geen data gevonden voor {gamename}")
-        return "--"
+        # maak connectie met de database lokaal
+        conn = psycopg2.connect(
+            database="steamdb",
+            user="postgres",
+            password="@Hilversum02@",
+            port="5432"
+        )
 
+        # maak een cursor
+        cursor = conn.cursor()
+        if isinstance(gamename, str):
+            # Haal de data op uit de database
+            cursor.execute("SELECT sid "
+                      "FROM gameproperties "
+                      "WHERE name ILIKE %s", ('%' + gamename + '%',))
+            result = c.fetchone()
+            # doe een api call naar steamspy
+            url = f"https://steamspy.com/api.php?request=appdetails&appid={result[0]}"
+            response = requests.get(url)
+            # haal de naam op
+            name = response.json().get("name", 0)
+            # haal positive en negative ratings op
+            positive_ratings = response.json().get("positive", 0)
+            negative_ratings = response.json().get("negative", 0)
+            # bereken de verhouding
+            totaal = positive_ratings + negative_ratings
+            verhouding_rating = positive_ratings / totaal * 100 if totaal != 0 else 0
+            return verhouding_rating, name
 
-    verhouding_rating = result[0]
+        elif isinstance(gamename, int):
+            # doe een api call naar steamspy
+            url = f"https://steamspy.com/api.php?request=appdetails&appid={gamename}"
+            response = requests.get(url)
+            # haal positive en negative ratings op
+            positive_ratings = response.json().get("positive", 0)
+            negative_ratings = response.json().get("negative", 0)
+            # bereken de verhouding
+            totaal = positive_ratings + negative_ratings
+            verhouding_rating = positive_ratings / totaal * 100 if totaal != 0 else 0
+            #haal ook de naam op
+            name = response.json().get("name", 0)
+            return verhouding_rating, totaal, name
+        else:
+            print("Er is iets mis gegaan")
+
+    else:
+        verhouding_rating = result[0]
+
     y_pred = linear_regression(verhouding_rating)
     pred_playtime = round(y_pred / 60)
 
@@ -126,6 +171,6 @@ def voorspel_playtime(gamename):
     # c.close()
     # close_connection(conn)
 
-    return f"{pred_playtime} Hours"
+    return pred_playtime, name
 
-# print(voorspel_playtime(10))
+print(voorspel_playtime(10))
