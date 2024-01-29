@@ -155,7 +155,7 @@ def voorspel_playtime(gamename):
             verhouding_rating = positive_ratings / totaal * 100 if totaal != 0 else 0
             # haal ook de naam op
             name = response.json().get("name", 0)
-            return verhouding_rating, totaal, name
+            return verhouding_rating, name
         else:
             print("Er is iets mis gegaan")
 
@@ -169,4 +169,4 @@ def voorspel_playtime(gamename):
     return pred_playtime, name
 
 
-print(voorspel_playtime("grand theft auto v"))
+print(voorspel_playtime(1979280))
