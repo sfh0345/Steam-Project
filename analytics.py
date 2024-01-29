@@ -1,3 +1,7 @@
+"""
+Function to create the analytics window
+"""
+
 def analytics(name, avatarurl, status, steamid64):
     from pathlib import Path
     from analyticsophalen import analyticsmulticore
@@ -25,9 +29,16 @@ def analytics(name, avatarurl, status, steamid64):
     ASSETS_PATH2 = OUTPUT_PATH2 / Path("assets/frame2/")
 
 
+    """
+    Function to create a file path to the existing file paths
+    """
     def relative_to_assets(path: str) -> Path:
         return ASSETS_PATH2 / Path(path)
 
+    """
+        Function to place images to the window.
+        Possible args are the canvas, imagepath, x and y cords, width and height.
+    """
     def add_image_to_canvas(canvas, image_path, x, y, width, height):
         # Load the image and resize it
         original_image = Image.open(image_path)
@@ -39,6 +50,11 @@ def analytics(name, avatarurl, status, steamid64):
         # Create an image item at the specified coordinates
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
+
+    """
+        Function to place images to the window.
+        This function places a url to a window so this can be a profile picture. something that changes each time you run it
+    """
 
     def add_urlimage_to_canvas(canvas, image_path, x, y, width, height):
         # Download the image from the URL
@@ -56,12 +72,16 @@ def analytics(name, avatarurl, status, steamid64):
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
 
+
+    # look at what platform the pc is running. ctypes.windll doesnt work on mac or linux.
+    # that is why if you would run the code it would crash if this check wasnt there
     if platform == "linux" or platform == "linux2":
         pass
     elif platform == "darwin":
         pass
     elif platform == "win32":
         import ctypes
+        # set the dpi awareness to true to look at screen pixels
         ctypes.windll.shcore.SetProcessDpiAwareness(True)
 
     window = Tk()
@@ -121,6 +141,7 @@ def analytics(name, avatarurl, status, steamid64):
         image=entry_image_20
     )
 
+    # create a entry for function searchlinair
     text_widget = Text(
         bd=0,
         bg="#33333D",
@@ -157,6 +178,11 @@ def analytics(name, avatarurl, status, steamid64):
 
     )
 
+    """
+    Create a function to search for a game
+    in this function the given game gets searched up in the database
+    then linair regression, and then place it in a list that rotates like a carousel
+    """
     def searchlinair(entry):
         global lijstrecentenzoekopdrachten
         global entry_image_8888
@@ -165,19 +191,22 @@ def analytics(name, avatarurl, status, steamid64):
         global entry_image_11
         global entry_image_12
         global entry_image_13
+        # make the images global for placing them inside of a function
 
         if entry.strip() == "":
             text_widget.delete("1.0", "end")
+            # clear the textbox if only spaces is returned and dont go further with the code
         else:
             text_widget.delete("1.0", "end")
+            # clear the textbox
+
+
 
             gamename = entry
             voorspelde_uren = voorspel_playtime(gamename)
             gamename1 = voorspelde_uren[1]
 
-
-
-
+            # if the gamename inputted is too long shorten it and place ... after
             if len(gamename1) > 35:
                 formatted_game_name1234 = gamename1[:32] + "..."
             else:
@@ -185,8 +214,8 @@ def analytics(name, avatarurl, status, steamid64):
 
             lijstrecentenzoekopdrachten = lijstrecentenzoekopdrachten[:2]
             lijstrecentenzoekopdrachten = [[formatted_game_name1234, voorspelde_uren[0]]] + lijstrecentenzoekopdrachten
+            # make the list like a carousel, place something on the front. cut something on the back, so you have a rotating effect
 
-            # print(lijstrecentenzoekopdrachten)
 
             entry_image_8888 = PhotoImage(
                 file=relative_to_assets("frame2/entry_8.png"))
@@ -211,6 +240,8 @@ def analytics(name, avatarurl, status, steamid64):
                 987.5,
                 image=entry_image_10000
             )
+            # if the output is -- the game is not found in our database, so the gamename turns grey
+            # else the game name is outputted from the function and the game time
 
             if lijstrecentenzoekopdrachten[0][1] == "--":
                 text1 = canvas.create_text(
@@ -367,11 +398,6 @@ def analytics(name, avatarurl, status, steamid64):
                     font=("Motiva Sans SemiBold", 24 * -1)
                 )
 
-
-
-
-
-
     button_image_2 = PhotoImage(
         file=relative_to_assets("frame2/button_2.png"))
     button_2 = Button(
@@ -387,6 +413,7 @@ def analytics(name, avatarurl, status, steamid64):
         width=230.0,
         height=50.0
     )
+    #place the search button
 
     entry_image_8 = PhotoImage(
         file=relative_to_assets("frame2/entry_8.png"))
@@ -423,6 +450,11 @@ def analytics(name, avatarurl, status, steamid64):
         font=("Motiva Sans SemiBold", 20 * -1)
     )
 
+
+    """
+    create a function that displays 3 suggested games for the linair function before anything is searched
+    the 3 suggested games are your 3 top played games based on playtime
+    """
     def mostplayedgamesself():
         global entry_image_11
         global entry_image_12
@@ -457,6 +489,7 @@ def analytics(name, avatarurl, status, steamid64):
 
             lengtemostplayed = len(mostplayedgamesself)
 
+            # If the games are too long, shorten them and place ... after the game
             if len(mostplayedgamesself) >= 1:
                 if len(mostplayedgamesself[0][0]) > 35:
                     formatted_game_name_not = mostplayedgamesself[0][0]
@@ -485,8 +518,10 @@ def analytics(name, avatarurl, status, steamid64):
                 lengtemostplayedgames1 = lengtemostplayedgames
             else:
                 lengtemostplayedgames1 = 3
+            # always choose 3 a max of 3 games so if less or more games are submitted the function handles this nicely
 
             lijstrecentenzoekopdrachten = []
+            # create a empty list
 
             for i in range(lengtemostplayedgames1):
                 if i == 0:
@@ -495,10 +530,14 @@ def analytics(name, avatarurl, status, steamid64):
                     gamename = formatted_game_name11
                 if i == 2:
                     gamename = formatted_game_name21
+                # a table for seeing what var is each corresponding var
 
                 voorspelplaytime = voorspel_playtime(gamename)
+                # predicted playtime based on linair regression
                 lijstrecentenzoekopdrachten.append([voorspelplaytime[1], voorspelplaytime[0]])
+                # add them to the list
 
+            # check before using the var if the var exists
             if len(mostplayedgamesself) >= 1:
 
                 if lijstrecentenzoekopdrachten[0][1] == "--":
@@ -682,6 +721,7 @@ def analytics(name, avatarurl, status, steamid64):
         image=entry_image_7
     )
 
+    # profile name
     canvas.create_text(
         1500.0,
         20.0,
@@ -691,6 +731,10 @@ def analytics(name, avatarurl, status, steamid64):
         font=("Motiva Sans Medium", 40 * -1)
 
     )
+    """
+    This function handles the back button
+    it destroys the current session and opens the dashboardwindow
+    """
     def backbutton():
         window.destroy()
         dashboardwindow(name, avatarurl, status, steamid64)
@@ -711,6 +755,7 @@ def analytics(name, avatarurl, status, steamid64):
         width=54.0,
         height=357.0
     )
+    # create a table for each status code, [online, offline, away, cant get status]
     if status == 1:
         canvas.create_text(
             1500.0,
@@ -748,6 +793,7 @@ def analytics(name, avatarurl, status, steamid64):
             font=("Motiva Sans Regular", 24 * -1)
         )
 
+    # add the images to the canvas
     image_path = avatarurl
     image1 = add_urlimage_to_canvas(canvas, image_path, x=1388, y=17, width=89, height=89)
 
@@ -756,6 +802,13 @@ def analytics(name, avatarurl, status, steamid64):
 
     image_item = canvas.create_image(52, 20, anchor=tk.NW, image=image)
 
+
+    """
+    Create a function to handle the making of graphs
+    The function checks if the graph is already created today for this steamid.
+    If that is the case the function chooses that image 
+    because more than 1 time per day would be useless for api calls and waiting times
+    """
     def mostplayeddef():
         # mostplayed games
         date = datetime.datetime.now()
@@ -769,6 +822,12 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_8
         )
 
+    """
+        Create a function to handle the making of graphs
+        The function checks if the graph is already created today for this steamid.
+        If that is the case the function chooses that image 
+        because more than 1 time per day would be useless for api calls and waiting times
+        """
     def mostplayedpiedef():
         # mostplayed games
         date = datetime.datetime.now()
@@ -782,7 +841,12 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_88
         )
 
-
+    """
+        Create a function to handle the making of graphs
+        The function checks if the graph is already created today for this steamid.
+        If that is the case the function chooses that image 
+        because more than 1 time per day would be useless for api calls and waiting times
+        """
     def multiplayerpiedef():
         # mostplayed games
         date = datetime.datetime.now()
@@ -796,6 +860,11 @@ def analytics(name, avatarurl, status, steamid64):
             image=entry_image_888
         )
 
+    """
+    Create a function for displaying the recommended games.
+    Recommended games get choosen by games that you dont have but your friends have
+    Also a counter is involved for placing games that more friends have higher that games only 1 friend has
+    """
     def recommendedgamesdef():
         recommendedgames = getrecommendedgames(steamid64)
         global entry_image_9
@@ -816,6 +885,7 @@ def analytics(name, avatarurl, status, steamid64):
             700.5,
             image=entry_image_10
         )
+        # if the game name is too long for the table cut it and place ... after
         if len(recommendedgames[0]) > 28:
             formatted_game_name_not = recommendedgames[0]
             formatted_game_name0 = formatted_game_name_not[:26] + "..."
@@ -846,6 +916,8 @@ def analytics(name, avatarurl, status, steamid64):
         else:
             formatted_game_name4 = recommendedgames[4]
 
+
+        # Place the games on the canvas
         canvas.create_text(
             890.0,
             687.0,
@@ -939,12 +1011,17 @@ def analytics(name, avatarurl, status, steamid64):
 
         )
 
+    """
+        Create a function for displaying the most played genres.
+        The playtime of each genre is also placed after each genre
+        """
     def mostplayedgenres():
         global entry_image_20
         global entry_image_21
         global entry_image_10
 
         getgenres = meest_gespeelde_genres(steamid64)
+        # if less then 5 genres gets found display a nicely error message
         if len(getgenres) < 5:
             entry_image_20 = PhotoImage(
                 file=relative_to_assets("entry_9.png"))
@@ -1092,10 +1169,18 @@ def analytics(name, avatarurl, status, steamid64):
 
             )
 
+
+    # create a small waiting time for users to really think that the graphs are created right now
+    # instantly placing graphs are untrusty because the user thinks the information is not up to date
     window.after(800, recommendedgamesdef)
     window.after(850, mostplayedgamesself)
     window.after(825, mostplayedgenres)
 
+    """
+    Create a function for multithreading, this is needed to fasten up the loading of the graphs.
+    Oterwise function1, function2, function3 would all load after each other. now all the functions are
+    loaded at the same time resulting a higher cpu ussage but also 7x higher loading speeds
+    """
     def analyticsmulticore1234():
         analyticsmulticore(steamid64)
 
@@ -1107,5 +1192,5 @@ def analytics(name, avatarurl, status, steamid64):
     window.resizable(False, False)
     window.mainloop()
 
-
-analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
+# for testing purposes the window can also be run directly
+# analytics("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561199022018738")
