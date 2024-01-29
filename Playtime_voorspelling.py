@@ -2,6 +2,7 @@ import numpy as np
 import requests
 import psycopg2
 from database_connection import connect_to_azure_postgresql, close_connection
+from database2_connection import connect_to_azure_postgresql2, close_connection
 
 
 # Maak een verbinding met de PostgreSQL-database.
@@ -87,6 +88,7 @@ def linear_regression(verhouding_rating):
 
 
 def voorspel_playtime(gamename):
+
     """
        Predict playtime for a given game.
 
@@ -99,12 +101,16 @@ def voorspel_playtime(gamename):
        Raises:
            ValueError: If no data is found for the given gamename or appid.
        """
+    try:
+        gamename = gamename.strip()
+    except:
+        pass
 
     if isinstance(gamename, str):
         # Haal de data op uit de database
         c.execute("SELECT verhouding_rating,name "
                   "FROM gameproperties "
-                  "WHERE name ILIKE %s", ('%' + gamename + '%',))
+                  "WHERE name ILIKE %s", (gamename,))
     elif isinstance(gamename, int):
         c.execute("SELECT verhouding_rating,name "
                   "FROM gameproperties "
@@ -113,7 +119,13 @@ def voorspel_playtime(gamename):
         print("Er is iets mis gegaan")
 
     result = c.fetchone()
-    name = result[1]
+
+    if result is not None:
+        name = result[1]
+    else:
+        # Handle the case where the query didn't return any results
+        name = "Unknown Game"  # You can provide a default value or raise an error
+
 
     if result is None:
         # maak connectie met de database lokaal
@@ -130,20 +142,24 @@ def voorspel_playtime(gamename):
             # Haal de data op uit de database
             cursor.execute("SELECT sid "
                       "FROM gameproperties "
-                      "WHERE name ILIKE %s", ('%' + gamename + '%',))
-            result = c.fetchone()
-            # doe een api call naar steamspy
-            url = f"https://steamspy.com/api.php?request=appdetails&appid={result[0]}"
-            response = requests.get(url)
-            # haal de naam op
-            name = response.json().get("name", 0)
-            # haal positive en negative ratings op
-            positive_ratings = response.json().get("positive", 0)
-            negative_ratings = response.json().get("negative", 0)
-            # bereken de verhouding
-            totaal = positive_ratings + negative_ratings
-            verhouding_rating = positive_ratings / totaal * 100 if totaal != 0 else 0
-            return verhouding_rating, name
+                      "WHERE name ILIKE %s", (gamename,))
+            result = cursor.fetchone()
+            if result is None:
+                error = (f"No data found for {gamename}")
+                return error
+            elif result is not None:
+                # doe een api call naar steamspy
+                url = f"https://steamspy.com/api.php?request=appdetails&appid={result[0]}"
+                response = requests.get(url)
+                # haal de naam op
+                name = response.json().get("name", 0)
+                # haal positive en negative ratings op
+                positive_ratings = response.json().get("positive", 0)
+                negative_ratings = response.json().get("negative", 0)
+                # bereken de verhouding
+                totaal = positive_ratings + negative_ratings
+                verhouding_rating = positive_ratings / totaal * 100 if totaal != 0 else 0
+                return verhouding_rating, name
 
         elif isinstance(gamename, int):
             # doe een api call naar steamspy
@@ -172,3 +188,5 @@ def voorspel_playtime(gamename):
     # close_connection(conn)
 
     return pred_playtime, name
+
+print(voorspel_playtime("soundpad"))

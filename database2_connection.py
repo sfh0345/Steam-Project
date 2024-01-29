@@ -1,6 +1,6 @@
 import psycopg2
 
-def connect_to_azure_postgresql():
+def connect_to_azure_postgresql2():
     try:
         # Replace the placeholder values with your actual Azure PostgreSQL connection details
         connection_params = {
