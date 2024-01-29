@@ -5,8 +5,8 @@ import utime
 import neopixel
 import time
 
-# Configureer parameters voor de NeoPixel
-np = neopixel.NeoPixel(Pin(9), 30)
+# Configure parameters voor the NeoPixel
+np = neopixel.NeoPixel(Pin(21), 30)
 brightness = 1  # Pas de helderheid aan naar 50%
 num_leds = 30
 
@@ -19,6 +19,7 @@ I2C_ADDR = i2c.scan()[0]
 lcd = I2cLcd(i2c, I2C_ADDR, 2, 16)
 
 
+# Function to create a white wave on the neopixel
 def whitewave():
     animation_length = 5
     sleep_time = 0.03
@@ -46,6 +47,8 @@ def whitewave():
         np.write()
         utime.sleep(sleep_time)
 
+
+# Function to create a green wave on the neopixel
 def greensucces():
     for i in range(15):
         # Set all LEDs to black
@@ -56,9 +59,11 @@ def greensucces():
             np[14 - j] = [0, int(255 * brightness), 0]
             np[15 + j] = [0, int(255 * brightness), 0]
         np.write()
-        utime.sleep(0.07) # Adjust the sleep time to control the speed of the animation
+        utime.sleep(0.07)  # Adjust the sleep time to control the speed of the animation
     utime.sleep(0.1)
 
+
+# Function to create a red wave on the neopixel
 def rederror():
     for i in range(15):
         # Set all LEDs to black
@@ -72,9 +77,15 @@ def rederror():
         utime.sleep(0.03)  # Adjust the sleep time to control the speed of the animation
     utime.sleep(0.2)
 
+
+# Function to create a pulsing effect on the neopixel
 def pulsing():
     loop123 = True
-    range123 = [0.79, 0.78, 0.77, 0.76, 0.75, 0.74, 0.73, 0.72, 0.71, 0.7, 0.69, 0.68, 0.67, 0.66, 0.65, 0.64, 0.63, 0.62, 0.61, 0.6, 0.59, 0.58, 0.57, 0.56, 0.55, 0.54, 0.53, 0.52, 0.51, 0.5, 0.49, 0.48, 0.47, 0.46, 0.45, 0.44, 0.43, 0.42, 0.41, 0.4, 0.39, 0.38, 0.37, 0.36, 0.35, 0.34, 0.33, 0.32, 0.31, 0.3, 0.29, 0.28, 0.27, 0.26, 0.25, 0.24, 0.23, 0.22, 0.21, 0.2, 0.19, 0.18, 0.17, 0.16, 0.15, 0.14, 0.13, 0.12, 0.11, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03, 0.02, 0.01]
+    range123 = [0.79, 0.78, 0.77, 0.76, 0.75, 0.74, 0.73, 0.72, 0.71, 0.7, 0.69, 0.68, 0.67, 0.66, 0.65, 0.64, 0.63,
+                0.62, 0.61, 0.6, 0.59, 0.58, 0.57, 0.56, 0.55, 0.54, 0.53, 0.52, 0.51, 0.5, 0.49, 0.48, 0.47, 0.46,
+                0.45, 0.44, 0.43, 0.42, 0.41, 0.4, 0.39, 0.38, 0.37, 0.36, 0.35, 0.34, 0.33, 0.32, 0.31, 0.3, 0.29,
+                0.28, 0.27, 0.26, 0.25, 0.24, 0.23, 0.22, 0.21, 0.2, 0.19, 0.18, 0.17, 0.16, 0.15, 0.14, 0.13, 0.12,
+                0.11, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03, 0.02, 0.01]
     for i in range123:
         utime.sleep(0.005)
         np.fill([0, 0, int(255 * i)])
@@ -86,16 +97,7 @@ def pulsing():
         np.write()
 
 
-
-
-
-
 output = 0
-
-
-
-
-
 
 loop = 0
 loop1 = 0
@@ -129,6 +131,7 @@ while True:  # Outer loop for continuous operation
                     # print("debug auth")
                     while loop < 2:
                         if loop < 2:
+                            # Display messages for authentication
                             lcd.move_to(0, 0)
                             lcd.putstr(" AUTHENTICATING ")
                             if output > 0:
@@ -145,7 +148,7 @@ while True:  # Outer loop for continuous operation
                             whitewave()
                             lcd.move_to(0, 1)
                             loop = loop + 1
-                        # error als er geen user gevonden word
+                        # error if no user is found
                     else:
                         if friendlist == 10:
                             lcd.move_to(0, 1)
@@ -166,6 +169,7 @@ while True:  # Outer loop for continuous operation
                             print(f"steamid64: {steamid64}")
                             gelukt = True
                             if gelukt == True:
+                                # Display success message for login
                                 lcd.move_to(0, 0)
                                 lcd.clear()
                                 lcd.putstr(" LOGIN SUCCESS  ")
@@ -175,6 +179,10 @@ while True:  # Outer loop for continuous operation
                                 while loop5 < 5:
                                     greensucces()
                                     loop5 = loop5 + 1
+
+                                np.fill((0, 0, 0))
+                                np.write()
+                                time.sleep(3.0)
 
                                 gelukt = False
                                 loop = 0
@@ -188,56 +196,47 @@ while True:  # Outer loop for continuous operation
             print(f"Error: {e}")
             # Add any error handling or logging if needed
 
+    # Wait for data from the serial connection
+    while True:
+        data = input()
 
+        # Control Neopixel based on the specified conditions
+        led_count = int(data[1:])
 
+        # If there are no friends online
+        if led_count < 1:
+            # Blink all 30 leds in red indefinitely
+            while True:
+                for _ in range(5):
+                    np.fill((255, 0, 0))
+                    np.write()
+                    time.sleep(0.5)
+                    np.fill((0, 0, 0))
+                    np.write()
+                    time.sleep(0.5)
 
-    data = input()
+        # If between 1 and 30 friends are online
+        elif 1 <= led_count <= 30:
+            # Turn on a LED for every online friend
+            while True:
+                for index in range(led_count):
+                    np[index] = (255, 0, 255)
+                    np.write()
+                    time.sleep(0.2)
 
-        # stuur de NeoPixel aan op basis van online vrienden
-    led_count = int(data[1:])
-
-        # als er geen vrienden online zijn
-    if led_count < 1:
-        for _ in range(5):  # Blink all 8 LEDs in rodd voor 5x
-            np.fill((255, 0, 0))
-            np.write()
-            time.sleep(0.5)
-            np.fill((0, 0, 0))
-            np.write()
-            time.sleep(0.5)
-                    # na 5x blinken gaan alle LEDs uit
-
-            # als er 1-8 vrienden online zijn
-    elif 1 <= led_count <= 8:
-        for index in range(led_count):
-            np[index] = (255, 0, 255)
-            np.write()
-            time.sleep(0.5)
-
-            # wacht 5 sec voordat alle LEDs uitgeschakeld worden
-        time.sleep(5)
-        np.fill((0, 0, 0))
-        np.write()
-
-    # schakel alle LEDs aan en knippert de laatste als er meer dan 8 vrienden online zijn
-    elif led_count > 8:
-        # schakel de 1-7 LEDs aan
-        for index in range(7):
-            np[index] = (0, 255, 0)
-            np.write()
-            time.sleep(0.3)
-
-        for _ in range(5): # Blink de laatste (8ste LED) voor 5x
-            np[7] = (0, 255, 0)
-            np.write()
-            time.sleep(0.5)
-            np[7] = (0, 0, 0)
-            np.write()
-            time.sleep(0.5)
-
-        # schakel alle LEDs uit nadat de blink voorbij is
-        np[7] = (0, 255, 0)
-        np.write()
-        time.sleep(0.5)
-        np.fill((0, 0, 0))
-        np.write()
+        # If there are more than 30 friends online / more friends online than LEDs on NeoPixel
+        elif led_count > 30:
+            # Turn on all LEDs on the Neopixel
+            while True:
+                for index in range(29):
+                    np[index] = (0, 255, 255)
+                    np.write()
+                    time.sleep(0.2)
+                # Blink the last LED (30)
+                while True:
+                    np[29] = (0, 255, 255)
+                    np.write()
+                    time.sleep(0.5)
+                    np[29] = (0, 0, 0)
+                    np.write()
+                    time.sleep(0.2)
