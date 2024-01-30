@@ -3,7 +3,6 @@ import neopixel
 from machine import Pin
 
 """
-
 This code controls the NeoPixel to display color patterns corresponding to the number of online friends.
 
 """
