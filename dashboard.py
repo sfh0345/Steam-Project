@@ -65,7 +65,7 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
 
-    def friends_on_LED():
+    def friends_on_LED(): # functie om het aantal online vrienden te verkrijgen
         from getuserfriendlist import get_friend_usernames
         var = get_friend_usernames(steamid64)
         friend_list_names = len(var[0])
@@ -1028,7 +1028,4 @@ def dashboardwindow(name, avatarurl, status, steamid64):
     close_pico()
 
 
-
-
 # dashboardwindow("testuser", "https://avatars.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", 1, "76561198343709779"  )
-
