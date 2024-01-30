@@ -1,20 +1,17 @@
 import psycopg2
 
-def connect_to_azure_postgresql():
+def connect_to_azure_postgresql2():
     try:
-        # Replace the placeholder values with your actual Azure PostgreSQL connection details
         connection_params = {
-            "database": "DBsrv",
+            "database": "DBsrv2",
             "user": "postgres",
-            "password": "Steam2023!@#",
-            "host": "51.11.163.195",
+            "password": "Steam2024!@#",
+            "host": "172.167.18.167",
             "port": 5432,  # Default PostgreSQL port
             "sslmode": "require",
         }
 
         connection = psycopg2.connect(**connection_params)
-
-
         return connection
 
     except psycopg2.Error as e:
@@ -22,4 +19,5 @@ def connect_to_azure_postgresql():
         raise
 
 def close_connection(connection):
+    # pass the close connection because of different screens and multiple uses of the database
     pass
