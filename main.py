@@ -6,7 +6,6 @@ from serial.tools import list_ports
 import serial
 import time
 import threading
-
 from sys import platform
 
 if platform == "linux" or platform == "linux2":
@@ -19,7 +18,6 @@ elif platform == "win32":
 
 from getsteamuserinfo import getsteamuserinfo
 from dashboard import dashboardwindow
-
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
@@ -36,10 +34,17 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"assets\frame0")
 
 
 def relative_to_assets(path: str) -> Path:
+    """
+    Create a function that creates the path to the assets
+    """
     return ASSETS_PATH / Path(path)
-#define wat hoort bij het path
+
+
 
 def add_image_to_canvas(canvas, image_path, x, y, width, height):
+    """
+    Create a function that handles placing images to the canvas
+    """
     # Load the image and resize it
     original_image = Image.open(image_path)
     resized_image = original_image.resize((width, height))
@@ -51,24 +56,16 @@ def add_image_to_canvas(canvas, image_path, x, y, width, height):
     canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
     return tk_image
 
+
 def know_more_clicked(event):
+    """
+    Create a function that opens the webbroser if the "vind je steamid" is clicked to a website where you can input your steamid
+    """
     instructions = (
         "https://steamid.io/"
         )
     webbrowser.open_new_tab(instructions)
 
-
-def start_pico():
-    available_ports = list_ports.comports()
-    selected_port = available_ports[0].device
-
-    # Open a connection with the Pico
-    with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
-        if serial_port.isOpen():
-            # Stuur een commando om master.py uit te voeren
-            serial_port.write(b'exec(open("master.py").read())\r\n')
-            # Sluit verbinding met de Pico
-            serial_port.close()
 
 def read_serial(port):
     """Read data from serial port and return as string."""
@@ -78,14 +75,14 @@ def read_serial(port):
 loop1234 = True
 
 while loop1234:
-    raspberry = input("Wilt u de Raspberry Pi gebruiken? (ja/nee) ").lower()
+    rasberry = input("Wilt u de SteamBox gebruiken? (ja/nee) ").lower()
 
-    if raspberry == "nee":
+    if rasberry == "nee":
         loop1234 = False
-        print("[INFO] Programma start op zonder SteamCard...")
+        print("[INFO] Programma start op zonder SteamBox...")
         pass
-    elif raspberry == "ja":
-        # Selecteer de poort die is verbonden met de Pico
+    elif rasberry == "ja":
+        # First manually select the serial port that connects to the Pico
         serial_ports = list_ports.comports()
 
         print("[INFO] De volgende poorten zijn gevonden:")
@@ -95,18 +92,18 @@ while loop1234:
         pico_port_index = input("Op welke poort is de Raspberry Pi Pico verbonden? ")
         try:
             pico_port = serial_ports[int(pico_port_index)].device
-            start_pico()
         except:
-            raspberry = "nee"
-            print("[ERROR] De Raspberry Pi Pico is niet gevonden. Programma start zonder SteamCard...")
+            rasberry = "nee"
+            print("[ERROR] De Rasberry Pi Pico is niet gevonden. Programma start zonder SteamBox...")
         loop1234 = False
 
     else:
         print("Geen geldige invoer gekregen. (Ja/Nee)")
 
-
-
 def steamidinput(steamid64):
+    """
+    Create a function that gets the entry input and verifys it
+    """
     if len(steamid64) != 17:
         time = canvas.create_text(
             162.0,
@@ -140,6 +137,7 @@ def steamidinput(steamid64):
             )
             window.after(4000, lambda: canvas.delete(time))
         else:
+            # Give the name avatar and status to the next window
             name = status1[0]
             avatarurl = status1[1]
             status = status1[2]
@@ -170,35 +168,34 @@ def serial_thread(stop_event):
         try:
             steamid_received = False # Flag to indicate if SteamID has been received
             while not steamid_received and not stop_event.is_set():
-                # Lees de seriële gegevens van de Pico
+                # read serial connections
                 pico_output = read_serial(serial_port)
                 pico_output = pico_output.replace('\r\n', ' ')
 
-                # Controleer of de ontvangen gegevens de verwachte indeling hebben
+                # Check if the right data is presented
                 if pico_output.startswith("steamid64:"):
                     steamid64 = pico_output.split(":")[1].strip()
 
                     # Set the flag to True to exit the loop
                     steamid_received = True
 
-                    # Doe hier iets met de ontvangen steamid64, bijv. sla het op in een variabele of bestand.
+                    # run the function steamidinput to check if the given steamid is a working steamid
                     window.after(100, lambda: steamidinput(steamid64))  # Use after() to call steamidinput
 
                 else:
-                    # print("[PICO] Ongeldige gegevensindeling ontvangen:", pico_output)
                     pass
 
-                # Een korte pauze om overbelasting te voorkomen
+                # A short break to overcome balance
                 time.sleep(1)
 
         except KeyboardInterrupt:
             print("[INFO] Ctrl+C gedetecteerd. Beëindigen.")
         finally:
-            # Sluit verbinding met de Pico
+            # close connection with serial
             serial_port.close()
             print("[INFO] Inloggen met SteamCard...")
 
-if raspberry == "ja":
+if rasberry == "ja":
 # Create a thread for serial communication
     serial_thread = threading.Thread(target=serial_thread, args=(stop_event,), daemon=True)
     serial_thread.start()
@@ -248,8 +245,6 @@ canvas.create_text(
 image_path = "assets\logo_steam.png"
 image = add_image_to_canvas(canvas, image_path, x=540, y=50, width=267, height=77)
 
-
-
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
@@ -273,7 +268,7 @@ entry_bg_2 = canvas.create_image(
     381.0,
     image=entry_image_2
 )
-
+# Create a text entry point
 text_widget = Text(
     bd=0,
     bg="#33333D",
@@ -341,7 +336,6 @@ button_2.place(
     height=78.0
 )
 
-
 entry_image_3 = PhotoImage(
     file=relative_to_assets("entry_3.png"))
 entry_bg_3 = canvas.create_image(
@@ -350,7 +344,7 @@ entry_bg_3 = canvas.create_image(
     image=entry_image_3
 )
 
-
+# place the images on the canvas
 image_path = r"assets/contactless_5227517.png"
 image1 = add_image_to_canvas(canvas, image_path, x=1196, y=365, width=350, height=350)
 
@@ -379,7 +373,6 @@ canvas.create_text(
     font=("Motiva Sans Medium", 24 * -1)
 )
 
-
 canvas.create_text(
     1165.0,
     770.0,
@@ -400,11 +393,7 @@ canvas.create_text(
     font=("Motiva Sans Light", 20 * -1)
 )
 
-
-
 window.resizable(False, False)
-
 # Bind the stop_event.set() method to the window close event
 window.protocol("WM_DELETE_WINDOW", stop_event.set)
-
 window.mainloop()
