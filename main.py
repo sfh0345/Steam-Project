@@ -62,7 +62,7 @@ def start_pico():
     available_ports = list_ports.comports()
     selected_port = available_ports[0].device
 
-    # Open een verbinding met de Pico
+    # Open a connection with the Pico
     with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
         if serial_port.isOpen():
             # Stuur een commando om master.py uit te voeren
@@ -85,7 +85,7 @@ while loop1234:
         print("[INFO] Programma start op zonder SteamCard...")
         pass
     elif raspberry == "ja":
-        # First manually select the serial port that connects to the Pico
+        # Selecteer de poort die is verbonden met de Pico
         serial_ports = list_ports.comports()
 
         print("[INFO] De volgende poorten zijn gevonden:")
