@@ -32,10 +32,10 @@ def getmostplayedgamemyself(steam_id):
     else:
         print("Error fetching owned games.")
 
-
-# for testing purposes the code can also be run directly
-# print(getmostplayedgamemyself('76561199022018738'))
-
+# var = getmostplayedgamemyself('76561199022018738')
+#
+# print(var[0][0])
+# print(var[0][1])
 
 
 

@@ -40,14 +40,14 @@ def getmostplayed(steamID):
             return {}
 
     def most_played_games(steamid):
-        # Haal de meest gespeelde games op van een user
+        # get the most played games of a user
         most_played_games_url = f"http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=B5A67039860C1613632C4795B6C36245&steamid={steamid}&format=json"
         response = requests.get(most_played_games_url)
         if response.status_code == 200:
             most_played_games = response.json().get("response", {}).get("games", [])
-            # Sorteer de games op basis van playtime
+            # sort the games based on playtime
             most_played_games.sort(key=lambda x: x.get("playtime_2weeks", 0), reverse=True)
-            # hou alleen de top 5 games over
+            # only return the top 5 games
             most_played_games = most_played_games[:5]
             return most_played_games
         else:
@@ -59,16 +59,16 @@ def getmostplayed(steamID):
         plt.rcParams['font.family'] = 'Motiva Sans'
         plt.rcParams['font.weight'] = '600'  # Use 'bold' for bold text
 
-        # haal de vrienden van een user op
+        # Get the friend list
         friends_list = get_friend_usernames(steamid)
 
         # Initialize aggregated_playtime dictionary
         aggregated_playtime = {}
 
-        # haal de meest gespeelde games op van de vrienden en zet ze in een dictionary
+        # get the most played games of each friend
         for friend in friends_list:
             friends_most_played_games = most_played_games(friends_list[friend])
-            # geef alleen de username, de playtime en de naam van de game terug
+            # only give the name and playtime of the game
             for game in friends_most_played_games:
                 keys_to_remove = [
                     "playtime_forever",
@@ -91,25 +91,25 @@ def getmostplayed(steamID):
                     print("Warning: 'name' key not found in game data:", game)
                     pass
 
-        # sorteer de games op basis van playtime
+        # sort the games based on playtime
         aggregated_playtime = sorted(aggregated_playtime.items(), key=lambda x: x[1], reverse=True)
-        # geef alleen de top 5 games terug
+        # only return the top 5 games
         aggregated_playtime = aggregated_playtime[:5]
 
         return aggregated_playtime
 
 
     def barchart_most_played_games(steamid):
-        # maak een barchart van de meest gespeelde games van de vrienden
+        # make the barchart
         games = vergelijk_games_played(steamid)
         names = []
         playtime = []
         for game in games:
             names.append(game[0])
-            # zet de playtime om van minuten naar uren
+            # show the playtime in hours
             playtime.append(game[1] / 60)
 
-        # maak de barchart
+        # make the barchart
         plt.figure(figsize=(580 / 100, 900 / 100), facecolor='#0E131A')
         y_pos = np.arange(len(names))
         plt.bar(y_pos, playtime, align='center', alpha=0.9, color='#6AACF3')
@@ -118,27 +118,27 @@ def getmostplayed(steamID):
         plt.title('Most played games in the last 2 weeks by friends', fontsize=13, pad=17, color='#FFFFFF')
         plt.tight_layout()
 
-        # geef de ticks de juiste kleur
+        # give the ticks the right color
         plt.tick_params(axis='y', colors='#FFFFFF')
         plt.tick_params(axis='x', colors='#FFFFFF')
 
-        # geef de spines de juiste kleur (de randen van de grafiek)
+        # give the spines the right color
         plt.gca().spines['bottom'].set_color('#FFFFFF')
         plt.gca().spines['top'].set_color('#FFFFFF')
         plt.gca().spines['left'].set_color('#FFFFFF')
         plt.gca().spines['right'].set_color('#FFFFFF')
 
-        # maak de achtergrond van de grafiek de juiste kleur
+        # give the background the right color
         plt.gca().set_facecolor('#152330')
 
-        # maak een raster achter de grafiek
+        # make the grid lines white
         plt.grid(color='#FFFFFF', linestyle= '--', linewidth=0.5, axis='y')
 
-        # haal de datum op
+        #get the date
         date = datetime.datetime.now()
         date = date.strftime("%d-%m-%Y")
 
-        # sla de grafiek op
+        # save the barchart
         plt.savefig(f'analytics/mostplayed_{steamID}_{date}.png')
 
 

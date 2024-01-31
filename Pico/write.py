@@ -1,11 +1,6 @@
 from RC522_write import MFRC522
 
-"""
-This code is used to write a SteamID onto the keycard for automatic login using NFC.
 
-"""
-
-# Function to show the uid of the keycard
 def uidToString(uid):
     mystring = ""
     for i in uid:
@@ -13,7 +8,6 @@ def uidToString(uid):
     return mystring
 
 
-# Function to write the SteamID onto a keycard
 def write_steamid_to_card(reader, key, steam_id, blockid):
     print("")
     print("Please place card on reader")
@@ -50,21 +44,21 @@ def write_steamid_to_card(reader, key, steam_id, blockid):
         print("Bye")
 
 
-# Setup for the RFID-reader
+# Setup voor de RFID-reader
 reader = MFRC522(sck=10, mosi=11, miso=12, rst=14, cs=15, spi_id=1)
 
-# Key for auth
+# Key voor auth
 key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
 
-# split the SteamID: 76561199022018738
+# splits het SteamID: 76561199022018738
 
 steam_id_1 = 7656119900000000
 
 steam_id_2 = 2201873800000000
 
-# write the first 8 bytes of the SteamID to the keycard
+# schrijf de eerste 8 bytes van SteamID naar keycard
 write_steamid_to_card(reader, key, steam_id_1, 4)
 
-# reset the module and write the last 8 bytes to the keycard
+# reset de module en schrijf de laatste 8 bytes naar keycard
 reader.init()
 write_steamid_to_card(reader, key, steam_id_2, 5)
