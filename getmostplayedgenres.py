@@ -2,74 +2,73 @@ import requests
 import psycopg2
 from database_connection import connect_to_azure_postgresql, close_connection
 """ 
-    Deze functie geeft de top 5 genres van een gebruiker terug op basis van de speeltijd van hun gespeelde games.
+    This function returns the top 5 genres of a user based on the playtime of their played games.
 """
 
-# Maak een verbinding met de PostgreSQL-database. Staat op localhost!!
+# Connect to the PostgreSQL database. It is on localhost!!
 conn = connect_to_azure_postgresql()
 
-# Maak een cursor
+# Create a cursor
 c = conn.cursor()
 
 
-def meest_gespeelde_genres(steamid):
+def most_played_genres(steamid):
     try:
-        # Haal de speeltijd op van alle games die door de gebruiker zijn gespeeld
+        # Retrieve playtime of all games played by the user
         playtime_games_url = f"http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=B5A67039860C1613632C4795B6C36245&steamid={steamid}&format=json"
         response = requests.get(playtime_games_url)
 
         if response.status_code == 200:
-            # Haal de speeltijd, genre, naam en appid op van elke game en plaats deze in een dictionary
-            meest_gespeelde_games = {}
+            # Retrieve playtime, genre, name, and appid for each game and store them in a dictionary
+            most_played_games = {}
             for game in response.json().get("response", {}).get("games", []):
-                speeltijd = game["playtime_forever"]
-                if speeltijd > 0:  # Games met nul speeltijd uitsluiten
-                    meest_gespeelde_games[game["appid"]] = speeltijd
+                playtime = game["playtime_forever"]
+                if playtime > 0:  # Exclude games with zero playtime
+                    most_played_games[game["appid"]] = playtime
 
-            # Voeg de genres en naam toe voor elke game aan de dictionary met behulp van geparametriseerde queries
-            for appid in meest_gespeelde_games:
+            # Add genres and name for each game to the dictionary using parameterized queries
+            for appid in most_played_games:
                 c.execute("SELECT genres FROM gameproperties WHERE appid = %s", (appid,))
                 result = c.fetchone()
 
-                # Controleer of het resultaat niet None is voordat de elementen worden benaderd
+                # Check if the result is not None before accessing its elements
                 if result is not None:
                     genres = result[0]
-                    meest_gespeelde_games[appid] = {"speeltijd": meest_gespeelde_games[appid], "genres": genres.split(';') if genres else []}
+                    most_played_games[appid] = {"playtime": most_played_games[appid], "genres": genres.split(';') if genres else []}
                 else:
-                    # Behandel het geval waarin geen genres zijn gevonden
-                    meest_gespeelde_games[appid] = {"speeltijd": meest_gespeelde_games[appid], "genres": []}
+                    # Handle the case where no genres are found
+                    most_played_games[appid] = {"playtime": most_played_games[appid], "genres": []}
 
-            # Games met nul speeltijd filteren
-            meest_gespeelde_games = {appid: details for appid, details in meest_gespeelde_games.items() if details["speeltijd"] > 0}
+            # Filter games with zero playtime
+            most_played_games = {appid: details for appid, details in most_played_games.items() if details["playtime"] > 0}
 
-            # Games sorteren op speeltijd
-            meest_gespeelde_games = sorted(
-                meest_gespeelde_games.items(),
-                key=lambda x: x[1]["speeltijd"],
+            # Sort games based on playtime
+            most_played_games = sorted(
+                most_played_games.items(),
+                key=lambda x: x[1]["playtime"],
                 reverse=True
             )
 
-            # Maak een dictionary met de totale speeltijd per genre
+            # Create a dictionary with the total playtime per genre
             genres = {}
-            for game in meest_gespeelde_games:
+            for game in most_played_games:
                 for genre in game[1]["genres"]:
                     if genre in genres:
-                        genres[genre] += game[1]["speeltijd"]
+                        genres[genre] += game[1]["playtime"]
                     else:
-                        genres[genre] = game[1]["speeltijd"]
-            # Sorteer de genres op speeltijd
+                        genres[genre] = game[1]["playtime"]
+            # Sort genres based on playtime
             genres = sorted(genres.items(), key=lambda x: x[1], reverse=True)
-            # Maak een dictionary met de top 5 genres
+            # Create a dictionary with the top 5 genres
             genres = genres[:5]
 
             return genres
         else:
-            print(f"Het ophalen van meest gespeelde games is mislukt. Status Code: {response.status_code}")
+            print(f"Failed to retrieve most played games. Status Code: {response.status_code}")
             return {}
 
     except psycopg2.Error as e:
-        print(f"Fout met PostgreSQL: {e}")
+        print(f"Error with PostgreSQL: {e}")
         return {}
     finally:
         close_connection(conn)
-

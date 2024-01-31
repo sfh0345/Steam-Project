@@ -10,10 +10,10 @@ def most_played_games_user(steamid):
 
     STEAM_API_KEY = "B5A67039860C1613632C4795B6C36245"
 
-    # Maak een verbinding met de PostgreSQL-database.
+    # Connect to the PostgreSQL database.
     conn = connect_to_azure_postgresql()
 
-    # Maak een cursor
+    # Create a cursor
     c = conn.cursor()
 
     def get_games(steamid):

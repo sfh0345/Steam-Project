@@ -4,35 +4,32 @@ import psycopg2
 from database_connection import connect_to_azure_postgresql
 from database2_connection import connect_to_azure_postgresql2
 
-
-# Maak een verbinding met de PostgreSQL-database.
+# Connect to the PostgreSQL database.
 conn = connect_to_azure_postgresql()
 
-# Maak een cursor
+# Create a cursor
 c = conn.cursor()
 
-
-# haal de data op uit de database
+# Retrieve game data from the database
 def get_data():
     """
        Retrieve game data from the database.
 
        Returns:
-           list: List of tuples containing (verhouding_rating, average_playtime, total_reviews) for selected games.
+           list: List of tuples containing (rating_ratio, average_playtime, total_reviews) for selected games.
        """
-    c.execute("SELECT verhouding_rating, average_playtime, total_reviews "
+    c.execute("SELECT rating_ratio, average_playtime, total_reviews "
               "FROM gameproperties "
               "WHERE total_reviews > 8000 AND release_date > '2009-01-01' AND average_playtime < 15000 AND average_playtime > 4000")
     result = c.fetchall()
     return result
 
-
-def gradient_descent(verhouding_rating, average_playtime, learning_rate, iterations):
+def gradient_descent(rating_ratio, average_playtime, learning_rate, iterations):
     """
        Perform gradient descent to find the coefficients (m, b) for linear regression.
 
        Args:
-           verhouding_rating (numpy.ndarray): Array of verhouding_rating values.
+           rating_ratio (numpy.ndarray): Array of rating_ratio values.
            average_playtime (numpy.ndarray): Array of average_playtime values.
            learning_rate (float): Learning rate for gradient descent.
            iterations (int): Number of iterations for gradient descent.
@@ -40,18 +37,18 @@ def gradient_descent(verhouding_rating, average_playtime, learning_rate, iterati
        Returns:
            tuple: Coefficients (m, b) for the linear regression model.
        """
-    # verander de namen naar x en y
-    x = verhouding_rating
+    # Change variable names to x and y
+    x = rating_ratio
     y = average_playtime
 
-    # initialiseer de waarden van m en b
+    # Initialize the values of m and b
     m = 0
     b = 0
 
-    # bereken de lengte van de dataset
+    # Calculate the length of the dataset
     n = float(len(x))
 
-    # implementeer gradient descent
+    # Implement gradient descent
     for i in range(iterations):
         y_pred = m * x + b
         dm = (-2/n) * sum(x * (y - y_pred))
@@ -61,33 +58,31 @@ def gradient_descent(verhouding_rating, average_playtime, learning_rate, iterati
 
     return m, b
 
-
-def linear_regression(verhouding_rating):
+def linear_regression(rating_ratio):
     """
-       Perform linear regression based on the provided verhouding_rating.
+       Perform linear regression based on the provided rating_ratio.
 
        Args:
-           verhouding_rating (float): Verhouding rating of a specific game.
+           rating_ratio (float): Rating ratio of a specific game.
 
        Returns:
            float: Predicted playtime based on linear regression.
        """
-    # Haal de data op uit de database
+    # Retrieve data from the database
     data = get_data()
 
-    # Zet de data om naar een numpy array
+    # Convert the data to a numpy array
     x = np.array([i[0] for i in data])
     y = np.array([i[1] for i in data])
 
-    # Bereken de m en b waarden
+    # Calculate the m and b values
     m, b = gradient_descent(x, y, 0.0001, 10000)
 
-    # Bereken de y waarden
-    y_pred = m * verhouding_rating + b
+    # Calculate the y values
+    y_pred = m * rating_ratio + b
     return y_pred
 
-
-def voorspel_playtime(gamename):
+def predict_playtime(gamename):
     """
        Predict playtime for a given game.
 
@@ -102,71 +97,69 @@ def voorspel_playtime(gamename):
        """
 
     if isinstance(gamename, str):
-        # Haal de data op uit de database
-        c.execute("SELECT verhouding_rating,name "
+        # Retrieve data from the database
+        c.execute("SELECT rating_ratio, name "
                   "FROM gameproperties "
                   "WHERE name ILIKE %s", ('%' + gamename + '%',))
     elif isinstance(gamename, int):
-        c.execute("SELECT verhouding_rating,name "
+        c.execute("SELECT rating_ratio, name "
                   "FROM gameproperties "
                   "WHERE appid = %s", (gamename,))
     else:
-        print("Er is iets mis gegaan")
+        print("Something went wrong")
 
     result = c.fetchone()
 
     if result is None:
-        # maak connectie met de database
+        # Connect to the second database
         conn = connect_to_azure_postgresql2()
 
-        # maak een cursor
+        # Create a cursor
         cursor = conn.cursor()
         if isinstance(gamename, str):
-            # Haal de data op uit de database
+            # Retrieve data from the second database
             cursor.execute("SELECT sid "
                            "FROM gameproperties "
                            "WHERE name ILIKE %s", ('%' + gamename + '%',))
             result = c.fetchone()
             if result is not None:
-                # doe een api call naar steamspy
+                # Make an API call to SteamSpy
                 url = f"https://steamspy.com/api.php?request=appdetails&appid={result[0]}"
                 response = requests.get(url)
-                # haal de naam op
+                # Retrieve the name
                 name = response.json().get("name", 0)
-                # haal positive en negative ratings op
+                # Retrieve positive and negative ratings
                 positive_ratings = response.json().get("positive", 0)
                 negative_ratings = response.json().get("negative", 0)
-                # bereken de verhouding
-                totaal = positive_ratings + negative_ratings
-                verhouding_rating = positive_ratings / totaal * 100 if totaal != 0 else 0
-                return verhouding_rating, name
+                # Calculate the ratio
+                total = positive_ratings + negative_ratings
+                rating_ratio = positive_ratings / total * 100 if total != 0 else 0
+                return rating_ratio, name
             else:
                 return ["--", gamename]
 
         elif isinstance(gamename, int):
-            # doe een api call naar steamspy
+            # Make an API call to SteamSpy
             url = f"https://steamspy.com/api.php?request=appdetails&appid={gamename}"
             response = requests.get(url)
-            # haal positive en negative ratings op
+            # Retrieve positive and negative ratings
             positive_ratings = response.json().get("positive", 0)
             negative_ratings = response.json().get("negative", 0)
-            # bereken de verhouding
-            totaal = positive_ratings + negative_ratings
-            verhouding_rating = positive_ratings / totaal * 100 if totaal != 0 else 0
-            # haal ook de naam op
+            # Calculate the ratio
+            total = positive_ratings + negative_ratings
+            rating_ratio = positive_ratings / total * 100 if total != 0 else 0
+            # Also retrieve the name
             name = response.json().get("name", 0)
-            return verhouding_rating, name
+            return rating_ratio, name
         else:
-            print("Er is iets mis gegaan")
+            print("Something went wrong")
 
     else:
-        verhouding_rating = result[0]
+        rating_ratio = result[0]
         name = result[1]
 
-    y_pred = linear_regression(verhouding_rating)
+    y_pred = linear_regression(rating_ratio)
     pred_playtime = round(y_pred / 60)
 
     return pred_playtime, name
 
-
-print(voorspel_playtime(1979280))
