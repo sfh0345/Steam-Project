@@ -2,7 +2,6 @@ import psycopg2
 
 def connect_to_azure_postgresql():
     try:
-        # Replace the placeholder values with your actual Azure PostgreSQL connection details
         connection_params = {
             "database": "DBsrv",
             "user": "postgres",
@@ -22,4 +21,5 @@ def connect_to_azure_postgresql():
         raise
 
 def close_connection(connection):
+    # pass the close connection because of different screens and multiple uses of the database
     pass
