@@ -100,6 +100,7 @@ def getrecommendedgames(steamid64):
         friends_unique_games = set(all_games).difference(owned_game_appids)
         game_counts = Counter(all_games)
 
+
         # Sort games based on the count of friends playing each game
         sorted_games = sorted(friends_unique_games, key=lambda x: game_counts[x], reverse=True)
         # Get names of the top 5 recommended games by using slicing
