@@ -24,6 +24,51 @@ i2c = I2C(0, sda=Pin(16), scl=Pin(17), freq=400000)
 I2C_ADDR = i2c.scan()[0]
 lcd = I2cLcd(i2c, I2C_ADDR, 2, 16)
 
+def onlinevrienden():
+    # Wait for data (online friends) from the serial connection
+    while True:
+        data = input()
+
+        # Control Neopixel based on the specified conditions
+        led_count = int(data[1:])
+
+        # If there are no friends online
+        if led_count < 1:
+            # Blink all 30 leds in red indefinitely
+            while True:
+                for _ in range(5):
+                    np.fill((255, 0, 0))
+                    np.write()
+                    time.sleep(0.5)
+                    np.fill((0, 0, 0))
+                    np.write()
+                    time.sleep(0.5)
+
+        # If between 1 and 30 friends are online
+        elif 1 <= led_count <= 30:
+            # Turn on a LED for every online friend
+            while True:
+                for index in range(led_count):
+                    np[index] = (255, 0, 255)
+                    np.write()
+                    time.sleep(0.2)
+
+        # If there are more than 30 friends online / more friends online than LEDs on NeoPixel
+        elif led_count > 30:
+            # Turn on all LEDs on the Neopixel
+            while True:
+                for index in range(29):
+                    np[index] = (0, 255, 255)
+                    np.write()
+                    time.sleep(0.2)
+                # Blink the last LED (30)
+                while True:
+                    np[29] = (0, 255, 255)
+                    np.write()
+                    time.sleep(0.5)
+                    np[29] = (0, 0, 0)
+                    np.write()
+                    time.sleep(0.2)
 
 # Function to create a white wave on the neopixel
 def whitewave():
@@ -188,53 +233,12 @@ while True:  # Outer loop for continuous operation
                     output = 1
 
                     gelukt = True  # Set gelukt flag to exit the outer loop
+                    onlinevrienden()
 
 
         except Exception as e:
             print(f"Error: {e}")
             # Add any error handling or logging if needed
 
-    # Wait for data (online friends) from the serial connection
-    while True:
-        data = input()
 
-        # Control Neopixel based on the specified conditions
-        led_count = int(data[1:])
 
-        # If there are no friends online
-        if led_count < 1:
-            # Blink all 30 leds in red indefinitely
-            while True:
-                for _ in range(5):
-                    np.fill((255, 0, 0))
-                    np.write()
-                    time.sleep(0.5)
-                    np.fill((0, 0, 0))
-                    np.write()
-                    time.sleep(0.5)
-
-        # If between 1 and 30 friends are online
-        elif 1 <= led_count <= 30:
-            # Turn on a LED for every online friend
-            while True:
-                for index in range(led_count):
-                    np[index] = (255, 0, 255)
-                    np.write()
-                    time.sleep(0.2)
-
-        # If there are more than 30 friends online / more friends online than LEDs on NeoPixel
-        elif led_count > 30:
-            # Turn on all LEDs on the Neopixel
-            while True:
-                for index in range(29):
-                    np[index] = (0, 255, 255)
-                    np.write()
-                    time.sleep(0.2)
-                # Blink the last LED (30)
-                while True:
-                    np[29] = (0, 255, 255)
-                    np.write()
-                    time.sleep(0.5)
-                    np[29] = (0, 0, 0)
-                    np.write()
-                    time.sleep(0.2)
