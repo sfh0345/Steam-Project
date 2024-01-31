@@ -165,7 +165,14 @@ def steamidinput(steamid64):
             avatarurl = status1[1]
             status = status1[2]
             window.destroy()
-            dashboardwindow(name, avatarurl, status, steamid64)
+            if rasberry == "ja":
+                picostatus = True
+            elif rasberry == "nee":
+                picostatus = False
+            else:
+                print("[ERROR] Pico status is niet gelukt")
+
+            dashboardwindow(name, avatarurl, status, steamid64, picostatus)
 
 # Define an event to signal the thread to stop
 stop_event = threading.Event()
