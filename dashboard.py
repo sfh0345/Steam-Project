@@ -64,7 +64,65 @@ def dashboardwindow(name, avatarurl, status, steamid64):
         # Create an image item at the specified coordinates
         canvas.create_image(x, y, anchor=tk.NW, image=tk_image)
         return tk_image
+      
+    def friends_on_LED(): # functie om het aantal online vrienden te verkrijgen
+        """
+        This function controls the noepixel based on the total of online friends and displays a certain LEDS based on that.
+        """
+        from getuserfriendlist import get_friend_usernames
+        var = get_friend_usernames(steamid64)
+        friend_list_names = len(var[0])
+        friend_list_count = var[1]
+        friend_list = friend_list_names + friend_list_count
+        return friend_list
 
+
+    from serial.tools import list_ports
+    import serial
+    try:
+        available_ports = list_ports.comports()
+        if not available_ports:
+            print("[ERROR] Geen serial ports gevonden!")
+            exit()
+
+        selected_port = available_ports[0].device
+
+        with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
+            if serial_port.isOpen():
+                data = f"O{friends_on_LED()}\r"
+                serial_port.write(data.encode())
+            serial_port.close()
+    except:
+        pass
+
+    def close_pico():
+        """
+        THis is code controls the components connected to the Pico. Its used to turn them off once the user has closed the dashboard.
+        """
+        import serial
+        from serial.tools import list_ports
+        import time
+
+
+        available_ports = list_ports.comports()
+        if not available_ports:
+            print("[ERROR] Geen serial ports gevonden!")
+            exit()
+
+        selected_port = available_ports[0].device
+
+        with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1,
+                           timeout=1) as serial_port:
+            if serial_port.isOpen():
+
+                serial_port.write(b'exec(open("main.py").read())\r\n')
+                serial_port.write(b'\x03')
+                time.sleep(1)
+
+            else:
+                serial_port.open()
+                serial_port.write(b'exec(open("main.py").read())\r\n')
+                
     def moreinfodashboard():
         window.destroy()
         analytics(name, avatarurl, status, steamid64)

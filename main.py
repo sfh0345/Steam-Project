@@ -54,7 +54,18 @@ def know_more_clicked(event):
         )
     webbrowser.open_new_tab(instructions)
 
+def start_pico():
+    """
+    Function to start the components connected to the pico once the user chooses to use the steambox
+    """
+    available_ports = list_ports.comports()
+    selected_port = available_ports[0].device
 
+    with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
+        if serial_port.isOpen():
+            serial_port.write(b'exec(open("master.py").read())\r\n')
+            serial_port.close()
+            
 def read_serial(port):
     """Read data from serial port and return as string."""
     line = port.read(1000)
@@ -84,7 +95,6 @@ while loop1234:
             rasberry = "nee"
             print("[ERROR] De Rasberry Pi Pico is niet gevonden. Programma start zonder SteamBox...")
         loop1234 = False
-
     else:
         print("Geen geldige invoer gekregen. (Ja/Nee)")
 
