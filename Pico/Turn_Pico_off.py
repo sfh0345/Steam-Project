@@ -2,36 +2,32 @@ import serial
 from serial.tools import list_ports
 import time
 
-# def read_serial(port):
-#     line = port.read(1000)
-#     return line.decode()
+"""
+This code is used to turn the pico off on startup and after the user has closed the dashboard.
+"""
 
-# detecteer automatisch alle beschikbare serial poorten
+# automatically detect all available ports
 available_ports = list_ports.comports()
 if not available_ports:
     print("[ERROR] Geen serial ports gevonden!")
     exit()
 
-# selecteer de eerste beschikbare poort
+# select the first available port
 selected_port = available_ports[0].device
 
-# Open een connectie met de serial poort
+# Open a connection with the serial port
 with serial.Serial(port=selected_port, baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1) as serial_port:
-    # Gebruik de poort als deze open/beschikbaar is
+    # Use the port if open/available
     if serial_port.isOpen():
         print("[INFO] De serial port wordt gebruikt:", serial_port.name)
 
+        # execute to run the file on the pico
         serial_port.write(b'exec(open("main.py").read())\r\n')
-
-        # Wait for the script execution to complete (adjust the delay as needed)
-        # time.sleep(5)
-
-        # Send Ctrl+C to interrupt execution and reset
         serial_port.write(b'\x03')
-        time.sleep(1)  # Adjust the delay as needed
+        time.sleep(1)
 
     else:
-        # Open de poort als deze niet open is
+        # Open the port when not open
         print("[INFO] De serial port wordt geopend:", serial_port.name, "...")
         serial_port.open()
 
