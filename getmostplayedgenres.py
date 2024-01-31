@@ -13,6 +13,9 @@ c = conn.cursor()
 
 
 def meest_gespeelde_genres(steamid):
+    """
+    Retrieve the top 5 genres of a user based on the playtime of their played games.
+    """
     try:
         # Retrieve playtime of all games played by the user
         playtime_games_url = f"http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=B5A67039860C1613632C4795B6C36245&steamid={steamid}&format=json"
