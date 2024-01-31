@@ -87,8 +87,6 @@ def start_pico():
 #         if serial_port.isOpen():
 #             serial_port.write(command.encode())
 
-
-
 def read_serial(port):
     """Read data from serial port and return as string."""
     line = port.read(1000)
@@ -119,7 +117,6 @@ while loop1234:
             rasberry = "nee"
             print("[ERROR] De Rasberry Pi Pico is niet gevonden. Programma start zonder SteamBox...")
         loop1234 = False
-
     else:
         print("Geen geldige invoer gekregen. (Ja/Nee)")
 
@@ -165,14 +162,7 @@ def steamidinput(steamid64):
             avatarurl = status1[1]
             status = status1[2]
             window.destroy()
-            if rasberry == "ja":
-                picostatus = True
-            elif rasberry == "nee":
-                picostatus = False
-            else:
-                print("[ERROR] Pico status is niet gelukt")
-
-            dashboardwindow(name, avatarurl, status, steamid64, picostatus)
+            dashboardwindow(name, avatarurl, status, steamid64)
 
 # Define an event to signal the thread to stop
 stop_event = threading.Event()

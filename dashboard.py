@@ -1,4 +1,4 @@
-def dashboardwindow(name, avatarurl, status, steamid64, picostatus):
+def dashboardwindow(name, avatarurl, status, steamid64):
     """
     Create a function to run the main dashboard window
     """
@@ -95,7 +95,7 @@ def dashboardwindow(name, avatarurl, status, steamid64, picostatus):
 
     from serial.tools import list_ports
     import serial
-    if picostatus:
+    try:
         available_ports = list_ports.comports()
         if not available_ports:
             print("[ERROR] Geen serial ports gevonden!")
@@ -108,6 +108,8 @@ def dashboardwindow(name, avatarurl, status, steamid64, picostatus):
                 data = f"O{friends_on_LED()}\r"
                 serial_port.write(data.encode())
             serial_port.close()
+    except:
+        pass
 
     def close_pico():
         """
