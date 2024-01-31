@@ -165,7 +165,12 @@ def steamidinput(steamid64):
             avatarurl = status1[1]
             status = status1[2]
             window.destroy()
-            dashboardwindow(name, avatarurl, status, steamid64)
+            if rasberry == "ja":
+                picostatus = True
+            if rasberry == "nee":
+                picostatus = False
+
+            dashboardwindow(name, avatarurl, status, steamid64, picostatus)
 
 # Define an event to signal the thread to stop
 stop_event = threading.Event()
@@ -342,6 +347,10 @@ button_1.place(
     width=365.0,
     height=78.0
 )
+def functiebutton():
+    rasberry = False
+    steamidinput(text_widget.get("1.0", tk.END).strip())
+
 
 button_image_2 = PhotoImage(
     file=relative_to_assets("button_2.png"))
@@ -349,7 +358,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: steamidinput(text_widget.get("1.0", tk.END).strip()),
+    command=lambda: functiebutton(),
     relief="flat"
 )
 button_2.place(
