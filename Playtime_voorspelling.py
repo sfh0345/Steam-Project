@@ -163,6 +163,3 @@ def voorspel_playtime(gamename):
     pred_playtime = round(y_pred / 60)
 
     return pred_playtime, name
-
-
-print(voorspel_playtime(1979280))
