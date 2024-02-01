@@ -1,4 +1,4 @@
-def analytics(name, avatarurl, status, steamid64):
+def analytics(name, avatarurl, status, steamid64, picostatus):
     """
     Function to create the analytics window
     """
@@ -741,7 +741,7 @@ def analytics(name, avatarurl, status, steamid64):
             it destroys the current session and opens the dashboardwindow
         """
         window.destroy()
-        dashboardwindow(name, avatarurl, status, steamid64)
+        dashboardwindow(name, avatarurl, status, steamid64, picostatus)
 
 
     button_image_1 = PhotoImage(
