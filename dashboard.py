@@ -127,7 +127,7 @@ def dashboardwindow(name, avatarurl, status, steamid64, picostatus):
 
         available_ports = list_ports.comports()
         if not available_ports:
-            print("[ERROR] Geen serial ports gevonden!")
+            print("Serial ports afgesloten!")
             exit()
 
         selected_port = available_ports[0].device
@@ -149,7 +149,7 @@ def dashboardwindow(name, avatarurl, status, steamid64, picostatus):
             Create the moreinfo button, if this button is clicked you go to the analytics window
         """
         window.destroy()
-        analytics(name, avatarurl, status, steamid64)
+        analytics(name, avatarurl, status, steamid64, picostatus)
 
 
     # Check on what platform the user is, ctypes.windll only works on windows and gives a error when on linux or mac
